@@ -15,6 +15,8 @@ const User = require("./models/user");
 // import authentication library
 const auth = require("./auth");
 
+
+
 // api endpoints: all these paths will be prefixed with "/api/"
 const router = express.Router();
 

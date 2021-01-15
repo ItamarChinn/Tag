@@ -48,10 +48,10 @@ class Skeleton extends Component {
           <li>Change the font in utilities.css</li>
           <li>Change the Frontend CLIENT_ID for Google Auth (Skeleton.js)</li>
           <li>Change the Server CLIENT_ID for Google Auth (auth.js)</li>
-          <li>Change the Database SRV for Atlas (server.js)</li>
-          <li>Change the Database Name for MongoDB (server.js)</li>
-          <li>Add a favicon to your website at the path client/dist/favicon.ico</li>
-          <li>Update website title in client/dist/index.html</li>
+          <li>DONE Change the Database SRV for Atlas (server.js)</li>
+          <li>DONE Change the Database Name for MongoDB (server.js)</li>
+          <li>DONE Add a favicon to your website at the path client/dist/favicon.ico</li>
+          <li>DONE Update website title in client/dist/index.html</li>
         </ul>
       </>
     );
