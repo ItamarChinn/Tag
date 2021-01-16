@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 import { get } from "../../utilities";
 import NavBar from "../modules/NavBar.js"
+import NewComponent from "../modules/NewComponent.js"
 
 import "../../utilities.css";
 import "./Dashboard.css";
@@ -27,8 +28,11 @@ class Dashboard extends Component {
         <NavBar
           handleLogout={this.props.handleLogout}
           userId={this.state.userId}/>
+
+        <NewComponent />
+
         <div>This is where the dashboard will be</div>
-          </>
+        </>
     );
   }
 };
