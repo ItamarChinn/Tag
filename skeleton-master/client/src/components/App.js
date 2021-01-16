@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
-import Skeleton from "./pages/Skeleton.js";
+import Dashboard from "./pages/Dashboard.js";
 import NavBar from "./modules/NavBar.js";
+import Signup from "./pages/Signup.js";
 
 import "../utilities.css";
 
@@ -48,17 +49,18 @@ class App extends Component {
   render() {
     return (
       <>
-      <NavBar
-        handleLogout={this.handleLogout}
-        userId={this.state.userId}/>
-        <Router>
-          
-          <Skeleton
+        <Router>  
+        {(this.state.userId) ? (
+          <Dashboard
             path="/"
-            handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}
             userId={this.state.userId}
-          />
+          />) : (
+        <Signup 
+            path="/"
+            handleLogin={this.handleLogin}
+            userId={this.state.userId}/>
+          )}
           <NotFound default />
         </Router>
       </>

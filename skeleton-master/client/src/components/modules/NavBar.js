@@ -12,7 +12,7 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
   }
-  
+
   render() {
     return (
       <nav className="NavBar-container">
@@ -23,13 +23,11 @@ class NavBar extends Component {
               buttonText="Logout"
               onLogoutSuccess={this.props.handleLogout}
               onFailure={(err) => console.log(err)}
-              // className="NavBar-link NavBar-login"
-              data-width = "3000"
             />
         </div>
       </nav>
     );
   }
-}
+};
 
 export default NavBar;
