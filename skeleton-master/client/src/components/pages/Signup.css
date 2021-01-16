@@ -1,0 +1,11 @@
+.Signup-title  { 
+    display: flex;
+    /* justify-content: center; */
+    color: var(--beige);
+    font-size: 50px;
+    font-family:"Baloo 2", cursive;
+}
+
+.Signup-background {
+    background-color: var(--rose);
+}

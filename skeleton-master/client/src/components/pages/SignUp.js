@@ -3,7 +3,7 @@ import GoogleLogin, { GoogleLogout } from "react-google-login";
 import { get } from "../../utilities";
 
 import "../../utilities.css";
-import "./Dashboard.css";
+import "./Signup.css";
 
 const GOOGLE_CLIENT_ID = "431422395324-ngd8u3e3h6a1lfg6a1ljo3pukgpu0daj.apps.googleusercontent.com";
 
@@ -14,17 +14,20 @@ class Signup extends Component {
 
   render() {
     return (
-            <> 
-            <h1>Welcome to Tag - chase your dreams</h1>
-            <h2>Please login to make your dreams come true</h2>
-            <div>This is the signup page</div>
-            <GoogleLogin
-                  clientId={GOOGLE_CLIENT_ID}
-                  buttonText="Login"
-                  onSuccess={this.props.handleLogin}
-                  onFailure={(err) => console.log(err)}
-                />
-            </>);
+        <div className="Signup-background">
+            <div className="Signup-title">
+                <div >Welcome to Tag - chase your dreams</div>
+                <div>Please login to make your dreams come true</div>
+                <div>This is the signup page</div>
+                <GoogleLogin
+                    clientId={GOOGLE_CLIENT_ID}
+                    buttonText="Login"
+                    onSuccess={this.props.handleLogin}
+                    onFailure={(err) => console.log(err)}
+                    />
+            </div>
+        </div>
+                );
   }
 };
 
