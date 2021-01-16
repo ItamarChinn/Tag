@@ -1,0 +1,10 @@
+.NavBar-container {
+    padding: var(--s) var(--m);
+    background-color: var(--rose);
+  }
+  
+  .NavBar-title {
+    color: var(--beige);
+    font-size: 20px;
+    font-family:"Baloo 2", cursive;
+  }
