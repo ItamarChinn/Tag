@@ -5,7 +5,7 @@ import "../../utilities.css";
 import "./Skeleton.css";
 
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
-const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "431422395324-ngd8u3e3h6a1lfg6a1ljo3pukgpu0daj.apps.googleusercontent.com";
 
 class Skeleton extends Component {
   constructor(props) {
@@ -46,8 +46,8 @@ class Skeleton extends Component {
         <h2> What you need to change</h2>
         <ul>
           <li>Change the font in utilities.css</li>
-          <li>Change the Frontend CLIENT_ID for Google Auth (Skeleton.js)</li>
-          <li>Change the Server CLIENT_ID for Google Auth (auth.js)</li>
+          <li>DONE Change the Frontend CLIENT_ID for Google Auth (Skeleton.js)</li>
+          <li>DONE Change the Server CLIENT_ID for Google Auth (auth.js)</li>
           <li>DONE Change the Database SRV for Atlas (server.js)</li>
           <li>DONE Change the Database Name for MongoDB (server.js)</li>
           <li>DONE Add a favicon to your website at the path client/dist/favicon.ico</li>

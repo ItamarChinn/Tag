@@ -1,0 +1,26 @@
+.NavBar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--s) var(--m);
+    background-color: var(--rose);
+  }
+  
+.NavBar-title {
+  display: flex;
+  align-items: center;
+  color: var(--beige);
+  font-size: 50px;
+  font-family:"Baloo 2", cursive;
+}
+
+.NavBar-linkContainer {
+  display: flex; 
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+.NavBar-login {
+  background-color: var(--rose);
+}
