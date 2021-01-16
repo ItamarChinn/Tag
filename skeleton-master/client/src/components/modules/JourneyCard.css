@@ -1,21 +1,36 @@
-﻿import React, { Component } from "react";
-import "./NewComponent.css";
+﻿.JourneyCard-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: var(--s) var(--m);
+  background-color: beige;
+  width: var(--l);
+  height: var(--l);
+}
 
-/**
- * What is this>
- */
-class NewComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
+.JourneyCard-padding {
+  display: flex;
+  position: relative;
+  top: var(--s);
+  align-items: center;
+  padding: var(--s) var(--m);
+  background-color: var(--space_padding);
+  border-radius: 10px;
+}
 
-  render() {
-    return (
-      <div className="NewComponent-container">
-          This is a test component
-      </div>
-    );
-  }
+.JourneyCard-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--s) var(--m);
+  background-color: var(--space);
+  border-radius: 10px;
+}
+
+.JourneyCard-title {
+  margin: var(--s);
+  padding: var(--xs);
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 20px;
 };
-
-export default NewComponent;
