@@ -1,12 +1,16 @@
 ﻿import React, { Component } from "react";
 import "./JourneyCard.css";
-import "./App.js";
+import "../App.js";
+import "./NewProgress.js"
+import "./ProgressCard.js"
 
 
 class JourneyCard extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
+      /*
       owner: userId,
       goal: {
         name: String,
@@ -14,13 +18,14 @@ class JourneyCard extends Component {
         time_unit: Date, 
         goal_unit: String, 
         goal_quantity: Number }, 
-      theme: Theme
+      theme: Theme */
     }
   }
 
   render() {
     return (
-      <div className="JourneyCard-container"> 
+      <div> test </div>
+     /* <div className="JourneyCard-container"> 
         <p className= "JourneyCard-title"> 
         {this.props.name}: {this.props.goal_quantity} {this.props.goal_unit}, {this.props.frequency} times per {this.props.time_unit}
         </p>
@@ -30,7 +35,7 @@ class JourneyCard extends Component {
             <ProgressCard />
           </div>
         </div>
-    </div>
+    </div> */
     );
   }
 };
