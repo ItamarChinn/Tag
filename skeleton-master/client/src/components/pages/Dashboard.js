@@ -16,16 +16,16 @@ class Dashboard extends Component {
     };
   }
 
-  componentDidMount() {
-    document.title = "Dashboard";
-    get(`/api/user`, { userid: this.props.userId }).then((user) => this.setState({ user: user }));
-  }
+  // componentDidMount() {
+  //   document.title = "Dashboard";
+  //   get(`/api/user`, { userid: this.props.userId }).then((user) => this.setState({ user: user }));
+  // }
 
   render() {
     return (
         <>
         <NavBar
-          handleLogout={this.handleLogout}
+          handleLogout={this.props.handleLogout}
           userId={this.state.userId}/>
         <div>This is where the dashboard will be</div>
           </>
