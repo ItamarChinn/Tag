@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 import { get } from "../../utilities";
 import NavBar from "../modules/NavBar.js"
-import NewComponent from "../modules/NewComponent.js"
-import JourneyCard from "../JourneyCard.js"
+import JourneyCard from "../modules/JourneyCard.js"
+import IncompleteJourneyFeed from "../modules/IncompleteJourneyFeed.js";
 
 import "../../utilities.css";
 import "./Dashboard.css";
@@ -29,8 +29,12 @@ class Dashboard extends Component {
         <NavBar
           handleLogout={this.props.handleLogout}
           userId={this.state.userId}/>
-
-        <JourneyCard />
+        <div>
+          <JourneyCard />
+        </div>
+        <div>
+          <IncompleteJourneyFeed />
+        </div>
 
         <div>This is where the dashboard will be</div>
         </>
