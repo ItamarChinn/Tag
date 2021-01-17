@@ -84,12 +84,15 @@ class NewJourney extends Component {
         post("/api/journey", body).then((journey) => {
           // display this story on the screen
           this.props.addNewJourney(journey);
+          console.log(journey)
         });
       };
 
     render() {
         return (
-        <div className="NewJourney-button" onClick={this.addJourney}>+ New Journey</div>
+        <div className="NewJourney-button" onClick={this.addJourney}> 
+        &nbsp; &nbsp; + New Journey&nbsp; &nbsp; &nbsp; 
+        </div>
         );
   }
 };

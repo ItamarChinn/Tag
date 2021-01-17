@@ -10,9 +10,9 @@ import NewJourney from "./NewJourney.js";
 class JourneyFeed extends Component {
   constructor(props) {
     super(props);{
-      this.state = {
-        journeys: [],
-      }
+    this.state = {
+      journeys: [],
+    }
     }
   }
 
@@ -25,20 +25,24 @@ class JourneyFeed extends Component {
   };
 
   componentDidMount () {
-    get("/api/journey", { owner: this.props.userId, complete: this.props.completed })
+    get("/api/journey", { 
+      owner: this.props.userId, 
+      complete: this.props.completed 
+    })
     .then((journeyObjs) => { //confirm w itamar about backend, but this is from the catbook  
-      let reversedJourneyObjs = journeyObjs.reverse();
-      reversedJourneyObjs.map((journeyObj) => {
+      // let reversedJourneyObjs = journeyObjs.;
+      journeyObjs.map((journeyObj) => {
         this.setState({ journeys: this.state.journeys.concat([journeyObj]) });
       });
     });
+    // this.setState({journeys: this.state.journeys.reverse()});
   }
 
   render() {
     let journeysList = null; //going to hold all of our JourneyCard components
     let newJourney = null;
     const hasJourneys = this.state.journeys.length !== 0;
-    if (hasJourneys & !this.props.completed) {    // like :)
+    if (hasJourneys) {    // like :)
       journeysList = this.state.journeys.map((journeyObj) => //WILL HAVE TO CHANGE THIS IF THE PARAMETERS OF JOURNEY CARD CHANGE
           (<JourneyCard key={`Card_${journeyObj._id}`} 
           owner={journeyObj.owner} 
@@ -50,7 +54,7 @@ class JourneyFeed extends Component {
           goal_quantity={journeyObj.goal_quantity}
           theme={journeyObj.theme}
           complete={journeyObj.complete} />));
-    } else if (this.props.completed) {
+    } else if (!this.props.completed) {
       journeysList = <div>No completed journeys! Start logging progress to complete them!</div>
     } else {
       journeysList = <div>No current journeys! Start a new adventure today.</div>
@@ -60,10 +64,12 @@ class JourneyFeed extends Component {
       }
 
     return ( 
-    <>
-    {newJourney}
-    {journeysList}
-    </>
+    <div className="JourneyFeed-mainfeed">
+      {newJourney}
+      <div className="JourneyFeed-journeycontainer">
+      {journeysList}
+      </div>
+    </div>
     );
   }
 };

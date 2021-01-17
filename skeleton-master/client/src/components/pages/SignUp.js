@@ -15,19 +15,30 @@ class Signup extends Component {
   render() {
     return (
         <div className="Signup-background">
-            <div className="Signup-title">
-                <div >Welcome to Tag - chase your dreams</div>
-                <div>Please login to make your dreams come true</div>
-                <div>This is the signup page</div>
-                <GoogleLogin
-                    clientId={GOOGLE_CLIENT_ID}
-                    buttonText="Login"
-                    onSuccess={this.props.handleLogin}
-                    onFailure={(err) => console.log(err)}
-                    />
+          <div className="Signup-holdall">
+          <div className="Signup-centering">
+            <div className="Signup-title2 u-inlineBlock"> 
+              Welcome to &nbsp; 
+              <div className="Signup-container">
+                <div className="Signup-title1">
+                &nbsp; Tag <div className="Signup-chase u-inlineBlock"> - chase your dreams &nbsp;</div>
+                </div>
+              </div>
+              </div> 
             </div>
-        </div>
-                );
+            <div className="Signup-title3"> 
+              <div>Please login to make your dreams come true</div>
+              <GoogleLogin
+                  clientId={GOOGLE_CLIENT_ID}
+                  buttonText="Login"
+                  onSuccess={this.props.handleLogin}
+                  onFailure={(err) => console.log(err)}
+                  />
+            </div>
+            </div>
+            </div>
+                      
+      );
   }
 };
 

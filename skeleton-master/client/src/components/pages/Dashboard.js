@@ -24,20 +24,23 @@ class Dashboard extends Component {
 
   render() {
     return (
-        <>
+        <div className="Dashboard-background">
         <NavBar
           handleLogout={this.props.handleLogout}
           userId={this.state.userId}/>
-        <div className="Dashboard-title">Your Journeys</div>
-        <JourneyFeed 
-        userId={this.state.userId}
-        completed={false}/>
-        <div className="Dashboard-title">Your Completed Journeys</div>
-        <JourneyFeed 
-        userId={this.state.userId}
-        completed={true}
-        />
-        </>
+        <div className="Dashboard-container">
+          <div className="Dashboard-title"> &nbsp; &nbsp; Your Journeys &nbsp; &nbsp; </div>
+          <JourneyFeed 
+          userId={this.state.userId}
+          completed={false}/>
+        </div>
+        <div className="Dashboard-container">
+          <div className="Dashboard-title"> &nbsp; &nbsp; Your Completed Journeys &nbsp; &nbsp; </div>
+          <JourneyFeed 
+          userId={this.state.userId}
+          completed={true}/>
+          </div>
+        </div>
     );
   }
 };

@@ -52,15 +52,15 @@ router.get("/user", (req, res) => {
 });
 
 router.get("/journey", (req, res) => {
-  Journey.find({owner: req.query.userId}).then((journey) => {
+  Journey.find({owner: req.query.userId, complete: req.query.complete}).then((journey) => {
     console.log(journey)
     res.send(journey);
-  });
+  })
 });
 
-router.post("/journey", auth.ensureLoggedIn, (req, res) =>{
+router.post("/journey", auth.ensureLoggedIn, (req, res) => {
   const newJourney = new Journey({
-    owner: req.user._id,
+    owner: req.userId,
     goal_name: req.body.goal_name,
     goal_frequency: req.body.goal_frequency, 
     goal_time_unit: req.body.goal_time_unit, 
@@ -71,7 +71,7 @@ router.post("/journey", auth.ensureLoggedIn, (req, res) =>{
   });
 
   newJourney.save().then((journey) => res.send(journey));
-})
+});
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {

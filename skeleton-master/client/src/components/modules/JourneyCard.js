@@ -1,8 +1,8 @@
 ﻿import React, { Component } from "react";
 import "./JourneyCard.css";
 import "../App.js";
-import "./NewProgress.js"
-import "./ProgressCard.js"
+import NewProgress from "./NewProgress.js"
+import ProgressCard from "./ProgressCard.js"
 
 
 class JourneyCard extends Component {
@@ -12,21 +12,14 @@ class JourneyCard extends Component {
 
   render() {
     return (
-      // <div className="JourneyCard-container"> This is a journey card </div>
      <div className="JourneyCard-container"> 
-        <div className= "JourneyCard-title u-inlineBlock"> 
-        {this.props.goal_name}: {this.props.goal_quantity} {this.props.goal_unit}, {this.props.goal_frequency} times per {this.props.goal_time_unit}
-        </div>
-      </div>
-        )
-        {/* <div className="JourneyCard-padding">
-          <NewProgress />
+          <div className= "JourneyCard-title"> 
+          {this.props.goal_name}: {this.props.goal_quantity} {this.props.goal_unit}, {this.props.goal_frequency} times per {this.props.goal_time_unit}
+          </div>
+    </div>)
+          /* <NewProgress />
           <div className = "JourneyCard-display"> 
-            <ProgressCard /> */}
-          
-        // </div>
-    // </div>
-    
+            <ProgressCard /> */
   }
 };
 

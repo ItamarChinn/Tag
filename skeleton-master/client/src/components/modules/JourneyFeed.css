@@ -1,1 +1,9 @@
-﻿
+﻿.JourneyFeed-mainfeed {
+    display: block;
+}
+
+.JourneyFeed-container {
+    display: flex;
+    justify-content: center;
+    background-color: var(--green);
+}
