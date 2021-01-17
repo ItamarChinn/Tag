@@ -18,10 +18,10 @@ class Dashboard extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   document.title = "Dashboard";
-  //   get(`/api/user`, { userid: this.props.userId }).then((user) => this.setState({ user: user }));
-  // }
+  componentDidMount() {
+    document.title = "Dashboard";
+    get(`/api/user`, { userid: this.props.userId }).then((user) => this.setState({ user: user }));
+  }
 
   render() {
     return (
@@ -29,14 +29,10 @@ class Dashboard extends Component {
         <NavBar
           handleLogout={this.props.handleLogout}
           userId={this.state.userId}/>
-        <div>
-          <JourneyCard />
-        </div>
-        <div>
-          <IncompleteJourneyFeed />
-        </div>
-
-        <div>This is where the dashboard will be</div>
+        <div className="Dashboard-title">Your Journeys</div>
+        <IncompleteJourneyFeed 
+        userId={this.state.userId}
+        />
         </>
     );
   }

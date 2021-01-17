@@ -2,12 +2,13 @@ const mongoose = require("mongoose");
 
 const JourneySchema = new mongoose.Schema({
         owner: String,
-        goal: {
-            frequency: Number, 
-            time_unit: String, 
-            goal_unit: String, 
-            goal_quantity: Number},
+        goal_name: String,
+        goal_frequency: Number, 
+        goal_time_unit: String, 
+        goal_unit: String, 
+        goal_quantity: Number,
         theme: String,
+        complete: Boolean,
     });
 
 // compile model from schema

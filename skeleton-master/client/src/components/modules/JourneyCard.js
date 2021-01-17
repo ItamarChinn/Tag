@@ -8,35 +8,25 @@ import "./ProgressCard.js"
 class JourneyCard extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      /*
-      owner: userId,
-      goal: {
-        name: String,
-        frequency: Number, 
-        time_unit: Date, 
-        goal_unit: String, 
-        goal_quantity: Number }, 
-      theme: Theme */
-    }
   }
 
   render() {
     return (
-      <div> test </div>
-     /* <div className="JourneyCard-container"> 
-        <p className= "JourneyCard-title"> 
-        {this.props.name}: {this.props.goal_quantity} {this.props.goal_unit}, {this.props.frequency} times per {this.props.time_unit}
-        </p>
-        <div className="JourneyCard-padding">
+      // <div className="JourneyCard-container"> This is a journey card </div>
+     <div className="JourneyCard-container"> 
+        <div className= "JourneyCard-title u-inlineBlock"> 
+        {this.props.goal_name}: {this.props.goal_quantity} {this.props.goal_unit}, {this.props.goal_frequency} times per {this.props.goal_time_unit}
+        </div>
+      </div>
+        )
+        {/* <div className="JourneyCard-padding">
           <NewProgress />
           <div className = "JourneyCard-display"> 
-            <ProgressCard />
-          </div>
-        </div>
-    </div> */
-    );
+            <ProgressCard /> */}
+          
+        // </div>
+    // </div>
+    
   }
 };
 

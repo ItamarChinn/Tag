@@ -5,19 +5,27 @@
     padding: var(--s) var(--m);
     background-color: var(--rose);
   }
-  
+
 .NavBar-title {
   display: flex;
   align-items: center;
-  color: var(--beige);
+  color: var(--rose);
   font-size: 50px;
+  font-family:"Baloo 2", cursive;
+}
+
+.NavBar-subtitle {
+  display: flex;
+  align-items: center;
+  color:  #2068AC;
+  font-size: 20px;
   font-family:"Baloo 2", cursive;
 }
 
 .NavBar-link {
   display: beige;
   align-items: center;
-  color: darkblue;
+  color:  #2068AC;
   font-size: var(--m);
   font-family: 'Allerta', sans-serif;
   font-weight: 300;
@@ -29,6 +37,13 @@
   align-items: center;
 }
 
+.NavBar-box {
+  display: inline-block;
+  background-color: var(--beige);
+  border-radius: 20px;
+  mix-blend-mode: normal;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
 .NavBar-login {
   background-color: var(--rose);

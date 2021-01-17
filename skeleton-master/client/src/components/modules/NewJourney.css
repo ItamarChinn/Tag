@@ -1,0 +1,20 @@
+.NewJourney-button {
+    font-family: Allerta;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 16px;
+    /* or 80% */
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+
+
+    border-radius: 200px;
+    /* BEIGE */
+    color: var(--beige);
+    background-color: var(--rose)
+}
+
+.NewJourney-button:hover {
+    background-color: var(--red)
+}

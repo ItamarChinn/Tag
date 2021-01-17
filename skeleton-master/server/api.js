@@ -11,6 +11,7 @@ const express = require("express");
 
 // import models so we can interact with the database
 const User = require("./models/user");
+const Journey = require("./models/journey");
 
 // import authentication library
 const auth = require("./auth");
@@ -50,7 +51,27 @@ router.get("/user", (req, res) => {
   });
 });
 
+router.get("/journey", (req, res) => {
+  Journey.find({owner: req.query.userId}).then((journey) => {
+    console.log(journey)
+    res.send(journey);
+  });
+});
 
+router.post("/journey", auth.ensureLoggedIn, (req, res) =>{
+  const newJourney = new Journey({
+    owner: req.user._id,
+    goal_name: req.body.goal_name,
+    goal_frequency: req.body.goal_frequency, 
+    goal_time_unit: req.body.goal_time_unit, 
+    goal_unit: req.body.goal_unit, 
+    goal_quantity: req.body.goal_quantity,
+    theme: req.body.theme,
+    complete: req.body.complete,
+  });
+
+  newJourney.save().then((journey) => res.send(journey));
+})
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {

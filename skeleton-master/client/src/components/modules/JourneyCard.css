@@ -1,7 +1,7 @@
 ﻿.JourneyCard-container {
-  display: flex;
-  position: relative;
-  align-items: center;
+  /* display: flex;
+  position: relative; */
+  /* align-items: center; */
   padding: var(--s) var(--m);
   background-color: beige;
   width: var(--l);

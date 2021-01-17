@@ -16,7 +16,12 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="NavBar-container">
-        <div className="NavBar-title u-inlineBlock">Tag</div>
+        <div className="NavBar-box"><div className="NavBar-title u-inlineBlock">
+        Tag
+        </div>
+        <div className="NavBar-subtitle u-inlineBlock"> - chase your dreams</div>
+        </div>
+        
         <div className="NavBar-link u-inlineBlock">Profile</div>
         <div className="NavBar-linkContainer u-inlineBlock">
         <GoogleLogout
