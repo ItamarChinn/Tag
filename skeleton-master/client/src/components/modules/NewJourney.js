@@ -84,7 +84,6 @@ class NewJourney extends Component {
         post("/api/journey", body).then((journey) => {
           // display this story on the screen
           this.props.addNewJourney(journey);
-          console.log(journey)
         });
       };
 

@@ -16,22 +16,25 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="NavBar-container">
-        <div className="NavBar-box"><div className="NavBar-title u-inlineBlock">
-        &nbsp; Tag
-        <div className="NavBar-subtitle u-inlineBlock"> - chase your dreams &nbsp;</div>
-        &nbsp;
+        <div className="NavBar-box">
+          <div className="NavBar-title u-inlineBlock">
+            &nbsp; Tag
+            <div className="NavBar-subtitle u-inlineBlock"> - chase your dreams &nbsp;</div>
+            &nbsp;
+          </div>
         </div>
-        </div>
-        
-        <div className="NavBar-link u-inlineBlock">Profile</div>
         <div className="NavBar-linkContainer u-inlineBlock">
-        <GoogleLogout
+        <div className="NavBar-box2 u-inlineBlock">
+          <div className="NavBar-link u-inlineBlock">Settings</div>
+          <GoogleLogout
               clientId={GOOGLE_CLIENT_ID}
               buttonText="Logout"
               onLogoutSuccess={this.props.handleLogout}
               onFailure={(err) => console.log(err)}
             />
         </div>
+        </div>
+        
       </nav>
     );
   }
