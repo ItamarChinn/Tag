@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 import { get } from "../../utilities";
 import NavBar from "../modules/NavBar.js"
-import JourneyCard from "../modules/JourneyCard.js"
-import IncompleteJourneyFeed from "../modules/IncompleteJourneyFeed.js";
+import JourneyFeed from "../modules/JourneyFeed.js";
 
 import "../../utilities.css";
 import "./Dashboard.css";
@@ -30,8 +29,13 @@ class Dashboard extends Component {
           handleLogout={this.props.handleLogout}
           userId={this.state.userId}/>
         <div className="Dashboard-title">Your Journeys</div>
-        <IncompleteJourneyFeed 
+        <JourneyFeed 
         userId={this.state.userId}
+        completed={false}/>
+        <div className="Dashboard-title">Your Completed Journeys</div>
+        <JourneyFeed 
+        userId={this.state.userId}
+        completed={true}
         />
         </>
     );

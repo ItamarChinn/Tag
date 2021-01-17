@@ -9,8 +9,8 @@
 }
 
 .JourneyCard-padding {
-  display: flex;
-  position: relative;
+  /* display: flex;
+  position: relative; */
   top: var(--s);
   align-items: center;
   padding: var(--s) var(--m);
@@ -19,9 +19,9 @@
 }
 
 .JourneyCard-display {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* display: flex;
+  justify-content: space-between; */
+  /* align-items: center; */
   padding: var(--s) var(--m);
   background-color: var(--space);
   border-radius: 10px;
