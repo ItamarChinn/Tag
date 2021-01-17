@@ -17,9 +17,10 @@ class NavBar extends Component {
     return (
       <nav className="NavBar-container">
         <div className="NavBar-box"><div className="NavBar-title u-inlineBlock">
-        Tag
+        &nbsp; Tag
+        <div className="NavBar-subtitle u-inlineBlock"> - chase your dreams &nbsp;</div>
+        &nbsp;
         </div>
-        <div className="NavBar-subtitle u-inlineBlock"> - chase your dreams</div>
         </div>
         
         <div className="NavBar-link u-inlineBlock">Profile</div>
