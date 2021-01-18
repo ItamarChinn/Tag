@@ -71,18 +71,18 @@ class NewJourney extends Component {
   state = {
     goal_name: "",
     goal_frequency: "",
-    goal_time_unit: "",
+    goal_time_unit: "Day",
     goal_quantity: "",
     theme: "",
     complete: false,
   }
     addJourney = () => {
-        const body = { 
-            goal_name: "Running",
-            goal_frequency: 2,
-            goal_time_unit: "Weeks",
-            goal_unit: "Miles",
-            goal_quantity: 3,
+        const body = { //this might be a little jank? may want to refactor this later I just didn't want to break anything
+            goal_name: this.state.goal_name,
+            goal_frequency: this.state.goal_frequency,
+            goal_time_unit: this.state.goal_time_unit,
+            goal_unit: this.state.goal_unit,
+            goal_quantity: this.state.goal_quantity,
             theme: "Classic",
             complete: false,
         };
@@ -100,7 +100,8 @@ class NewJourney extends Component {
 
       onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        //console.log(this.state);
+        this.addJourney();
       }
 
     render() {   
