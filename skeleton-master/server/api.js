@@ -53,7 +53,6 @@ router.get("/user", (req, res) => {
 
 router.get("/journey", (req, res) => {
   Journey.find({owner: req.query.userId, complete: req.query.complete}).then((journey) => {
-    console.log(journey)
     res.send(journey);
   })
 });
