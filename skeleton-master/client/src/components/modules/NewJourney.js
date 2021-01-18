@@ -61,9 +61,6 @@ import {get, post} from "../../utilities";
 //   }
 
 
-
-
-
 /**
  * New Journey button.
  * Takes as props from Dashboard:
@@ -71,6 +68,14 @@ import {get, post} from "../../utilities";
  * @addNewJourney : function
  */
 class NewJourney extends Component {
+  state = {
+    goal_name: "",
+    goal_frequency: "",
+    goal_time_unit: "",
+    goal_quantity: "",
+    theme: "",
+    complete: false,
+  }
     addJourney = () => {
         const body = { 
             goal_name: "Running",
@@ -87,11 +92,63 @@ class NewJourney extends Component {
         });
       };
 
-    render() {
+      change = (e) => {
+        this.setState({
+          [e.target.name]: e.target.value
+        });
+      }
+
+      onSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+      }
+
+    render() {   
         return (
-        <div className="NewJourney-button" onClick={this.addJourney}> 
-        &nbsp; &nbsp; + New Journey&nbsp; &nbsp; &nbsp; 
-        </div>
+        //<div className="NewJourney-button" onClick={this.addJourney}> 
+       // &nbsp; &nbsp; + New Journey&nbsp; &nbsp; &nbsp; 
+        //</div>
+
+        <div className="NewJourney-popup">
+            <form>
+              Name your adventure: 
+              <input 
+              type="text"
+              name="goal_name"
+              placeholder="Reading" 
+              onChange={e => this.change(e)} 
+              />
+              <br />
+              Goal details: <input 
+              type="number" 
+              name="goal_quantity" 
+              placeholder="30" 
+              onChange={e => this.change(e)}
+              /> 
+              <input 
+              type="text" 
+              name="goal_unit" 
+              placeholder="pages"
+              onChange={e => this.change(e)}
+              />
+              <br />
+              Frequency: <input 
+              type="number" 
+              name="goal_frequency" 
+              placeholder="1"
+              onChange={e => this.change(e)}
+              /> times per
+              <select name="goal_time_unit" onChange={e => this.change(e)}> 
+                <option value="Day">Day</option>
+                <option value="Week">Week</option>
+                <option value="Month">Month</option>
+              </select>
+              <br />
+              <button onClick={e => this.onSubmit(e)}>Submit </button>
+
+            </form>
+          </div>
+
         );
   }
 };
