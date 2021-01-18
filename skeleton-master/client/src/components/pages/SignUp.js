@@ -21,7 +21,7 @@ class Signup extends Component {
               Welcome to &nbsp; 
               <div className="Signup-container">
                 <div className="Signup-title1">
-                &nbsp; Tag <div className="Signup-chase u-inlineBlock"> - chase your dreams &nbsp;</div>
+                &nbsp; Tag <div className="Signup-chase u-inlineBlock"> chase your dreams &nbsp;</div>
                 </div>
               </div>
               </div> 

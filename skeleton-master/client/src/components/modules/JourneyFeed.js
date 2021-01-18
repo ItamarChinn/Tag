@@ -38,12 +38,11 @@ class JourneyFeed extends Component {
       complete: this.props.completed 
     })
     .then((journeyObjs) => { //confirm w itamar about backend, but this is from the catbook  
-      // let reversedJourneyObjs = journeyObjs.;
-      journeyObjs.map((journeyObj) => {
+      let reversedJourneyObjs = journeyObjs.reverse();
+      reversedJourneyObjs.map((journeyObj) => {
         this.setState({ journeys: this.state.journeys.concat([journeyObj]) });
       });
     });
-    // this.setState({journeys: this.state.journeys.reverse()});
   }
 
   render() {

@@ -13,9 +13,9 @@
 
 .Dashboard-background{
     background-color: var(--beige);
-    height:100vh;
-    margin:0;
-    padding:0;
+    height:100vp;
+    margin:100vp;
+    padding:100vp;
 }
 .Dashboard-container {
     max-width: 80%;

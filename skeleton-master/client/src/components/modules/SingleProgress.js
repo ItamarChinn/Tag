@@ -21,8 +21,22 @@ class SingleProgress extends Component {
   //   });
   // }
 
-    
+  incrementUp = () => {
+    const updatedProgressObject = {
+        progressId: this.props.progressId,
+        progress_quantity: this.props.progress_quantity + 1,
+    }
+    this.props.onIncrement(updatedProgressObject)
+  }
 
+  decrementDown = () => {
+    const updatedProgressObject = {
+      progressId: this.props.progressId,
+      progress_quantity: this.props.progress_quantity - 1,
+    }
+    this.props.onIncrement(updatedProgressObject)
+  }
+  
 
 
   render() {
@@ -46,11 +60,11 @@ class SingleProgress extends Component {
           Nice Job!!
         </div>
         <hr className="u-inlineBlock" style={{width: "1px", height: "20px", display: "inline-block",}}/>
-        <div className="SingleProcess-decrement u-inlineBlock">
+        <div className="SingleProcess-decrement u-inlineBlock" onClick={this.decrementDown}>
           -
         </div>
         {this.props.progress_quantity}
-        <div className="SingleProcess-increment u-inlineBlock">
+        <div className="SingleProcess-increment u-inlineBlock" onClick={this.incrementUp}>
           +
         </div>
       </div>

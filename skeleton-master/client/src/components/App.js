@@ -5,6 +5,8 @@ import Dashboard from "./pages/Dashboard.js";
 import NavBar from "./modules/NavBar.js";
 import Signup from "./pages/Signup.js";
 
+
+import "./App.css";
 import "../utilities.css";
 
 import { socket } from "../client-socket.js";
@@ -48,7 +50,7 @@ class App extends Component {
 
   render() {
     return (
-      <>
+      <div className="App-background">
         <Router>  
         {(this.state.userId) ? (
           <Dashboard
@@ -63,7 +65,7 @@ class App extends Component {
           )}
           <NotFound default />
         </Router>
-      </>
+      </div>
     );
   }
 }

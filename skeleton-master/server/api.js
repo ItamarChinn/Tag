@@ -58,6 +58,12 @@ router.get("/progress", (req, res) => {
   })
 });
 
+router.get("/editprogress", (req, res) => {
+  let newProgress = Progress.findById(req.query.progressId);
+  newProgress.progress_quantity = req.query.updatedProgress;
+  newProgress.save().then((progress) => res.send(progress));
+});
+
 router.post("/progress", auth.ensureLoggedIn, (req, res) => {
   const newProgress = new Progress({
     journeyId: req.body.journeyId,

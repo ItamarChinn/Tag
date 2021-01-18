@@ -16,7 +16,7 @@ class JourneyCard extends Component {
     }
   }
 
-  
+
   componentDidMount () {
     get("/api/progress", { 
       journeyId: this.props.journeyId
@@ -34,13 +34,26 @@ class JourneyCard extends Component {
   }
 
 
-  // onIncrement = () => {
-      
-  // }
-
-  // onDecrement = () => {
-    
-  // }
+  onIncrement = (progressObject) => {
+   // update progress on mongodb
+    get("/api/editprogress", { 
+      progressId: progressObject.progressId,
+      updatedProgress: progressObject.progress_quantity
+    })
+   // update progress in state 
+    .then((progressObj) => {
+      // iterate over the list of progress objects and if I find one whos ID is 
+      // the same as the one I just edited on the DB then update it 
+        let proglist = this.state.progresses;
+        for (let i = 0; i < this.state.progresses.length; i++) {
+          if (this.state.progresses[i]._id === progressObj._id) {    
+            proglist[i] = progressObj;
+          }
+        }
+        // ive updated all the progresses that need changing, now just update state and rerender
+        this.setState({progresses: proglist});
+    });
+  }
 
   addNewProgress = () => {
     const body = { 
@@ -73,6 +86,7 @@ class JourneyCard extends Component {
           progress_quantity={progressObj.progress_quantity}
           goal_unit={progressObj.goal_unit}
           datetime={progressObj.datetime}
+          onIncrement={this.onIncrement}
           />));
     } else {
       progressList = <div>No progress! Start logging your progress</div>
@@ -88,7 +102,6 @@ class JourneyCard extends Component {
     
     
     return ( 
-      
         <div className="JourneyCard-container"> 
           <div className= "JourneyCard-title"> 
             {this.props.goal_name}: {this.props.goal_quantity} {this.props.goal_unit}, {this.props.goal_frequency} times per {this.props.goal_time_unit}
@@ -98,7 +111,7 @@ class JourneyCard extends Component {
             {/* {console.log(this.props.startDate[1:10])} */}
           </div>
           <div className= "JourneyCard-title"> 
-            Total Progress : {this.state.total_progress}
+            Total Progress : {this.state.totalProgress}
           </div>
           <img src={require("../../public/Mock_journey_diagram.png")}/>
           {newProgressButton}
