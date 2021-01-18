@@ -12,6 +12,7 @@ const express = require("express");
 // import models so we can interact with the database
 const User = require("./models/user");
 const Journey = require("./models/journey");
+const Progress = require("./models/progress");
 
 // import authentication library
 const auth = require("./auth");
@@ -51,6 +52,24 @@ router.get("/user", (req, res) => {
   });
 });
 
+router.get("/progress", (req, res) => {
+  Progress.find({journeyId: req.query.journeyId}).then((progress) => {
+    res.send(progress);
+  })
+});
+
+router.post("/progress", auth.ensureLoggedIn, (req, res) => {
+  const newProgress = new Progress({
+    journeyId: req.body.journeyId,
+    progress_quantity: req.body.progress_quantity,
+    goal_unit: req.body.goal_unit,
+    datetime: req.body.datetime
+  });
+
+  newProgress.save().then((progress) => res.send(progress));
+});
+
+
 router.get("/journey", (req, res) => {
   Journey.find({owner: req.user._id, complete: req.query.complete}).then((journey) => {
     res.send(journey);
@@ -67,6 +86,8 @@ router.post("/journey", auth.ensureLoggedIn, (req, res) => {
     goal_quantity: req.body.goal_quantity,
     theme: req.body.theme,
     complete: req.body.complete,
+    startDate: req.body.startDate,
+    endDate: req.body.endDate,
   });
 
   newJourney.save().then((journey) => res.send(journey));

@@ -1,0 +1,11 @@
+.SingleProgress-container {
+    display: flex;
+    position: relative;
+    text-align: center;
+    align-items: space;
+    padding: var(--s) var(--m);
+    background-color: #FFFBF5;
+    border-radius: 20px;
+    margin: 15px 5px;
+  }
+  

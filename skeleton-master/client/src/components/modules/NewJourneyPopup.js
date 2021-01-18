@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./NewJourneyPopup.css";
 import {get, post} from "../../utilities";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 /**
@@ -20,6 +21,8 @@ class NewJourneyPopup extends Component {
         goal_quantity: "",
         theme: "",
         complete: false,
+        startDate: new Date(),
+        endDate: new Date(),
       }
   }
   
@@ -32,6 +35,8 @@ class NewJourneyPopup extends Component {
             goal_quantity: this.state.goal_quantity,
             theme: "Classic",
             complete: false,
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
         };
         post("/api/journey", body).then((journey) => {
           // display this story on the screen
@@ -56,11 +61,35 @@ class NewJourneyPopup extends Component {
         //console.log(this.state);
       }
 
+      setStartDate = (date) => {
+        this.setState({ 
+          startDate: date
+        })
+      }
+
+      setEndDate = (date) => {
+        this.setState({ 
+          endDate: date
+        })
+      }
+
+
+      // https://www.npmjs.com/package/react-datepicker DOCS ON DATEPICKER
+
+
     render() {   
         return (
         <div className="NewJourneyPopup-popup">
             <div className='NewJourneyPopup-popupinner'> 
             <div className='NewJourneyPopup-content'>
+            Start date: <DatePicker
+                selected={this.state.startDate}
+                onChange={date => this.setStartDate(date)}
+                />
+            End date: <DatePicker
+                selected={this.state.endDate}
+                onChange={date => this.setEndDate(date)}
+                />
             <form>
               I want to 
               <input 

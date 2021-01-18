@@ -1,18 +1,21 @@
 ﻿.JourneyCard-container {
   display: flex;
   position: relative;
-  text-align: center;
-  align-items: center;
+  /* text-align: center; */
+  justify-content: center;
+  flex-direction: column;
   padding: var(--s) var(--m);
   background-color: #FFFBF5;
   border-radius: 20px;
   margin: 15px 5px;
 }
 
+.JourneyCard-item {
+  display: flex;
+}
 
 .JourneyCard-title {
   display: flex;
-  align-items: center;
   text-align: center;
   margin: var(--s);
   padding: var(--xs);

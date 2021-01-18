@@ -1,8 +1,8 @@
 ﻿import React, { Component } from "react";
 import "./JourneyFeed.css";
 import {get, post} from "../../utilities";
-import JourneyCard from "./JourneyCard.js"
-import NewJourneyButton from "./NewJourneyButton.js";
+import JourneyCard from "../modules/JourneyCard.js"
+import NewJourneyButton from "../modules/NewJourneyButton.js";
 import NewJourneyPopup from "../modules/NewJourneyPopup.js"
  
 /**
@@ -39,7 +39,6 @@ class JourneyFeed extends Component {
     })
     .then((journeyObjs) => { //confirm w itamar about backend, but this is from the catbook  
       // let reversedJourneyObjs = journeyObjs.;
-      console.log(journeyObjs);
       journeyObjs.map((journeyObj) => {
         this.setState({ journeys: this.state.journeys.concat([journeyObj]) });
       });
@@ -63,8 +62,10 @@ class JourneyFeed extends Component {
           goal_unit={journeyObj.goal_unit}
           goal_quantity={journeyObj.goal_quantity}
           theme={journeyObj.theme}
-          complete={journeyObj.complete} />));
-    } else if (!this.props.completed) {
+          complete={journeyObj.complete} 
+          startDate={journeyObj.startDate}
+          endDate={journeyObj.endDate}/>));
+    } else if (this.props.completed) {
       journeysList = <div>No completed journeys! Start logging progress to complete them!</div>
     } else {
       journeysList = <div>No current journeys! Start a new adventure today.</div>

@@ -9,6 +9,8 @@ const JourneySchema = new mongoose.Schema({
         goal_quantity: Number,
         theme: String,
         complete: Boolean,
+        startDate: Date,
+        endDate: Date,
     });
 
 // compile model from schema

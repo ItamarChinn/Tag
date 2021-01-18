@@ -1,21 +1,21 @@
 ﻿import React, { Component } from "react";
-import "./NewComponent.css";
+// import "./JourneyDiagram.css";
 
 /**
- * What is this>
+ * Journey Diagram showing your journey
  */
-class NewComponent extends Component {
+class JourneyDiagram extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <div className="NewComponent-container">
-          This is a test component
+      <div>
+        <img src={require("../Mock_journey_diagram.jpg")}/>
       </div>
     );
   }
 };
 
-export default NewComponent;
+export default JourneyDiagram;
