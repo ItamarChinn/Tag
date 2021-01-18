@@ -33,6 +33,15 @@ class JourneyCard extends Component {
     // this.setState({journeys: this.state.journeys.reverse()});
   }
 
+
+  // onIncrement = () => {
+      
+  // }
+
+  // onDecrement = () => {
+    
+  // }
+
   addNewProgress = () => {
     const body = { 
         journeyId: this.props.journeyId,
@@ -63,6 +72,7 @@ class JourneyCard extends Component {
           progressId={progressObj._id}
           progress_quantity={progressObj.progress_quantity}
           goal_unit={progressObj.goal_unit}
+          datetime={progressObj.datetime}
           />));
     } else {
       progressList = <div>No progress! Start logging your progress</div>
