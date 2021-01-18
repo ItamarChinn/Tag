@@ -4,6 +4,7 @@ import { get } from "../../utilities";
 import NavBar from "../modules/NavBar.js"
 import JourneyFeed from "../modules/JourneyFeed.js";
 
+
 import "../../utilities.css";
 import "./Dashboard.css";
 
@@ -13,14 +14,17 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: undefined,
+      userId: undefined,
+      
     };
   }
 
+  
   componentDidMount() {
     document.title = "Dashboard";
-    get(`/api/user`, { userid: this.props.userId }).then((user) => this.setState({ user: user }));
+    get(`/api/user`, { userid: this.props.userId }).then((user) => this.setState({ userId: user }));
   }
+
 
   render() {
     return (
@@ -29,16 +33,19 @@ class Dashboard extends Component {
           handleLogout={this.props.handleLogout}
           userId={this.state.userId}/>
         <div className="Dashboard-container">
+        
           <div className="Dashboard-title"> &nbsp; &nbsp; Your Journeys &nbsp; &nbsp; </div>
           <JourneyFeed 
           userId={this.state.userId}
-          completed={false}/>
+          completed={false}
+          togglePopup={this.togglePopup}/>
         </div>
         <div className="Dashboard-container">
           <div className="Dashboard-title"> &nbsp; &nbsp; Your Completed Journeys &nbsp; &nbsp; </div>
           <JourneyFeed 
           userId={this.state.userId}
-          completed={true}/>
+          completed={true}
+          togglePopup={this.togglePopup}/>
           </div>
         </div>
     );

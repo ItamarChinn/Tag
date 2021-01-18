@@ -2,19 +2,27 @@
 import "./JourneyFeed.css";
 import {get, post} from "../../utilities";
 import JourneyCard from "./JourneyCard.js"
-import NewJourney from "./NewJourney.js";
+import NewJourneyButton from "./NewJourneyButton.js";
+import NewJourneyPopup from "../modules/NewJourneyPopup.js"
  
 /**
  * What is this>
  */
 class JourneyFeed extends Component {
   constructor(props) {
-    super(props);{
+    super(props);
     this.state = {
       journeys: [],
-    }
+      showPopup: false,
     }
   }
+  
+  togglePopup = () =>  {  
+    this.setState({  
+         showPopup: !this.state.showPopup  
+    })  
+    }  
+
 
   // this gets called when the user pushes "Submit" to add a new journey, so their
   // journey gets added to the screen right away
@@ -31,6 +39,7 @@ class JourneyFeed extends Component {
     })
     .then((journeyObjs) => { //confirm w itamar about backend, but this is from the catbook  
       // let reversedJourneyObjs = journeyObjs.;
+      console.log(journeyObjs);
       journeyObjs.map((journeyObj) => {
         this.setState({ journeys: this.state.journeys.concat([journeyObj]) });
       });
@@ -41,6 +50,7 @@ class JourneyFeed extends Component {
   render() {
     let journeysList = null; //going to hold all of our JourneyCard components
     let newJourney = null;
+    let newJourneyPopup = null;
     const hasJourneys = this.state.journeys.length !== 0;
     if (hasJourneys) {    // like :)
       journeysList = this.state.journeys.map((journeyObj) => //WILL HAVE TO CHANGE THIS IF THE PARAMETERS OF JOURNEY CARD CHANGE
@@ -60,16 +70,20 @@ class JourneyFeed extends Component {
       journeysList = <div>No current journeys! Start a new adventure today.</div>
     }
     if (!this.props.completed) {
-      newJourney = <NewJourney addNewJourney={this.addNewJourney} userId={this.props.userId}/>
+      newJourney = <NewJourneyButton togglePopup={this.togglePopup} addNewJourney={this.addNewJourney} userId={this.props.userId}/>
       }
-
+    if (this.state.showPopup) {newJourneyPopup = <NewJourneyPopup closePopup={this.togglePopup.bind(this)} userId={this.state.userId} addNewJourney={this.addNewJourney}/>}
     return ( 
+      
+    <>
+    {newJourneyPopup}
     <div className="JourneyFeed-mainfeed">
       {newJourney}
       <div className="JourneyFeed-journeycontainer">
       {journeysList}
       </div>
     </div>
+   </> 
     );
   }
 };

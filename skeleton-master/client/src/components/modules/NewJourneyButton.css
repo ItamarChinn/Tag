@@ -1,7 +1,5 @@
-.NewJourney-button {
-    font-family: Allerta;
-    font-style: normal;
-    font-weight: normal;
+.NewJourneyButton-button {
+    font-family: "Baloo 2", cursive;
     font-size: 15px;
     line-height: 200%;
     letter-spacing: 0.75px;
@@ -15,10 +13,6 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.NewJourney-button:hover {
+.NewJourneyButton-button:hover {
     background-color: var(--red)
-}
-
-.NewJourney-popup{
-    
 }

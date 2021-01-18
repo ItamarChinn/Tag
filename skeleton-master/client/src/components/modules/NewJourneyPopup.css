@@ -1,0 +1,79 @@
+.NewJourneyPopup-popup {  
+    position: fixed;
+    z-index: 99;
+    width: 100%;  
+    height: 100%;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;  
+    margin: auto;  
+    background-color: rgba(0,0,0, 0.3);  
+  }  
+
+.NewJourneyPopup-popupinner {  
+    /* position: absolute;  
+    left: 25%;  
+    right: 25%;  
+    top: 25%;  
+    bottom: 25%;  */
+    padding: 15px;   
+    position: absolute;
+    left: 50vw;
+    top: 30vh;
+    transform:translate(-50%, -50%);
+    border-radius: 15px;  
+    background: var(--beige);  
+  }
+
+.NewJourneyPopup-buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+
+.NewJourneyPopup-button {
+    font-family: "Baloo 2", cursive;
+    font-size: 15px;
+    padding: 5px;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+    margin: 0px 5px;
+    color: var(--beige);
+    background-color: #02b136b6;
+    display: inline-block;
+    border-radius: 20px;
+    mix-blend-mode: normal;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.NewJourneyPopup-button2 {
+    font-family: "Baloo 2", cursive;
+    font-size: 15px;
+    padding: 5px;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+    margin: 0px 5px;
+    color: var(--beige);
+    background-color: #ff2045b6;
+    display: inline-block;
+    border-radius: 20px;
+    mix-blend-mode: normal;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.NewJourneyPopup-content {
+    font-family: "Baloo 2", cursive;
+    font-size: 15px;
+    padding: 5px;
+    color: var(--darkblue);
+}
+
+.NewJourneyPopup-button:hover {
+    background-color: #02b13654
+}
+
+.NewJourneyPopup-button2:hover {
+    background-color: #ff204560
+}

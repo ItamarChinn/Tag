@@ -52,14 +52,14 @@ router.get("/user", (req, res) => {
 });
 
 router.get("/journey", (req, res) => {
-  Journey.find({owner: req.query.userId, complete: req.query.complete}).then((journey) => {
+  Journey.find({owner: req.user._id, complete: req.query.complete}).then((journey) => {
     res.send(journey);
   })
 });
 
 router.post("/journey", auth.ensureLoggedIn, (req, res) => {
   const newJourney = new Journey({
-    owner: req.userId,
+    owner: req.user._id,
     goal_name: req.body.goal_name,
     goal_frequency: req.body.goal_frequency, 
     goal_time_unit: req.body.goal_time_unit, 
