@@ -38,7 +38,7 @@ class JourneyCard extends Component {
         journeyId: this.props.journeyId,
         progress_quantity: 0,
         goal_unit: this.props.goal_unit,
-        datetime: new Date().now(),
+        datetime: Date.now(),
       };
 
       post("/api/progress", body).then((progressObj) => {
