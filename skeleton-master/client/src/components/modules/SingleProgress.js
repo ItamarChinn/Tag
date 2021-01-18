@@ -41,8 +41,10 @@ class SingleProgress extends Component {
 
   render() {
     let to_render = null;
-    if (this.props.progress_quantity == 0 | this.state.editingMode) {
-      to_render = 
+    // if (this.props.progress_quantity == 0 | this.state.editingMode) {
+      if (!this.state.editingMode) {
+
+        to_render = 
       // <div className="NewProgressButton-container">
       //   <form>
       //     <span>New Progress:</span>

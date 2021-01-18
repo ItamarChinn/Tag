@@ -58,10 +58,15 @@ router.get("/progress", (req, res) => {
   })
 });
 
-router.get("/editprogress", (req, res) => {
-  let newProgress = Progress.findById(req.query.progressId);
-  newProgress.progress_quantity = req.query.updatedProgress;
-  newProgress.save().then((progress) => res.send(progress));
+router.post("/editprogress", (req, res) => {
+  Progress.findById(req.body.progressId).then((newProgress) => {
+    if (newProgress) {
+      newProgress.progress_quantity = req.body.updatedProgress;
+      newProgress.save().then((progress) => res.send(progress));
+    }
+    else {console.log("Could not find progress")}
+  });
+  
 });
 
 router.post("/progress", auth.ensureLoggedIn, (req, res) => {

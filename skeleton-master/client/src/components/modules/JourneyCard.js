@@ -13,6 +13,7 @@ class JourneyCard extends Component {
     this.state = {
       progresses: [],
       totalProgress: 0,
+      showProgress: true,
     }
   }
 
@@ -36,7 +37,7 @@ class JourneyCard extends Component {
 
   onIncrement = (progressObject) => {
    // update progress on mongodb
-    get("/api/editprogress", { 
+    post("/api/editprogress", { 
       progressId: progressObject.progressId,
       updatedProgress: progressObject.progress_quantity
     })
@@ -44,16 +45,23 @@ class JourneyCard extends Component {
     .then((progressObj) => {
       // iterate over the list of progress objects and if I find one whos ID is 
       // the same as the one I just edited on the DB then update it 
-        let proglist = this.state.progresses;
+        let proglist = [...this.state.progresses];
+        let newTotalProgress = 0;
         for (let i = 0; i < this.state.progresses.length; i++) {
           if (this.state.progresses[i]._id === progressObj._id) {    
             proglist[i] = progressObj;
-          }
+            newTotalProgress += progressObj.progress_quantity;
+          } else {newTotalProgress += proglist[i].progress_quantity}
         }
         // ive updated all the progresses that need changing, now just update state and rerender
-        this.setState({progresses: proglist});
+        this.setState({progresses: proglist, totalProgress: newTotalProgress});
     });
   }
+
+  toggleToggle = () => {
+    this.setState({showProgress: !this.state.showProgress})
+  }
+
 
   addNewProgress = () => {
     const body = { 
@@ -114,8 +122,14 @@ class JourneyCard extends Component {
             Total Progress : {this.state.totalProgress}
           </div>
           <img src={require("../../public/Mock_journey_diagram.png")}/>
+          <div className= "JourneyCard-progresstoggler">
+          <div className="JourneyCard-button u-inlineBlock" onClick={this.toggleToggle}>Toggle</div>
           {newProgressButton}
+          {this.state.showProgress && <div className= "JourneyCard-progresslist">
           {progressList}
+          </div>}
+          
+          </div>
         </div>
     );
   }
