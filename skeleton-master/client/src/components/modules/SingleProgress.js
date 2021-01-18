@@ -1,21 +1,20 @@
 ﻿import React, { Component } from "react";
-import "./NewComponent.css";
+//import "./SingleProgress.css";
 
 /**
  * What is this>
  */
-class NewComponent extends Component {
+class SingleProgress extends Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     return (
-      <div className="NewComponent-container">
+      <div className="SingleProgress-container">
           This is a test component
       </div>
     );
   }
 };
 
-export default NewComponent;
+export default SingleProgress;

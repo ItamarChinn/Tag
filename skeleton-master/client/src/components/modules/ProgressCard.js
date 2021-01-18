@@ -1,21 +1,31 @@
 ﻿import React, { Component } from "react";
-import "./NewComponent.css";
+import SingleProgress from "./SingleProgress.js"
+import NewProgress from "./NewProgress.js"
+//import "./ProgressCard.css";
 
 /**
  * What is this>
  */
-class NewComponent extends Component {
+class ProgressCard extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      progresses: []
+    }
   }
+
+
 
   render() {
     return (
-      <div className="NewComponent-container">
+      <div className="ProgressCard-container">
           This is a test component
+          <NewProgress />
       </div>
+      // <NewProgress />
+      //<SingleProgress />
     );
   }
 };
 
-export default NewComponent;
+export default ProgressCard;
