@@ -58,6 +58,14 @@
   padding: 10px;
 }
 
+.JourneyCard-noprogress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Baloo 2", cursive;
+  font-size: 20px;
+}
+
 .JourneyCard-subcontainer {
   display: flex;
   justify-content: space-between;
@@ -65,7 +73,7 @@
 
 .JourneyCard-subcontainer4 {
   border-radius: 20px;
-  background-color: var(--darkblue);
+  background-color: #2068acb9;
 }
 
 .JourneyCard-subcontainer3 {

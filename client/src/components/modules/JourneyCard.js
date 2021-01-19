@@ -129,7 +129,12 @@ class JourneyCard extends Component {
           newInputedProgress={progressObj._id === this.state.progresses[0]._id}
           />));
     } else {
-      progressList = <center>Start logging your progress</center>
+      progressList = <div className="JourneyCard-noprogress">Hit <NewProgressButton 
+      addNewProgress={this.addNewProgress} 
+      userId={this.props.userId}
+      journeyId={this.props.journeyId}
+      goal_unit={this.props.goal_unit}
+      addNewProgress={this.addNewProgress}/> to start logging your progress</div>
     }
     if (!this.props.completed) {
       newProgressButton = <NewProgressButton 

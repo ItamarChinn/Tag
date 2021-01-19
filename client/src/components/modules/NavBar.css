@@ -29,9 +29,13 @@
   text-align: center;
   color:  var(--darkblue);
   font-size: var(--m);
-  font-family: 'Allerta', sans-serif;
+  font-family: "Baloo 2", cursive;
   font-weight: 300;
   margin: 10px;
+}
+
+.NavBar-link:hover {
+  cursor: pointer;
 }
 
 .NavBar-linkContainer {

@@ -25,7 +25,7 @@ class NavBar extends Component {
         </div>
         <div className="NavBar-linkContainer u-inlineBlock">
         <div className="NavBar-box2 u-inlineBlock">
-          <div className="NavBar-link u-inlineBlock">Settings</div>
+          <div className="NavBar-link u-inlineBlock" onClick={() => alert("Coming soon!")}>Settings</div>
           <GoogleLogout
               clientId={GOOGLE_CLIENT_ID}
               buttonText="Logout"
