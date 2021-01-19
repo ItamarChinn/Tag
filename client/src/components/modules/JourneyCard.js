@@ -4,6 +4,7 @@ import "./JourneyCard.css";
 import "../App.js";
 import NewProgressButton from "../modules/NewProgressButton.js"
 import SingleProgress from "../modules/SingleProgress.js"
+import { MdExpandMore, MdExpandLess} from 'react-icons/md';
 // import JourneyDiagram from "../modules/JourneyDiagram.js"
 
 
@@ -23,13 +24,14 @@ class JourneyCard extends Component {
       journeyId: this.props.journeyId
     })
     .then((progressObjs) => { 
-      // let reversedJourneyObjs = journeyObjs.;
-      progressObjs.map((progressObj) => {
+      let reversedProgressObjs = progressObjs.reverse();
+      reversedProgressObjs.map((progressObj) => {
         this.setState({ 
           progresses: this.state.progresses.concat([progressObj]),
           totalProgress: this.state.totalProgress + progressObj.progress_quantity 
         });
       });
+        this.setState({showProgress: this.props.isMostRecent})
     });
     // this.setState({journeys: this.state.journeys.reverse()});
   }
@@ -91,7 +93,7 @@ class JourneyCard extends Component {
           (<SingleProgress key={`Card_${progressObj._id}`} 
           journeyId={progressObj.journeyId}
           progressId={progressObj._id}
-          progress_quantity={progressObj.progress_quantity}
+          progress_quantity={Number(progressObj.progress_quantity)}
           goal_unit={progressObj.goal_unit}
           datetime={progressObj.datetime}
           onIncrement={this.onIncrement}
@@ -107,25 +109,47 @@ class JourneyCard extends Component {
                             goal_unit={this.props.goal_unit}
                             addNewProgress={this.addNewProgress}/>
       }
-    
+
+      // Date parsing
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const start_date = new Date(this.props.startDate);
+      const end_date = new Date(this.props.endDate);
     
     return ( 
-        <div className="JourneyCard-container"> 
-          <div className= "JourneyCard-title"> 
-            {this.props.goal_name}: {this.props.goal_quantity} {this.props.goal_unit}, {this.props.goal_frequency} times per {this.props.goal_time_unit}
+        <div className="JourneyCard-container">
+          <div className="JourneyCard-subcontainer">
+            {/* Goal title */}
+            <div className= "JourneyCard-title"> 
+              {this.props.goal_name} 
+            </div>
+          {/* The actual goal */}
+          <div className="JourneyCard-subcontainer2">
+            <div className= "JourneyCard-title"> 
+              {this.props.goal_quantity} {this.props.goal_unit}, {this.props.goal_frequency} times per {this.props.goal_time_unit}
+            </div>
+            <div className= "JourneyCard-subtitle"> 
+              {this.state.totalProgress} {this.props.goal_unit} out of {this.props.goal_frequency * this.props.goal_quantity} this {this.props.goal_time_unit}
+            </div>
           </div>
-          <div className= "JourneyCard-title"> 
-            Start {this.props.startDate}  - Finish {this.props.endDate} 
-            {/* {console.log(this.props.startDate[1:10])} */}
-          </div>
-          <div className= "JourneyCard-title"> 
-            Total Progress : {this.state.totalProgress}
-          </div>
+        </div>
           <img src={require("../../public/Mock_journey_diagram.png")}/>
+          <div className="JourneyCard-subcontainer">
+            <div className= "JourneyCard-subtitle"> Start {start_date.getDate()} {monthNames[start_date.getMonth()]} {start_date.getFullYear()} </div>
+            <div className= "JourneyCard-subtitle"> Finish {end_date.getDate()} {monthNames[end_date.getMonth()]} {end_date.getFullYear()} </div>
+          </div>
           <div className= "JourneyCard-progresstoggler">
-          <div className="JourneyCard-button u-inlineBlock" onClick={this.toggleToggle}>Toggle</div>
-          {newProgressButton}
+          <div className="JourneyCard-subcontainer">
+            {this.state.showProgress ? <div className="JourneyCard-togglebutton" onClick={this.toggleToggle}><MdExpandMore/></div> :  <div className="JourneyCard-togglebutton" onClick={this.toggleToggle}><MdExpandLess/></div>}
+            {newProgressButton}
+          </div>
           {this.state.showProgress && <div className= "JourneyCard-progresslist">
+          <div className="JourneyCard-subcontainer">
+            <div className= "JourneyCard-subtitle"> {this.props.goal_unit} </div>
+            <div className= "JourneyCard-subtitle"> Time </div>
+            <div className= "JourneyCard-subtitle"> Comments </div>
+            <div className= "JourneyCard-subtitle"> Edit </div>
+          </div>
+          <hr />
           {progressList}
           </div>}
           

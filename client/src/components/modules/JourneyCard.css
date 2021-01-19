@@ -17,8 +17,18 @@
 .JourneyCard-title {
   display: flex;
   text-align: center;
-  margin: var(--s);
-  padding: var(--xs);
+  /* margin: var(--s);
+  padding: var(--xs); */
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.JourneyCard-subtitle {
+  display: flex;
+  text-align: center;
+  /* margin: var(--s);
+  padding: var(--xs); */
   font-family:"Baloo 2", cursive;
   font-weight: 700;
   font-size: 20px;
@@ -39,4 +49,58 @@
   mix-blend-mode: normal;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 10px;
+}
+
+.JourneyCard-subcontainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.JourneyCard-subcontainer2 {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+}
+
+.JourneyCard-togglebutton {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  border-radius: 200px;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.JourneyCard-togglebutton:hover {
+            transform: scale(0.98); 
+            background-color:rgba(104, 104, 104, 0.25);
+            transition-duration: 0.5s;
+            /* Scaling button to 0.98 to its original size */ 
+            /* box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);  */
+            /* Lowering the shadow */ 
 }

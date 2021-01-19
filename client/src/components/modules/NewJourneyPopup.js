@@ -63,13 +63,13 @@ class NewJourneyPopup extends Component {
 
       setStartDate = (date) => {
         this.setState({ 
-          startDate: date
+          startDate: new Date(date)
         })
       }
 
       setEndDate = (date) => {
         this.setState({ 
-          endDate: date
+          endDate: new Date(date)
         })
       }
 
@@ -85,10 +85,12 @@ class NewJourneyPopup extends Component {
             Start date: <DatePicker
                 selected={this.state.startDate}
                 onChange={date => this.setStartDate(date)}
+                showYearDropdown
                 />
             End date: <DatePicker
                 selected={this.state.endDate}
                 onChange={date => this.setEndDate(date)}
+                showYearDropdown
                 />
             <form>
               I want to 

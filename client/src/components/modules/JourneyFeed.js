@@ -63,7 +63,8 @@ class JourneyFeed extends Component {
           theme={journeyObj.theme}
           complete={journeyObj.complete} 
           startDate={journeyObj.startDate}
-          endDate={journeyObj.endDate}/>));
+          endDate={journeyObj.endDate}
+          isMostRecent={(journeyObj._id === this.state.journeys[0]._id)}/>));
     } else if (this.props.completed) {
       journeysList = <div>No completed journeys! Start logging progress to complete them!</div>
     } else {

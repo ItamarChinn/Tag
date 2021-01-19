@@ -1,4 +1,5 @@
 ﻿import React, { Component } from "react";
+import {MdDelete, MdClose, MdDone, MdModeEdit} from 'react-icons/md';
 import "./SingleProgress.css";
 
 /**
@@ -12,6 +13,7 @@ class SingleProgress extends Component {
     super(props);
     this.state = {
       editingMode: false,
+      progress_quantity: 0,
       }
     }
 
@@ -21,64 +23,84 @@ class SingleProgress extends Component {
   //   });
   // }
 
+  componentDidMount() {
+    this.setState({
+      progress_quantity: this.props.progress_quantity
+    })
+  }
+
   incrementUp = () => {
-    const updatedProgressObject = {
-        progressId: this.props.progressId,
-        progress_quantity: this.props.progress_quantity + 1,
-    }
-    this.props.onIncrement(updatedProgressObject)
+    this.setState({
+      progress_quantity: this.state.progress_quantity + 1,
+    })
   }
 
   decrementDown = () => {
-    const updatedProgressObject = {
-      progressId: this.props.progressId,
-      progress_quantity: this.props.progress_quantity - 1,
-    }
-    this.props.onIncrement(updatedProgressObject)
+    this.setState({
+      progress_quantity: this.state.progress_quantity - 1,
+    })
   }
+
+  toggleEditingModeSave = () => {
+    if (this.state.editingMode) {
+      this.setState({editingMode: !this.state.editingMode});
+      const updatedProgressObject = {
+        progressId: this.props.progressId,
+        progress_quantity: this.state.progress_quantity,
+      }
+      this.props.onIncrement(updatedProgressObject)
+    } else {
+      this.setState({editingMode: !this.state.editingMode});
+    }
+  }
+
+  toggleEditingModeCancel = () => {
+    this.setState({editingMode: !this.state.editingMode});
+    }
+  
+/* <hr className="" style={{width: "1px", height: "20px", display: "inline-block",}}/>  */
+
   
 
-
   render() {
-    let to_render = null;
-    // if (this.props.progress_quantity == 0 | this.state.editingMode) {
-      if (!this.state.editingMode) {
+    
+    // Date parsing
+    // const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const timeProgress = new Date(this.props.datetime);
 
-        to_render = 
-      // <div className="NewProgressButton-container">
-      //   <form>
-      //     <span>New Progress:</span>
-      //     <span>{this.props.datetime}</span>
-      //     <input type="number" name="goal_progress" placeholder="0" onChange={e => this.change(e)}></input>
-      //     <span>{this.state.goal_unit}</span>
-      //   </form>
-      // </div>
-      <div className="u-inlineBlock">
-        {this.props.progress_quantity} {this.props.goal_unit} 
-        <hr className="u-inlineBlock" style={{width: "1px", height: "20px", display: "inline-block",}}/> 
-        {this.props.datetime} 
-        <hr style={{width: "1px", height: "20px", display: "inline-block",}}/>
-        <div className="u-inlineBlock">
+    return (
+      <div className="SingleProgress-divider1">
+      <div className="SingleProgress-container">
+        <div className="SingleProgress-subcontainer">
+        {(this.state.editingMode & this.props.progress_quantity > 0) &&
+          <div className="SingleProcess-decrement" onClick={this.decrementDown}>
+            -
+          </div>}
+          {this.state.progress_quantity} {this.props.goal_unit}
+          {this.state.editingMode &&
+          <div className="SingleProcess-increment" onClick={this.incrementUp}>
+            +
+          </div>}
+        </div>
+        <div className="SingleProgress-subcontainer">
+          {timeProgress.getHours()}:{(timeProgress.getMinutes()) < 10 ? "0" + timeProgress.getMinutes() : timeProgress.getMinutes()} &nbsp; {timeProgress.getDate()}-{timeProgress.getMonth()}-{timeProgress.getFullYear()}
+        </div>
+        <div className="SingleProgress-subcontainer">
           Nice Job!!
         </div>
-        <hr className="u-inlineBlock" style={{width: "1px", height: "20px", display: "inline-block",}}/>
-        <div className="SingleProcess-decrement u-inlineBlock" onClick={this.decrementDown}>
-          -
-        </div>
-        {this.props.progress_quantity}
-        <div className="SingleProcess-increment u-inlineBlock" onClick={this.incrementUp}>
-          +
+        <div className="SingleProgress-subcontainer">
+          {!this.state.editingMode ? 
+          <div onClick={this.toggleEditingMode}><MdModeEdit/></div>
+          : <>
+          <div onClick={this.toggleEditingModeCancel}><MdClose /></div>
+          <div onClick={this.toggleEditingModeSave}><MdDone /></div>
+          <div onClick={this.toggleEditingModeDelete}><MdDelete /></div></>}
+          {/* {this.props.progress_quantity} */}
         </div>
       </div>
-    } else {
-      to_render =  <div className="SingleProgress-container">
-          This is a test progress
-      <span>{this.props.datetime}</span>
+      <div className="SingleProgress-divider">
+        <hr />
       </div>
-    }
-    return (
-      <div>
-        {to_render}
       </div>
         );
       }

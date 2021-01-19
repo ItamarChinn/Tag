@@ -14,5 +14,6 @@
 }
 
 .NewJourneyButton-button:hover {
-    background-color: var(--red)
+    background-color: #f391967e;
+    transition-duration: 0.5s;
 }

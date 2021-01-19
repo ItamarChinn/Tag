@@ -1,16 +1,17 @@
 .SingleProgress-container {
     display: flex;
-    position: relative;
-    text-align: center;
-    align-items: space;
-    padding: var(--s) var(--m);
-    background-color: #FFFBF5;
-    border-radius: 20px;
-    margin: 15px 5px;
+    justify-content: space-between;
+    align-items: center;
+    /* flex-direction: row; */
+  }
+
+  .SingleProgress-subcontainer {
+    display: flex;
   }
   
 
 .SingleProcess-decrement {
+  display: flex;
   font-family: "Baloo 2", cursive;
   font-size: 15px;
   padding: 5px;
@@ -19,7 +20,7 @@
   margin: 0px 5px;
   color: var(--beige);
   background-color: #ff2045b6;
-  display: inline-block;
+  /* display: inline-block; */
   border-radius: 20px;
   mix-blend-mode: normal;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -27,6 +28,7 @@
 
 
 .SingleProcess-increment {
+  display: flex;
   font-family: "Baloo 2", cursive;
   font-size: 15px;
   padding: 5px;
@@ -35,16 +37,29 @@
   margin: 0px 5px;
   color: var(--beige);
   background-color: #02b136b6;
-  display: inline-block;
+  /* display: inline-block; */
   border-radius: 20px;
   mix-blend-mode: normal;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .SingleProcess-increment:hover {
-  background-color: #02b13654
+  background-color: #02b13654;
+  transition-duration: 0.5s;
 }
 
 .SingleProcess-decrement:hover {
-  background-color: #ff204560
+  background-color: #ff204560;
+  transition-duration: 0.5s;
+}
+
+hr {
+  border-top:1px solid lightgrey;
+  /* height: 1px;
+  border: 0; 
+  margin: 1em 0; 
+  padding: 0;
+  color:#bbbbbb;
+  border-color: #bbbbbb;
+  background-color: #bbbbbb; */
 }
