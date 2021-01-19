@@ -58,6 +58,10 @@ router.get("/progress", (req, res) => {
   })
 });
 
+router.post("/deleteprogress", (req, res) => {
+  Progress.findByIdAndDelete(req.body.progressId).then((progress) => res.send(progress));
+});
+
 router.post("/editprogress", (req, res) => {
   Progress.findById(req.body.progressId).then((newProgress) => {
     if (newProgress) {

@@ -97,7 +97,7 @@ class NewJourneyPopup extends Component {
               <input 
               type="text"
               name="goal_name"
-              placeholder="Reading" 
+              placeholder="Read" 
               onChange={e => this.change(e)} 
               />
               <br />

@@ -1,5 +1,6 @@
 ﻿import React, { Component } from "react";
 import {MdDelete, MdClose, MdDone, MdModeEdit} from 'react-icons/md';
+import ConfirmDeletePopup from "../modules/ConfirmDeletePopup.js";
 import "./SingleProgress.css";
 
 /**
@@ -13,19 +14,16 @@ class SingleProgress extends Component {
     super(props);
     this.state = {
       editingMode: false,
-      progress_quantity: 0,
+      progress_quantity: null,
+      showDeletePopup: false,
       }
     }
 
-  // change = (e) => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value
-  //   });
-  // }
 
   componentDidMount() {
     this.setState({
-      progress_quantity: this.props.progress_quantity
+      progress_quantity: Number(this.props.progress_quantity),
+      editingMode: this.props.newInputedProgress,
     })
   }
 
@@ -58,7 +56,9 @@ class SingleProgress extends Component {
     this.setState({editingMode: !this.state.editingMode});
     }
   
-/* <hr className="" style={{width: "1px", height: "20px", display: "inline-block",}}/>  */
+  toggleEditingModeDelete = () => {
+    this.setState({showDeletePopup: !this.state.showDeletePopup})
+  }
 
   
 
@@ -72,13 +72,13 @@ class SingleProgress extends Component {
       <div className="SingleProgress-divider1">
       <div className="SingleProgress-container">
         <div className="SingleProgress-subcontainer">
-        {(this.state.editingMode & this.props.progress_quantity > 0) &&
-          <div className="SingleProcess-decrement" onClick={this.decrementDown}>
+        {(this.state.editingMode & this.state.progress_quantity > 0) &&
+          <div className="SingleProgress-decrement" onClick={this.decrementDown}>
             -
           </div>}
           {this.state.progress_quantity} {this.props.goal_unit}
           {this.state.editingMode &&
-          <div className="SingleProcess-increment" onClick={this.incrementUp}>
+          <div className="SingleProgress-increment" onClick={this.incrementUp}>
             +
           </div>}
         </div>
@@ -90,11 +90,17 @@ class SingleProgress extends Component {
         </div>
         <div className="SingleProgress-subcontainer">
           {!this.state.editingMode ? 
-          <div onClick={this.toggleEditingMode}><MdModeEdit/></div>
+          <>
+          <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeDelete}><MdDelete /></div>
+          <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeSave}><MdModeEdit/></div></>
           : <>
-          <div onClick={this.toggleEditingModeCancel}><MdClose /></div>
-          <div onClick={this.toggleEditingModeSave}><MdDone /></div>
-          <div onClick={this.toggleEditingModeDelete}><MdDelete /></div></>}
+          <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeCancel}><MdClose /></div>
+          <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeSave}><MdDone /></div></>}
+          {this.state.showDeletePopup ?
+        <ConfirmDeletePopup 
+        progressId={this.props.progressId}
+        deleteProgress={this.props.deleteProgress}
+        closePopup={this.toggleEditingModeDelete}/> : null}
           {/* {this.props.progress_quantity} */}
         </div>
       </div>

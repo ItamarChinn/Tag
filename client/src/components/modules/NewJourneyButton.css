@@ -16,4 +16,5 @@
 .NewJourneyButton-button:hover {
     background-color: #f391967e;
     transition-duration: 0.5s;
+    cursor: pointer;
 }

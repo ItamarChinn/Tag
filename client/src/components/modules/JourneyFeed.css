@@ -7,3 +7,10 @@
     justify-content: center;
     background-color: var(--green);
 }
+
+.JourneyFeed-needinput {
+    text-align: center;
+    font-family:"Baloo 2", cursive;
+    font-size: 25px;
+    color: var(--rose);
+  }
