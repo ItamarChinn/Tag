@@ -59,11 +59,12 @@ app.use(express.json());
 // set up a session, which will persist login data across requests
 app.use(
   session({
-    secret: "session-secret",
-    resave: false,
-    saveUninitialized: false,
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialize: false,
   })
-);
+)
+
 
 // this checks if the user is logged in, and populates "req.user"
 app.use(auth.populateCurrentUser);
@@ -97,9 +98,9 @@ app.use((err, req, res, next) => {
 });
 
 // hardcode port to 3000 for now
-const port = 3000;
+const port = process.env.PORT || 3000;
 const server = http.Server(app);
-socketManager.init(server);
+socket.init(server);
 
 server.listen(port, () => {
   console.log(`Server running on port: ${port}`);

@@ -3,7 +3,7 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Dashboard from "./pages/Dashboard.js";
 import NavBar from "./modules/NavBar.js";
-import Signup from "./pages/Signup.js";
+import SignUp from "./pages/SignUp.js";
 
 
 import "./App.css";
@@ -58,7 +58,7 @@ class App extends Component {
             handleLogout={this.handleLogout}
             userId={this.state.userId}
           />) : (
-        <Signup 
+        <SignUp 
             path="/"
             handleLogin={this.handleLogin}
             userId={this.state.userId}/>

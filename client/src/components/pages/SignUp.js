@@ -7,7 +7,7 @@ import "./Signup.css";
 
 const GOOGLE_CLIENT_ID = "431422395324-ngd8u3e3h6a1lfg6a1ljo3pukgpu0daj.apps.googleusercontent.com";
 
-class Signup extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props);
   }
@@ -42,4 +42,4 @@ class Signup extends Component {
   }
 };
 
-export default Signup;
+export default SignUp;
