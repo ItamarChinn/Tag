@@ -121,7 +121,7 @@ class JourneyCard extends Component {
           (<SingleProgress key={`Card_${progressObj._id}`} 
           journeyId={progressObj.journeyId}
           progressId={progressObj._id}
-          progress_quantity={Number(progressObj.progress_quantity)}
+          progress_quantity={progressObj.progress_quantity}
           goal_unit={progressObj.goal_unit}
           datetime={progressObj.datetime}
           onIncrement={this.onIncrement}

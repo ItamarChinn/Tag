@@ -22,7 +22,7 @@ class SingleProgress extends Component {
 
   componentDidMount() {
     this.setState({
-      progress_quantity: Number(this.props.progress_quantity),
+      progress_quantity: this.props.progress_quantity,
       editingMode: this.props.newInputedProgress,
     })
   }
@@ -101,7 +101,6 @@ class SingleProgress extends Component {
         progressId={this.props.progressId}
         deleteProgress={this.props.deleteProgress}
         closePopup={this.toggleEditingModeDelete}/> : null}
-          {/* {this.props.progress_quantity} */}
         </div>
       </div>
       <div className="SingleProgress-divider">
