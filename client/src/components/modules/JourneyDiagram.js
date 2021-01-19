@@ -37,7 +37,7 @@ class JourneyDiagram extends Component {
   render() {
     return (
       <>
-        <svg viewBox="0 0 400 400" width="45%" height="45%">
+        <svg viewBox="0 0 400 400" width="45%" height="auto">
           <VictoryPie
             standalone={false}
             animate={{ duration: 1000 }}
