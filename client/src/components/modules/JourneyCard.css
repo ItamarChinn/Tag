@@ -133,15 +133,15 @@
 }
 
 .JourneyCard-journey {
-  background-color: #fff2df;
+  background-color: #fff2df; 
   border-radius: 15px;
-  margin-top: 10px;
-  padding: 15px;
+  margin-top: var(--s);
+  padding: var(--m);
 }
 
 .JourneyCard-progresstoggler {
   background-color: #fff2df;
   border-radius: 15px;
-  margin-top: 10px;
-  padding: 15px;
+  margin-top: var(--s);
+  padding: var(--m);
 }
