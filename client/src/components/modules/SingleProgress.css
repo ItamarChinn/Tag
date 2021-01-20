@@ -17,12 +17,12 @@
   align-items: center;
   font-family: "Baloo 2", cursive;
   font-size: 15px;
-  padding: 5px;
+  padding: var(--xs);
   letter-spacing: 0.75px;
   text-transform: uppercase;
-  margin: 0px 5px;
+  margin: 0px var(--xs);
   color: var(--beige);
-  background-color: #ff2045b6;
+  background-color: var(--red);
   /* display: inline-block; */
   border-radius: 50%;
   width: 20px; height: 20px;
@@ -37,12 +37,12 @@
   align-items: center;
   font-family: "Baloo 2", cursive;
   font-size: 15px;
-  padding: 5px;
+  padding: var(--xs);
   letter-spacing: 0.75px;
   text-transform: uppercase;
-  margin: 0px 5px;
+  margin: 0px var(--xs);
   color: var(--beige);
-  background-color: #02b136b6;
+  background-color: var(--green);
   /* display: inline-block; */
   border-radius: 50%;
   width: 20px; height: 20px;

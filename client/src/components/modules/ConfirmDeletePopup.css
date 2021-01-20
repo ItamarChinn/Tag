@@ -20,7 +20,7 @@
     right: 25%;  
     top: 25%;  
     bottom: 25%;  */
-    padding: 15px;   
+    padding: var(--m);   
     position: absolute;
     left: 50vw;
     top: 30vh;
@@ -33,7 +33,7 @@
 .ConfirmDeletePopup-buttonContainer {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: var(--s);
     
 }
 
@@ -48,12 +48,12 @@
 .ConfirmDeletePopup-button {
     font-family: "Baloo 2", cursive;
     font-size: 15px;
-    padding: 5px;
+    padding: var(--xs);
     letter-spacing: 0.75px;
     text-transform: uppercase;
-    margin: 0px 5px;
+    margin: 0px var(--xs);
     color: var(--beige);
-    background-color: #02b136b6;
+    background-color: var(--green);
     display: inline-block;
     border-radius: 20px;
     mix-blend-mode: normal;
@@ -64,12 +64,12 @@
 .ConfirmDeletePopup-button2 {
     font-family: "Baloo 2", cursive;
     font-size: 15px;
-    padding: 5px;
+    padding: var(--xs);
     letter-spacing: 0.75px;
     text-transform: uppercase;
-    margin: 0px 5px;
+    margin: 0px var(--xs);
     color: var(--beige);
-    background-color: #ff2045b6;
+    background-color: var(--red);
     display: inline-block;
     border-radius: 20px;
     mix-blend-mode: normal;
@@ -79,7 +79,7 @@
 .ConfirmDeletePopup-content {
     font-family: "Baloo 2", cursive;
     font-size: 15px;
-    padding: 5px;
+    padding: var(--xs);
     color: var(--darkblue);
 }
 

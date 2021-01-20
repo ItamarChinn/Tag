@@ -5,9 +5,9 @@
   justify-content: center;
   flex-direction: column;
   padding: var(--s) var(--m);
-  background-color: #FFFBF5;
+  background-color: #FFFBF5; 
   border-radius: 20px;
-  margin: 15px 5px;
+  margin: var(--m) var(--xs);
 }
 
 .JourneyCard-item {
@@ -15,7 +15,7 @@
 }
 
 .JourneyCard-progresslist{
-  padding-top: 8px;
+  padding-top: var(--s);
 }
 
 .JourneyCard-title {
@@ -25,7 +25,7 @@
   padding: var(--xs); */
   font-family:"Baloo 2", cursive;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .JourneyCard-subtitle {
@@ -37,25 +37,25 @@
 .JourneyCard-subtitle2 {
   font-family:"Baloo 2", cursive;
   font-weight: 700;
-  font-size: 35px;
-  color: #FFFFFF
+  font-size: 30px;
+  color: #FFFBF5;
 }
 
 .JourneyCard-button {
   /* color: rgba(0, 0, 0, 0.54); */
   font-family: "Baloo 2", cursive;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 200%;
   letter-spacing: 0.75px;
   text-transform: uppercase;
-  margin: 0px 5px;
+  margin: 0px var(--xs);
   color: var(--beige);
   background-color: var(--rose);
   display: inline-block;
   border-radius: 20px;
   mix-blend-mode: normal;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 10px;
+  padding: var(--s);
 }
 
 .JourneyCard-noprogress {
@@ -79,7 +79,7 @@
 .JourneyCard-subcontainer3 {
   display: flex;
   justify-content: space-around;
-  padding: 10px;
+  padding: var(--s);
 }
 
 .JourneyCard-subcontainer2 {
