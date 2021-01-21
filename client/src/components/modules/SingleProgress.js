@@ -56,6 +56,7 @@ class SingleProgress extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(this.state);
   }
 
   toggleEditingModeCancel = () => {
@@ -88,11 +89,11 @@ class SingleProgress extends Component {
       <div className="SingleProgress-divider1">
       <div className="SingleProgress-container">
         <div className="SingleProgress-subcontainer">
-        {(this.state.editingMode & this.state.progress_quantity > 0) &&
+        {(this.state.editingMode) &&
           <div className="SingleProgress-decrement" onClick={this.decrementDown}>
             -
           </div>}
-         {progress_number} {this.props.goal_unit}
+          {progress_number} {this.props.goal_unit}
           {this.state.editingMode &&
           <div className="SingleProgress-increment" onClick={this.incrementUp}>
             +
