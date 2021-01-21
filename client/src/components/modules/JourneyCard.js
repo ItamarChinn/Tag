@@ -111,6 +111,14 @@ class JourneyCard extends Component {
       return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
+/*   weeklyProgress = (totalProgress, this.props.startDate) => {
+    zeroDate = this.props.startDate;
+    if (Date.now - this.props.startDate > 7) {
+      zeroDate = Date.now
+    } 
+    }  */
+
+
   render() {
     let progressList = null; 
     let newProgressButton = null;

@@ -4,7 +4,7 @@
     line-height: 200%;
     letter-spacing: 0.75px;
     text-transform: uppercase;
-    margin: 0px var(--xs);
+    margin: 0px var(--s);
     color: var(--beige);
     background-color: var(--rose);
     display: inline-block;
