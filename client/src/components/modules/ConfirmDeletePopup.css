@@ -84,11 +84,11 @@
 }
 
 .ConfirmDeletePopup-button:hover {
-    background-color: #02b13654;
+    background-color: var(--hover-green);
     cursor: pointer;
 }
 
 .ConfirmDeletePopup-button2:hover {
-    background-color: #ff204560;
+    background-color: var(--hover-red);
     cursor: pointer;
 }

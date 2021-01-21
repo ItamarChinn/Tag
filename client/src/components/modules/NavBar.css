@@ -2,9 +2,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
     width: 100%;
     padding: var(--s) var(--m);
     background-color: var(--rose);
+    z-index: 2;
   }
 
 .NavBar-title {
