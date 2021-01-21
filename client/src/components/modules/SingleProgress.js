@@ -52,6 +52,12 @@ class SingleProgress extends Component {
     }
   }
 
+  change = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
   toggleEditingModeCancel = () => {
     this.setState({editingMode: !this.state.editingMode});
     }
@@ -68,6 +74,16 @@ class SingleProgress extends Component {
     // const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const timeProgress = new Date(this.props.datetime);
 
+    let progress_number;
+    if (this.state.editingMode) {
+        progress_number= (<input type="number"
+            name="progress_quantity"
+            placeholder={this.state.progress_quantity}
+            onChange={e => this.change(e)} />)
+      } else {
+        progress_number=this.state.progress_quantity
+      }
+
     return (
       <div className="SingleProgress-divider1">
       <div className="SingleProgress-container">
@@ -76,12 +92,13 @@ class SingleProgress extends Component {
           <div className="SingleProgress-decrement" onClick={this.decrementDown}>
             -
           </div>}
-          {this.state.progress_quantity} {this.props.goal_unit}
+         {progress_number} {this.props.goal_unit}
           {this.state.editingMode &&
           <div className="SingleProgress-increment" onClick={this.incrementUp}>
             +
           </div>}
         </div>
+        
         <div className="SingleProgress-subcontainer">
           {timeProgress.getHours()}:{(timeProgress.getMinutes()) < 10 ? "0" + timeProgress.getMinutes() : timeProgress.getMinutes()} &nbsp; {timeProgress.getDate()}-{timeProgress.getMonth()}-{timeProgress.getFullYear()}
         </div>
