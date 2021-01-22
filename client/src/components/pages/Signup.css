@@ -48,7 +48,7 @@
 
 .Signup-background {
     background-color: var(--rose);
-    height:100vh;
+    height: auto;
     margin:0;
     padding:0;
 }
