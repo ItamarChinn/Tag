@@ -48,13 +48,14 @@
 
 .Signup-background {
     background-color: var(--rose);
-    height: auto;
+    height: 100vh;
     margin:0;
     padding:0;
 }
 
 .Signup-holdall {
     position: absolute;
+    background-color: var(--rose);
     left: 50vw;
     top: 30vh;
     transform:translate(-50%, -50%);

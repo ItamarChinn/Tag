@@ -178,7 +178,28 @@ class JourneyCard extends Component {
       const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       const start_date = new Date(this.props.startDate);
       const end_date = new Date(this.props.endDate);
-    
+
+      
+      // getCurrentProgress = () => {
+      // goal_type = (Day/Week/Month)
+      // IF DAY: 
+      //     Monday - Sunday
+          
+
+      // ELSE IF WEEK:
+      //     todayDayofWeek = Date.now().getDay()     5
+      //     todayDate = Date.now().getDate()        22
+
+      //     MondayDate = todayDate - todayDayofWeek  (add logic if this is negative)   22-5 = 17
+      //     SundayDate = MondayDate + 7 % 31 if Date.now().getMonth() # if 31 day month else 30 day month 17 + 7 = 24
+      //     progress_this_week = null;
+      //     for i in range(progressList):
+      //         if  MondayDate < todayDate < FridayDate:
+      //         progress_this_week += progressObj[i].progress
+
+      // ELSE IF MONTH:
+      // }
+
     return ( 
         <div className="JourneyCard-container">
           <div className="JourneyCard-journey">
@@ -193,6 +214,7 @@ class JourneyCard extends Component {
               {this.props.goal_quantity} {this.props.goal_unit}, {this.props.goal_frequency} times per {this.props.goal_time_unit}
             </div>
             <div className= "JourneyCard-subtitle"> 
+              {/* {this.getCurrentProgress()} */}
               {this.state.totalProgress} {this.props.goal_unit} out of {this.props.goal_frequency * this.props.goal_quantity} this {this.props.goal_time_unit}
             </div>
           </div>
