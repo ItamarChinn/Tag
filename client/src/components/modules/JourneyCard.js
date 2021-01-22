@@ -169,21 +169,21 @@ class JourneyCard extends Component {
           </div>
         </div>
         <div className="JourneyCard-subcontainer4">
-          <div className="JourneyCard-subcontainer3">
+          {/* <div className="JourneyCard-subcontainer3">
             <div className="JourneyCard-subtitle2">Expected</div>
             <div className="JourneyCard-subtitle2">Actual</div>
-          </div>
+          </div> */}
           <div className="JourneyCard-subcontainer3">
             <JourneyDiagram
             totalProgress={this.state.totalProgress}
             startDate={start_date}
             endDate={end_date}
             />
-            <JourneyDiagram
+            {/* <JourneyDiagram
             totalProgress={this.state.totalProgress}
             startDate={start_date}
             endDate={end_date}
-            />
+            /> */}
           </div>
         </div>
           <div className="JourneyCard-subcontainer">

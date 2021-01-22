@@ -33,8 +33,7 @@ class Dashboard extends Component {
           handleLogout={this.props.handleLogout}
           userId={this.state.userId}/>
         <div className="Dashboard-container">
-        
-          <div className="Dashboard-title"> &nbsp; &nbsp; Your Journeys &nbsp; &nbsp; </div>
+          <div className="Dashboard-title"> &nbsp; &nbsp; Your Journeys &nbsp; &nbsp; </div>  
           <JourneyFeed 
           userId={this.state.userId}
           completed={false}
@@ -47,6 +46,8 @@ class Dashboard extends Component {
           completed={true}
           togglePopup={this.togglePopup}/>
           </div>
+          
+
         </div>
     );
   }

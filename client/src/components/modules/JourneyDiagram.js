@@ -69,8 +69,11 @@ class JourneyDiagram extends Component {
       //   </svg>
       // </>
 
-      <>
-        <iframe src='https://my.spline.design/characterbunny-86db51a8f1186679e73f738622170256/' frameborder='0' width='100%' height='100%'></iframe>
+        <>
+        {/* <iframe src='https://my.spline.design/characterbunny-86db51a8f1186679e73f738622170256/' frameborder='0' width='100%' height='100%'></iframe> */}
+        <div className="JourneyDiagram-box">
+
+        </div>
       </>
     );
   }

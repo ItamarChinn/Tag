@@ -73,13 +73,16 @@
 
 .JourneyCard-subcontainer4 {
   border-radius: 20px;
-  background-color: #2068acb9;
+  background: #0D2A45;
+  border-radius: 10px;
 }
 
 .JourneyCard-subcontainer3 {
   display: flex;
   justify-content: space-around;
   padding: 10px;
+  
+  
 }
 
 .JourneyCard-subcontainer2 {
