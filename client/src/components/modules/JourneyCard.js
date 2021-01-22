@@ -18,6 +18,27 @@ class JourneyCard extends Component {
     }
   }
 
+//IN PROGRESS: writing a function to get the difference between two days, and then using that to calculate expected progress
+//feel free to change for a better constructed function
+
+  // getDifferenceInDays () {
+  //   currentDate = Date.now();
+  //   start = this.state.startDate;
+  //   currentDate.getTime()
+  // }
+
+  // calculateExpected () {
+  //   switch(this.state.goal_time_unit) {
+  //     case "Day":
+  //       expectedProgress = (Date.now() - this.state.startDate)*this.state.goal_quantity;
+  //       break;
+  //     case "Week":
+  //       expectedProgress = (Date.now() - this.state.startDate)*this.state.goal_quantity/7;
+  //     case "Month":
+  //       expectedProgress = see above but divided by thirty
+  //   }
+  // }
+
 
   componentDidMount () {
     get("/api/progress", { 

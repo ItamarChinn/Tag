@@ -67,8 +67,6 @@ class SingleProgress extends Component {
     this.setState({showDeletePopup: !this.state.showDeletePopup})
   }
 
-  
-
   render() {
     
     // Date parsing
@@ -84,6 +82,23 @@ class SingleProgress extends Component {
       } else {
         progress_number=this.state.progress_quantity
       }
+
+      let positiveList = [
+        "Good Job!",
+        "Nice Going!",
+        "Great Work!",
+        "Keep it Up!"
+      ]
+
+      let negativeList = [
+        "Almost there!",
+        "Keep pushing!",
+        "Off to a great start!",
+        "Every effort counts!"
+      ]
+
+      let positiveMessage = positiveList[Math.floor(Math.random()*positiveList.length)];
+      let negativeMessage = negativeList[Math.floor(Math.random()*negativeList.length)];
 
     return (
       <div className="SingleProgress-divider1">
@@ -104,7 +119,7 @@ class SingleProgress extends Component {
           {timeProgress.getHours()}:{(timeProgress.getMinutes()) < 10 ? "0" + timeProgress.getMinutes() : timeProgress.getMinutes()} &nbsp; {timeProgress.getDate()}-{timeProgress.getMonth()}-{timeProgress.getFullYear()}
         </div>
         <div className="SingleProgress-subcontainer">
-          Nice Job!!
+          {positiveMessage}
         </div>
         <div className="SingleProgress-subcontainer">
           {!this.state.editingMode ? 
