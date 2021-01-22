@@ -224,7 +224,7 @@ class JourneyCard extends Component {
             <div className="JourneyCard-subtitle2">Expected</div>
             <div className="JourneyCard-subtitle2">Actual</div>
           </div> */}
-          <div className="JourneyCard-subcontainer3">
+          {/* <div className="JourneyCard-subcontainer3"> */}
             <JourneyDiagram
             totalProgress={this.state.totalProgress}
             startDate={start_date}
@@ -235,7 +235,7 @@ class JourneyCard extends Component {
             startDate={start_date}
             endDate={end_date}
             /> */}
-          </div>
+          {/* </div> */}
         </div>
           <div className="JourneyCard-subcontainer">
             <div className= "JourneyCard-subtitle"> Start {start_date.getDate()} {monthNames[start_date.getMonth()]} {start_date.getFullYear()} </div>

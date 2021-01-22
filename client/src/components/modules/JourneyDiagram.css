@@ -1,4 +1,74 @@
 .JourneyDiagram-box {
     background: #0D2A45;
     border-radius: 10px;
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 0;
 }
+
+.JourneyDiagram-box2 {
+    background: #0D2A45;
+    border-radius: 10px;
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 10;
+}
+
+.JourneyDiagram-line {
+    /* position: absolute; */
+    height: 7em;
+    border-top: 30px solid purple;
+    width: 120%;
+    z-index:1;
+    /* background-color: var(--green); */
+  }
+
+.JourneyDiagram-container {
+    display: flex;
+}
+
+.JourneyDiagram-w1 {
+    font-family:"Baloo 2", cursive;
+    color: rgba(246, 236, 223, 1);
+    text-align: center;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .JourneyDiagram-w2 {
+    font-family:"Baloo 2", cursive;
+    color: rgba(246, 236, 223, 1);
+    text-align: center;
+    display: flex;
+    align-self: flex-end;
+    flex-direction: column;
+  }
+
+  .JourneyDiagram-w3 {
+    font-family:"Baloo 2", cursive;
+    color: rgba(246, 236, 223, 1);
+    text-align: center;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+.JourneyDiagram-start {
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+  .JourneyDiagram-end {
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    display: flex;
+    align-items: center;
+  } 
+
