@@ -9,7 +9,7 @@ class JourneyDiagram extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      percent: 25, 
+      percent: 25,
       data: this.getData(0)
     }
   }
@@ -35,16 +35,16 @@ class JourneyDiagram extends Component {
   }
 
   render() {
-        const start = "🌎"
-        const character = "🚀"
-        const chaser = "🚀"
-        const stationOne = "🌔"
-        const stationTwo = "🌔"
-        const stationThree = "🌔"
-        const end = "🎖"
-      
+    const start = "🌎"
+    const character = "🚀"
+    const chaser = "🚀"
+    const stationOne = "🌔"
+    const stationTwo = "🌔"
+    const stationThree = "🌔"
+    const end = "🎖"
 
-    
+
+
     return (
       // <>
       //   <svg viewBox="0 0 400 400" width="45%" height="auto">
@@ -79,30 +79,36 @@ class JourneyDiagram extends Component {
       //   </svg>
       // </>
 
-        <>
+      <>
         {/* <iframe src='https://my.spline.design/characterbunny-86db51a8f1186679e73f738622170256/' frameborder='0' width='100%' height='100%'></iframe> */}
-        
         <div className="JourneyDiagram-box">
-          <div className="JourneyDiagram-line">
-            <div className="JourneyDiagram-box2">
-              <div className="JourneyDiagram-start">{start}</div>
-              <div className="JourneyDiagram-w1">
-                <div className="JourneyDiagram-container">W1</div>
-                <div className="JourneyDiagram-container">{stationOne}</div>
-                </div>
-              <div className="JourneyDiagram-w2">
-                <div className="JourneyDiagram-w2">W2</div>
-                <div className="JourneyDiagram-w2">{stationTwo}</div>
-                </div>
-              <div className="JourneyDiagram-w3">
-                <div className="JourneyDiagram-w3">W3</div>
-                <div className="JourneyDiagram-w3">{stationThree}</div>
-              </div>
-              <div className="JourneyDiagram-end">{end}</div>
-            
+          {/* <div className="JourneyDiagram-line">HELLO */}
+          {/* <div className="JourneyDiagram-line">
+            <hr className="JourneyDiagram-hr" />
+          </div> */}
+
+          <div className="JourneyDiagram-box2">
+          <div className="JourneyDiagram-line"><hr className="JourneyDiagram"/></div>
+          <div className="JourneyDiagram-character" style={{left:"20%"}}>{character}</div>
+          <div className="JourneyDiagram-chaser">{chaser}</div>
+            <div className="JourneyDiagram-start">{start}</div>
+            <div className="JourneyDiagram-w1">
+              <div className="JourneyDiagram-container">W1</div>
+              <div className="JourneyDiagram-container">{stationOne}</div>
             </div>
+            <div className="JourneyDiagram-w2">
+              <div className="JourneyDiagram-w2">W2</div>
+              <div className="JourneyDiagram-w2">{stationTwo}</div>
             </div>
+            <div className="JourneyDiagram-w3">
+              <div className="JourneyDiagram-w3">W3</div>
+              <div className="JourneyDiagram-w3">{stationThree}</div>
+            </div>
+            <div className="JourneyDiagram-end">{end}</div>
+          </div>
+          
         </div>
+        {/* </div> */}
       </>
     );
   }

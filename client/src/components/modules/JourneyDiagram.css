@@ -5,27 +5,13 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-    z-index: 0;
+    /* z-index: -10; */
+    position: relative;
 }
 
-.JourneyDiagram-box2 {
-    background: #0D2A45;
-    border-radius: 10px;
-    height: 20vh;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    z-index: 10;
-}
 
-.JourneyDiagram-line {
-    /* position: absolute; */
-    height: 7em;
-    border-top: 30px solid purple;
-    width: 120%;
-    z-index:1;
-    /* background-color: var(--green); */
-  }
+
+
 
 .JourneyDiagram-container {
     display: flex;
@@ -72,3 +58,57 @@
     align-items: center;
   } 
 
+
+
+  .JourneyDiagram-box2 {
+    /* background: #0D2A45; */
+    /* border-radius: 10px; */
+    /* height: 20vh; */
+    width: 100%;
+    /* position: relative; */
+    display: flex;
+    justify-content: space-around;
+    z-index: 2;
+}
+
+  .JourneyDiagram-line {
+    /* border-top: 30px solid purple; */
+    position: absolute;
+    /* display: flex; */
+    /* align-self: center; */
+    /* width: 100%; */
+    top: calc(50% - 8px);
+    left: 12%;
+    right: 12%;
+    z-index: 1;
+    /* vertical-align: middle; */
+    /* background-color: var(--green); */
+  }
+
+  .JourneyDiagram-character {
+    /* border-top: 30px solid purple; */
+    position: absolute;
+    /* display: flex;
+    align-self: center; */
+    /* text-align: center; */
+    top: calc(50% - 10px);
+    left: 75%;
+    /* right: 12%; */
+    z-index: 1;
+    /* vertical-align: middle; */
+    /* background-color: var(--green); */
+  }
+
+  .JourneyDiagram-chaser {
+    /* border-top: 30px solid purple; */
+    position: absolute;
+    /* display: flex; */
+    /* justify-content: flex-start; */
+    /* text-align: center; */
+    top: calc(50% - 10px);
+    left: 50%;
+    /* right: 12%; */
+    z-index: 1;
+    /* vertical-align: middle; */
+    /* background-color: var(--green); */
+  }
