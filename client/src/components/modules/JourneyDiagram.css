@@ -1,114 +1,118 @@
+
+:root {
+    --characterProgress: 2%;
+    --chaserProgress: 2%;
+    --fontSize: 32px;
+}
+
+
 .JourneyDiagram-box {
     background: #0D2A45;
     border-radius: 10px;
     height: 20vh;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    /* z-index: -10; */
+    /* display: flex; */
     position: relative;
+    /* width: 100%; */
+    font-size: var(--fontSize);
+    margin: 0;
+    padding: 0;
+    z-index: 0;
 }
 
 
-
-
-
-.JourneyDiagram-container {
+.JourneyDiagram-center {
     display: flex;
-}
-
-.JourneyDiagram-w1 {
-    font-family:"Baloo 2", cursive;
-    color: rgba(246, 236, 223, 1);
-    text-align: center;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .JourneyDiagram-w2 {
-    font-family:"Baloo 2", cursive;
-    color: rgba(246, 236, 223, 1);
-    text-align: center;
-    display: flex;
-    align-self: flex-end;
-    flex-direction: column;
-  }
-
-  .JourneyDiagram-w3 {
-    font-family:"Baloo 2", cursive;
-    color: rgba(246, 236, 223, 1);
-    text-align: center;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-.JourneyDiagram-start {
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
-    display: flex;
-    align-items: center;
-}
-
-  .JourneyDiagram-end {
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
-    display: flex;
-    align-items: center;
-  } 
-
-
-
-  .JourneyDiagram-box2 {
-    /* background: #0D2A45; */
-    /* border-radius: 10px; */
-    /* height: 20vh; */
+    position: relative;
+    align-self: center;
+    justify-content: center;
     width: 100%;
-    /* position: relative; */
-    display: flex;
-    justify-content: space-around;
-    z-index: 2;
+    z-index: 10;
 }
+
+.JourneyDiagram-top {
+    display: flex;
+    position: relative;
+    align-self: flex-start;
+    justify-content: center;
+    width: 100%;
+    z-index: 10;
+}
+
+.JourneyDiagram-bottom {
+    display: flex;
+    position: relative;
+    align-self: flex-end;
+    justify-content: center;
+    width: 100%;
+    z-index: 10;
+}
+
+
+.JourneyDiagram-stations {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    z-index: 10;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.JourneyDiagram-progresscharacters {
+    /* width: 100%; */
+    position: absolute;
+    right: calc(100%/12 + var(--fontSize)/2) ;
+    left: calc(100%/12 + var(--fontSize)/2) ;
+    display: flex;
+    z-index: 15;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 
   .JourneyDiagram-line {
-    /* border-top: 30px solid purple; */
+    display: flex;
     position: absolute;
-    /* display: flex; */
-    /* align-self: center; */
-    /* width: 100%; */
-    top: calc(50% - 8px);
-    left: 12%;
-    right: 12%;
+    right: calc(100%/12 + var(--fontSize)/2) ;
+    left: calc(100%/12 + var(--fontSize)/2) ;
+    /* width: var(--characterProgress); */
+    height: 100%;
     z-index: 1;
-    /* vertical-align: middle; */
-    /* background-color: var(--green); */
+    padding: 0; 
+    margin: 0;
   }
 
   .JourneyDiagram-character {
-    /* border-top: 30px solid purple; */
+    display: flex;
     position: absolute;
-    /* display: flex;
-    align-self: center; */
-    /* text-align: center; */
-    top: calc(50% - 10px);
-    left: 75%;
-    /* right: 12%; */
-    z-index: 1;
-    /* vertical-align: middle; */
-    /* background-color: var(--green); */
+    height: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    width: var(--characterProgress);
   }
 
   .JourneyDiagram-chaser {
-    /* border-top: 30px solid purple; */
+    display: flex;
     position: absolute;
-    /* display: flex; */
-    /* justify-content: flex-start; */
-    /* text-align: center; */
-    top: calc(50% - 10px);
-    left: 50%;
-    /* right: 12%; */
-    z-index: 1;
-    /* vertical-align: middle; */
-    /* background-color: var(--green); */
+    height: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    width: var(--chaserProgress);
   }
+
+  .JourneyDiagram-boxbox {
+    display: flex;
+    justify-self: flex-start;
+    align-self: center;
+    width: var(--characterProgress);
+}
+
+hr {
+    display: flex;
+    justify-self: flex-start;
+    align-self: center;
+    width: 100%;
+}

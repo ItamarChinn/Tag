@@ -71,16 +71,16 @@
   justify-content: space-between;
 }
 
-.JourneyCard-subcontainer4 {
+/* .JourneyCard-subcontainer4 {
   border-radius: 20px;
   background: #0D2A45;
   border-radius: 10px;
-}
+} */
 
 .JourneyCard-subcontainer3 {
-  display: flex;
-  justify-content: space-around;
-  padding: var(--s);
+  position: relative;
+  width: auto;
+  height: auto;
 }
 
 .JourneyCard-subcontainer2 {
@@ -138,6 +138,8 @@
   border-radius: 15px;
   margin-top: var(--s);
   padding: var(--m);
+  display: flex;
+  flex-direction: column;
 }
 
 .JourneyCard-progresstoggler {
