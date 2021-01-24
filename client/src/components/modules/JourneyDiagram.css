@@ -3,11 +3,13 @@
     --characterProgress: 2%;
     --chaserProgress: 2%;
     --fontSize: 32px;
+    --backgroundTheme: linear-gradient(45deg, rgba(0,66,8,1) 0%, rgba(17,107,17,1) 18%, rgba(181,51,0,1) 40%, rgba(134,0,0,1) 62%, rgba(255,192,212,1) 83%, rgba(255,255,255,1) 100%);
 }
 
 
 .JourneyDiagram-box {
-    background: #0D2A45;
+    /* background: #0D2A45; */
+    background: var(--backgroundTheme);
     border-radius: 10px;
     height: 20vh;
     /* display: flex; */
@@ -108,11 +110,17 @@
     justify-self: flex-start;
     align-self: center;
     width: var(--characterProgress);
+    
 }
 
-hr {
+hr.progress {
     display: flex;
     justify-self: flex-start;
     align-self: center;
-    width: 100%;
+    height: 5px;
+    border: none;
+    /* border-top: 1px solid #eee; */
+    width: 100%; 
+    background: rgb(36,17,0);
+    background: linear-gradient(90deg, rgba(36,17,0,0) 0%, rgba(121,14,9,0.7595413165266106) 36%, rgba(236,109,1,1) 90%, rgba(255,124,0,0) 100%);
 }

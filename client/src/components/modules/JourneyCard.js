@@ -4,14 +4,9 @@ import "./JourneyCard.css";
 import "../App.js";
 import NewProgressButton from "../modules/NewProgressButton.js"
 import SingleProgress from "../modules/SingleProgress.js"
-<<<<<<< HEAD
-import { MdExpandMore, MdExpandLess } from 'react-icons/md';
-import JourneyDiagram from "../modules/JourneyDiagram.js"
-=======
 import { MdExpandMore, MdExpandLess} from 'react-icons/md';
 import JourneyDiagram from "../modules/JourneyDiagram.js";
 import NewComponent from "./NewComponent";
->>>>>>> 91bae4b82060e71488e9b912838a4c32735fce2c
 
 
 class JourneyCard extends Component {
@@ -54,7 +49,7 @@ calculateExpected () {
         reversedProgressObjs.map((progressObj) => {
           this.setState({
             progresses: this.state.progresses.concat([progressObj]),
-            totalProgress: this.state.totalProgress + progressObj.progress_quantity
+            totalProgress: this.state.totalProgress + progressObj.progress_quantity,
           });
         });
         this.setState({ showProgress: this.props.isMostRecent })
@@ -234,6 +229,7 @@ calculateExpected () {
             totalProgress={this.state.totalProgress}
             startDate={start_date}
             endDate={end_date}
+            theme={this.props.theme}
           />
 
           <div className="JourneyCard-subcontainer">
@@ -254,7 +250,7 @@ calculateExpected () {
               <div className="JourneyCard-subtitle"> Comments </div>
               <div className="JourneyCard-subtitle"> Edit </div>
             </div>
-            <hr />
+            <hr className="here"/>
             {progressList}
           </div>}
 

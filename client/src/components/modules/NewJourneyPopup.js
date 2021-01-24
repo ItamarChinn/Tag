@@ -19,7 +19,7 @@ class NewJourneyPopup extends Component {
         goal_frequency: "",
         goal_time_unit: "Day",
         goal_quantity: "",
-        theme: "",
+        theme: "space",
         complete: false,
         startDate: new Date(),
         endDate: new Date(),
@@ -33,7 +33,7 @@ class NewJourneyPopup extends Component {
             goal_time_unit: this.state.goal_time_unit,
             goal_unit: this.state.goal_unit,
             goal_quantity: this.state.goal_quantity,
-            theme: "Classic",
+            theme: this.state.theme,
             complete: false,
             startDate: this.state.startDate,
             endDate: this.state.endDate,
@@ -82,16 +82,19 @@ class NewJourneyPopup extends Component {
         <div className="NewJourneyPopup-popup">
             <div className='NewJourneyPopup-popupinner'> 
             <div className='NewJourneyPopup-content'>
-            Start date: <DatePicker
+            <center style={{"font-size": "32px"}}>You are about to embark on a journey! </center>
+            <center>Start your journey on <DatePicker
                 selected={this.state.startDate}
                 onChange={date => this.setStartDate(date)}
                 showYearDropdown
                 />
-            End date: <DatePicker
+                <br />
+            and end it on <DatePicker
                 selected={this.state.endDate}
                 onChange={date => this.setEndDate(date)}
                 showYearDropdown
                 />
+                <br />
             <form>
               I want to 
               <input 
@@ -128,11 +131,18 @@ class NewJourneyPopup extends Component {
                 <option value="Month">month</option>
               </select>
               <br />
+              I want to journey through
+              <select name="theme" onChange={e => this.change(e)}> 
+                <option value="space">space</option>
+                <option value="forest">a forest</option>
+                {/* <option value="Month">month</option> */}
+              </select>
               <div className = "NewJourneyPopup-buttonContainer">
                 <div className="NewJourneyPopup-button2" onClick={this.props.closePopup}>&nbsp; Cancel &nbsp;</div>
                 <div className="NewJourneyPopup-button" onClick={e => this.onSubmit(e)}>&nbsp; Submit &nbsp;</div>
               </div>
             </form>
+            </center>
             </div>
             </div>
           </div>

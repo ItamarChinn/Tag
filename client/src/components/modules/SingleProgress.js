@@ -155,7 +155,8 @@ class SingleProgress extends Component {
         </div>
       </div>
       <div className="SingleProgress-divider">
-        <hr />
+         
+        <hr className="here"/>
       </div>
       </div>
         );
