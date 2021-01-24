@@ -10,6 +10,7 @@ class NewComponent extends Component {
   }
 
   render() {
+
     return (
       <div className="NewComponent-container">
           This is a test component
