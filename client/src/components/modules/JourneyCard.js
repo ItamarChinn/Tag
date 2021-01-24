@@ -4,8 +4,14 @@ import "./JourneyCard.css";
 import "../App.js";
 import NewProgressButton from "../modules/NewProgressButton.js"
 import SingleProgress from "../modules/SingleProgress.js"
+<<<<<<< HEAD
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 import JourneyDiagram from "../modules/JourneyDiagram.js"
+=======
+import { MdExpandMore, MdExpandLess} from 'react-icons/md';
+import JourneyDiagram from "../modules/JourneyDiagram.js";
+import NewComponent from "./NewComponent";
+>>>>>>> 91bae4b82060e71488e9b912838a4c32735fce2c
 
 
 class JourneyCard extends Component {
@@ -21,23 +27,22 @@ class JourneyCard extends Component {
   //IN PROGRESS: writing a function to get the difference between two days, and then using that to calculate expected progress
   //feel free to change for a better constructed function
 
-  // getDifferenceInDays () {
-  //   currentDate = Date.now();
-  //   start = this.state.startDate;
-  //   currentDate.getTime()
-  // }
+calculateExpected () {
+  let totalTime = (Date.now() - Date.parse(this.props.startDate))/(60*60*24*1000);
+  let expectedDays = Math.floor(totalTime);
+  let expectedProgress = null;
 
-  // calculateExpected () {
-  //   switch(this.state.goal_time_unit) {
-  //     case "Day":
-  //       expectedProgress = (Date.now() - this.state.startDate)*this.state.goal_quantity;
-  //       break;
-  //     case "Week":
-  //       expectedProgress = (Date.now() - this.state.startDate)*this.state.goal_quantity/7;
-  //     case "Month":
-  //       expectedProgress = see above but divided by thirty
-  //   }
-  // }
+  switch(this.props.goal_time_unit) {
+      case "Day":
+        return expectedProgress = expectedDays*this.props.goal_quantity;
+      case "Week":
+        return expectedProgress = expectedDays*this.props.goal_quantity/7;
+      case "Month":
+        return expectedProgress = expectedDays*this.props.goal_quantity/30;
+      default:
+        return expectedProgress = "no progress expected"
+    }
+  }
 
 
   componentDidMount() {
@@ -219,6 +224,10 @@ class JourneyCard extends Component {
                 {/* {this.getCurrentProgress()} */}
                 {this.state.totalProgress} {this.props.goal_unit} out of {this.props.goal_frequency * this.props.goal_quantity} this {this.props.goal_time_unit}
               </div>
+            </div>
+            <div className="JourneyCard-subtitle">
+              {/* {this.props.goal_quantity*Math.floor((Date.now() - Date.parse(this.props.startDate))/(60*60*24*1000))} */}
+              Expected Progress: {this.calculateExpected()} {this.props.goal_unit}
             </div>
           </div>
           <JourneyDiagram

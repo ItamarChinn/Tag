@@ -67,6 +67,23 @@ class SingleProgress extends Component {
     this.setState({showDeletePopup: !this.state.showDeletePopup})
   }
 
+  calculateExpected () {
+    let totalTime = (Date.now() - Date.parse(this.props.startDate))/(60*60*24*1000);
+    let expectedDays = Math.floor(totalTime);
+    let expectedProgress = null;
+  
+    switch(this.props.goal_time_unit) {
+        case "Day":
+          return expectedProgress = expectedDays*this.props.goal_quantity;
+        case "Week":
+          return expectedProgress = expectedDays*this.props.goal_quantity/7;
+        case "Month":
+          return expectedProgress = expectedDays*this.props.goal_quantity/30;
+        default:
+          return expectedProgress = "no progress expected"
+      }
+    }
+
   render() {
     
     // Date parsing
@@ -93,7 +110,7 @@ class SingleProgress extends Component {
       let negativeList = [
         "Almost there!",
         "Keep pushing!",
-        "Off to a great start!",
+        "You suck!",
         "Every effort counts!"
       ]
 
@@ -119,6 +136,7 @@ class SingleProgress extends Component {
           {timeProgress.getHours()}:{(timeProgress.getMinutes()) < 10 ? "0" + timeProgress.getMinutes() : timeProgress.getMinutes()} &nbsp; {timeProgress.getDate()}-{timeProgress.getMonth()}-{timeProgress.getFullYear()}
         </div>
         <div className="SingleProgress-subcontainer">
+          {this.calculateExpected()}
           {positiveMessage}
         </div>
         <div className="SingleProgress-subcontainer">
