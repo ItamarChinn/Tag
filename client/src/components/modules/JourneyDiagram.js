@@ -1,5 +1,4 @@
 ﻿import React, { Component } from "react";
-import { VictoryPie, VictoryAnimation, VictoryLabel } from "victory";
 import "./JourneyDiagram.css";
 
 /**
@@ -9,8 +8,6 @@ class JourneyDiagram extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      percent: 25,
-      data: this.getData(0),
       start: null,
       character: null,
       chaser: null,
@@ -19,12 +16,14 @@ class JourneyDiagram extends Component {
       stationThree: null,
       end: null,
       backgroundTheme: null,
+      characterProgress: null,
+      chaserProgress: null,
     }
   }
 
 
   componentDidMount() {
-    if (this.state.theme == "space") {
+    if (this.props.theme == "space") {
       this.setState({
         start: "🌎",
         character: "🚀",
@@ -49,35 +48,32 @@ class JourneyDiagram extends Component {
     }
   };
 
-  componentWillUnmount() {
-    window.clearInterval(this.setStateInterval);
-  }
-
-  getData(percent) {
-    return [{ x: 1, y: percent }, { x: 2, y: 100 - percent }];
-  }
 
   render() {
     let actualFractionComplete = 50;
     let expectedFractionComplete = 25;
     let characterProgress = actualFractionComplete;
     let chaserProgress = expectedFractionComplete;
+    let bg_color = this.state.backgroundTheme;
 
+    console.log(bg_color)
 
-    document.documentElement.style.setProperty(
+    const element = document.documentElement;
+
+    element.style.setProperty(
       '--characterProgress',
-      String(characterProgress) + "%"
+      String( Math.random() * 100)  + "%"
     )
 
-    document.documentElement.style.setProperty(
+    element.style.setProperty(
       '--chaserProgress',
-      String(chaserProgress) + "%"
+      String(Math.random() * 100) + "%"
     )
 
-    document.documentElement.style.setProperty(
-      '--backgroundTheme',
-      this.state.backgroundTheme
-    )
+    // element.style.setProperty(
+    //   '--backgroundTheme',
+    //   bg_color
+    // )
 
     return (
       <div className="JourneyDiagram-box">

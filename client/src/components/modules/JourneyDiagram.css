@@ -3,12 +3,11 @@
     --characterProgress: 2%;
     --chaserProgress: 2%;
     --fontSize: 32px;
-    --backgroundTheme: linear-gradient(45deg, rgba(0,66,8,1) 0%, rgba(17,107,17,1) 18%, rgba(181,51,0,1) 40%, rgba(134,0,0,1) 62%, rgba(255,192,212,1) 83%, rgba(255,255,255,1) 100%);
+    --backgroundTheme: linear-gradient(45deg, rgba(0,7,66,1) 0%, rgba(0,0,0,1) 21%, rgba(12,7,62,1) 50%, rgba(5,3,26,1) 80%, rgba(0,6,59,1) 100%);
 }
 
 
 .JourneyDiagram-box {
-    /* background: #0D2A45; */
     background: var(--backgroundTheme);
     border-radius: 10px;
     height: 20vh;
