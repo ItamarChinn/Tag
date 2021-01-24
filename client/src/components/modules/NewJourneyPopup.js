@@ -82,7 +82,7 @@ class NewJourneyPopup extends Component {
         <div className="NewJourneyPopup-popup">
             <div className='NewJourneyPopup-popupinner'> 
             <div className='NewJourneyPopup-content'>
-            <center style={{"font-size": "32px"}}>You are about to embark on a journey! </center>
+            <center style={{"fontSize": "32px"}}>You are about to embark on a journey! </center>
             <center>Start your journey on <DatePicker
                 selected={this.state.startDate}
                 onChange={date => this.setStartDate(date)}
@@ -135,7 +135,7 @@ class NewJourneyPopup extends Component {
               <select name="theme" onChange={e => this.change(e)}> 
                 <option value="space">space</option>
                 <option value="forest">a forest</option>
-                {/* <option value="Month">month</option> */}
+                <option value="ocean">the ocean</option>
               </select>
               <div className = "NewJourneyPopup-buttonContainer">
                 <div className="NewJourneyPopup-button2" onClick={this.props.closePopup}>&nbsp; Cancel &nbsp;</div>

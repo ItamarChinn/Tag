@@ -1,19 +1,14 @@
 
 :root {
-    --characterProgress: 2%;
-    --chaserProgress: 2%;
-    --fontSize: 32px;
-    --backgroundTheme: linear-gradient(45deg, rgba(0,7,66,1) 0%, rgba(0,0,0,1) 21%, rgba(12,7,62,1) 50%, rgba(5,3,26,1) 80%, rgba(0,6,59,1) 100%);
+
+    --fontSize: 45px;
 }
 
 
 .JourneyDiagram-box {
-    background: var(--backgroundTheme);
     border-radius: 10px;
     height: 20vh;
-    /* display: flex; */
     position: relative;
-    /* width: 100%; */
     font-size: var(--fontSize);
     margin: 0;
     padding: 0;
@@ -35,6 +30,7 @@
     position: relative;
     align-self: flex-start;
     justify-content: center;
+    flex-direction: column;
     width: 100%;
     z-index: 10;
 }
@@ -62,7 +58,6 @@
 }
 
 .JourneyDiagram-progresscharacters {
-    /* width: 100%; */
     position: absolute;
     right: calc(100%/12 + var(--fontSize)/2) ;
     left: calc(100%/12 + var(--fontSize)/2) ;
@@ -79,7 +74,6 @@
     position: absolute;
     right: calc(100%/12 + var(--fontSize)/2) ;
     left: calc(100%/12 + var(--fontSize)/2) ;
-    /* width: var(--characterProgress); */
     height: 100%;
     z-index: 1;
     padding: 0; 
@@ -92,7 +86,6 @@
     height: 100%;
     align-items: center;
     justify-content: flex-end;
-    width: var(--characterProgress);
   }
 
   .JourneyDiagram-chaser {
@@ -101,14 +94,12 @@
     height: 100%;
     align-items: center;
     justify-content: flex-end;
-    width: var(--chaserProgress);
   }
 
   .JourneyDiagram-boxbox {
     display: flex;
     justify-self: flex-start;
     align-self: center;
-    width: var(--characterProgress);
     
 }
 
@@ -118,8 +109,16 @@ hr.progress {
     align-self: center;
     height: 5px;
     border: none;
-    /* border-top: 1px solid #eee; */
     width: 100%; 
     background: rgb(36,17,0);
     background: linear-gradient(90deg, rgba(36,17,0,0) 0%, rgba(121,14,9,0.7595413165266106) 36%, rgba(236,109,1,1) 90%, rgba(255,124,0,0) 100%);
+}
+
+.JourneyDiagram-progresstext {
+    /* position: relative; */
+    bottom: 0px;
+    top: 0;
+    font-family: "Baloo 2", cursive;
+    font-size: 24px;
+    color: white;
 }

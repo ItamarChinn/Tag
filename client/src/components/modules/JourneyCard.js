@@ -16,6 +16,8 @@ class JourneyCard extends Component {
       progresses: [],
       totalProgress: 0,
       showProgress: true,
+      expectedTimelyProgress: null,
+      actualTimelyProgress: null,
     }
   }
 
@@ -27,6 +29,9 @@ calculateExpected () {
   let expectedDays = Math.floor(totalTime);
   let expectedProgress = null;
 
+
+  // Anupama - please could you change this to setState variables expectedTimelyProgress and actualTimelyProgress
+  // I pass these to JourneyDiagram after
   switch(this.props.goal_time_unit) {
       case "Day":
         return expectedProgress = expectedDays*this.props.goal_quantity;
@@ -230,6 +235,8 @@ calculateExpected () {
             startDate={start_date}
             endDate={end_date}
             theme={this.props.theme}
+            expectedProgress={this.state.expectedTimelyProgress}
+            actualProgress={this.state.actualTimelyProgress}
           />
 
           <div className="JourneyCard-subcontainer">

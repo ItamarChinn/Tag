@@ -16,8 +16,6 @@ class JourneyDiagram extends Component {
       stationThree: null,
       end: null,
       backgroundTheme: null,
-      characterProgress: null,
-      chaserProgress: null,
     }
   }
 
@@ -32,57 +30,72 @@ class JourneyDiagram extends Component {
         stationTwo: "🪐",
         stationThree: "☄️",
         end: "🎖",
-        backgroundTheme: "linear-gradient(45deg, rgba(0,7,66,1) 0%, rgba(0,0,0,1) 21%, rgba(12,7,62,1) 50%, rgba(5,3,26,1) 80%, rgba(0,6,59,1) 100%);",
+        backgroundTheme: "linear-gradient(45deg, rgba(0,7,66,1) 0%, rgba(0,0,0,1) 21%, rgba(12,7,62,1) 50%, rgba(5,3,26,1) 70%, rgba(0,6,59,1) 100%)",
       })
-    } else {
+    } else if (this.props.theme == "forest") {
       this.setState({
         start: "🏠",
-        character: "🚶🏽‍♀️",
+        character: "🤸",
         chaser: "🐺",
         stationOne: "🌲",
         stationTwo: "🍁",
         stationThree: "🏔️",
         end: "🎖",
-        backgroundTheme: "linear-gradient(45deg, rgba(0,66,8,1) 0%, rgba(17,107,17,1) 18%, rgba(181,51,0,1) 40%, rgba(134,0,0,1) 62%, rgba(255,192,212,1) 83%, rgba(255,255,255,1) 100%);",
+        backgroundTheme: "linear-gradient(45deg, rgba(0,66,8,1) 0%, rgba(17,107,17,1) 18%, rgba(181,51,0,1) 40%, rgba(134,0,0,1) 62%, rgba(255,192,212,1) 70%, rgba(255,255,255,1) 82%, rgba(255,255,255,1) 100%)",
       })
-    }
+    } else if (this.props.theme == "ocean") {
+      this.setState({
+        start: "🏠",
+        character: "⛵",
+        chaser: "🦈",
+        stationOne: "🏖️",
+        stationTwo: "🐬",
+        stationThree: "🐚",
+        end: "🎖",
+        backgroundTheme: "linear-gradient(45deg, rgba(0,23,98,1) 0%, rgba(1,44,153,1) 35%, rgba(0,70,226,1) 63%, rgba(0,159,255,1) 100%)"
+      })
+    };
   };
 
 
   render() {
     let actualFractionComplete = 50;
     let expectedFractionComplete = 25;
-    let characterProgress = actualFractionComplete;
-    let chaserProgress = expectedFractionComplete;
-    let bg_color = this.state.backgroundTheme;
 
-    console.log(bg_color)
 
-    const element = document.documentElement;
+    const bgStyle = {
+      background: this.state.backgroundTheme
+    }
 
-    element.style.setProperty(
-      '--characterProgress',
-      String( Math.random() * 100)  + "%"
-    )
+    const lineProgressStyle = {
+      width: String(actualFractionComplete) + "%",
+    }
 
-    element.style.setProperty(
-      '--chaserProgress',
-      String(Math.random() * 100) + "%"
-    )
+    const characterProgressStyle = {
+      width: String(actualFractionComplete + 2) + "%",
+    }
 
-    // element.style.setProperty(
-    //   '--backgroundTheme',
-    //   bg_color
-    // )
+    const chaserProgressStyle = {
+      width: String(expectedFractionComplete) + "%"
+    }
+
+
 
     return (
-      <div className="JourneyDiagram-box">
+      <div className="JourneyDiagram-box" style={bgStyle}>
         <div className="JourneyDiagram-line">
-          <div className="JourneyDiagram-boxbox">
+          <div className="JourneyDiagram-boxbox" style={lineProgressStyle}>
             <hr className="progress" />
           </div>
         </div>
 
+        <div className="JourneyDiagram-stations" >
+        <div className="JourneyDiagram-progresstext"></div>
+          <div className="JourneyDiagram-progresstext"> 1/4</div>
+          <div className="JourneyDiagram-progresstext" style={{alignSelf: "flex-end"}}> 1/2</div>
+          <div className="JourneyDiagram-progresstext"> 3/4</div>
+          <div className="JourneyDiagram-progresstext"></div>
+        </div>
         <div className="JourneyDiagram-stations" >
           <div className="JourneyDiagram-center">{this.state.start}</div>
           <div className="JourneyDiagram-top">{this.state.stationOne}</div>
@@ -91,8 +104,8 @@ class JourneyDiagram extends Component {
           <div className="JourneyDiagram-center">{this.state.end}</div>
         </div>
         <div className="JourneyDiagram-progresscharacters" >
-          <div className="JourneyDiagram-character">{this.state.character}</div>
-          <div className="JourneyDiagram-chaser">{this.state.chaser}</div>
+          <div className="JourneyDiagram-character" style={characterProgressStyle}>{this.state.character}</div>
+          <div className="JourneyDiagram-chaser" style={chaserProgressStyle}>{this.state.chaser}</div>
         </div>
       </div>
     );
