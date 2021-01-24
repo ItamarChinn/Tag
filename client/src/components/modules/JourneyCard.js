@@ -19,26 +19,6 @@ class JourneyCard extends Component {
     }
   }
 
-  //IN PROGRESS: writing a function to get the difference between two days, and then using that to calculate expected progress
-  //feel free to change for a better constructed function
-
-calculateExpected () {
-  let totalTime = (Date.now() - Date.parse(this.props.startDate))/(60*60*24*1000);
-  let expectedDays = Math.floor(totalTime);
-  let expectedProgress = null;
-
-  switch(this.props.goal_time_unit) {
-      case "Day":
-        return expectedProgress = expectedDays*this.props.goal_quantity;
-      case "Week":
-        return expectedProgress = expectedDays*this.props.goal_quantity/7;
-      case "Month":
-        return expectedProgress = expectedDays*this.props.goal_quantity/30;
-      default:
-        return expectedProgress = "no progress expected"
-    }
-  }
-
 
   componentDidMount() {
     get("/api/progress", {
@@ -57,6 +37,28 @@ calculateExpected () {
     // this.setState({journeys: this.state.journeys.reverse()});
   }
 
+calculateExpected () {
+  let totalTime = (Date.now() - Date.parse(this.props.startDate))/(60*60*24*1000);
+  let expectedDays = Math.floor(totalTime);
+  let expectedProgress = null;
+
+  switch(this.props.goal_time_unit) {
+      case "Day":
+        return expectedProgress = expectedDays*this.props.goal_quantity;
+      case "Week":
+        return expectedProgress = expectedDays*this.props.goal_quantity/7;
+      case "Month":
+        return expectedProgress = expectedDays*this.props.goal_quantity/30;
+      default:
+        return expectedProgress = "no progress expected"
+    }
+  }
+
+  calculateDifference () {
+    let progressDifference = this.calculateExpected() - this.state.totalProgress;
+    return progressDifference;
+
+  }
 
   onIncrement = (progressObject) => {
     // update progress on mongodb
@@ -157,6 +159,7 @@ calculateExpected () {
         onIncrement={this.onIncrement}
         deleteProgress={this.deleteProgress}
         newInputedProgress={progressObj._id === this.state.progresses[0]._id}
+        progressDifference={this.calculateDifference()}
       />));
     } else {
       progressList = <div className="JourneyCard-noprogress">Hit <NewProgressButton
@@ -223,6 +226,9 @@ calculateExpected () {
             <div className="JourneyCard-subtitle">
               {/* {this.props.goal_quantity*Math.floor((Date.now() - Date.parse(this.props.startDate))/(60*60*24*1000))} */}
               Expected Progress: {this.calculateExpected()} {this.props.goal_unit}
+            </div>
+            <div className="JourneyCard-subtitle">
+              Progress Remaining: {this.calculateDifference()} {this.props.goal_unit}
             </div>
           </div>
           <JourneyDiagram
