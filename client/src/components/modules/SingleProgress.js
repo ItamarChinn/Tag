@@ -67,22 +67,29 @@ class SingleProgress extends Component {
     this.setState({showDeletePopup: !this.state.showDeletePopup})
   }
 
-  calculateExpected () {
-    let totalTime = (Date.now() - Date.parse(this.props.startDate))/(60*60*24*1000);
-    let expectedDays = Math.floor(totalTime);
-    let expectedProgress = null;
-  
-    switch(this.props.goal_time_unit) {
-        case "Day":
-          return expectedProgress = expectedDays*this.props.goal_quantity;
-        case "Week":
-          return expectedProgress = expectedDays*this.props.goal_quantity/7;
-        case "Month":
-          return expectedProgress = expectedDays*this.props.goal_quantity/30;
-        default:
-          return expectedProgress = "no progress expected"
-      }
+  messagePicker = () => {
+    let message = "";
+    let positiveList = [
+      "Good Job!",
+      "Nice Going!",
+      "Great Work!",
+      "Keep it Up!"
+    ]
+
+    let negativeList = [
+      "Almost there!",
+      "Keep pushing!",
+      "Great Effort!",
+      "Every bit counts!"
+    ]
+
+    if (this.props.progressDifference <= 0)
+    {
+      return message = positiveList[Math.floor(Math.random()*positiveList.length)];
+    } else {
+      return message = negativeList[Math.floor(Math.random()*negativeList.length)];
     }
+  }
 
   render() {
     
@@ -99,23 +106,6 @@ class SingleProgress extends Component {
       } else {
         progress_number=this.state.progress_quantity
       }
-
-      let positiveList = [
-        "Good Job!",
-        "Nice Going!",
-        "Great Work!",
-        "Keep it Up!"
-      ]
-
-      let negativeList = [
-        "Almost there!",
-        "Keep pushing!",
-        "You suck!",
-        "Every effort counts!"
-      ]
-
-      let positiveMessage = positiveList[Math.floor(Math.random()*positiveList.length)];
-      let negativeMessage = negativeList[Math.floor(Math.random()*negativeList.length)];
 
     return (
       <div className="SingleProgress-divider1">
@@ -136,8 +126,7 @@ class SingleProgress extends Component {
           {timeProgress.getHours()}:{(timeProgress.getMinutes()) < 10 ? "0" + timeProgress.getMinutes() : timeProgress.getMinutes()} &nbsp; {timeProgress.getDate()}-{timeProgress.getMonth()}-{timeProgress.getFullYear()}
         </div>
         <div className="SingleProgress-subcontainer">
-          {this.calculateExpected()}
-          {positiveMessage}
+          {this.messagePicker()}
         </div>
         <div className="SingleProgress-subcontainer">
           {!this.state.editingMode ? 
