@@ -366,7 +366,7 @@ class JourneyCard extends Component {
             {progressList}
             </div>
           </div>}
-            {noprogress}
+            {this.state.showProgress && noprogress}
         </div>
         <br />
       </div>
