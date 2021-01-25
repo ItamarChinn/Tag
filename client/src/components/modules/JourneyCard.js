@@ -40,32 +40,105 @@ class JourneyCard extends Component {
     // this.setState({journeys: this.state.journeys.reverse()});
   }
 
-  calculateExpected() {
-    let totalTime = (Date.now() - Date.parse(this.props.startDate)) / (60 * 60 * 24 * 1000);
-    let expectedDays = Math.floor(totalTime);
-    let expectedProgress = null;
-
-
-    // Anupama - please could you change this to setState variables expectedTimelyProgress and actualTimelyProgress
-    // I pass these to JourneyDiagram after
-
-    switch (this.props.goal_time_unit) {
-      case "Day":
-        return expectedProgress = expectedDays * this.props.goal_quantity;
-      case "Week":
-        return expectedProgress = expectedDays * this.props.goal_quantity / 7;
-      case "Month":
-        return expectedProgress = expectedDays * this.props.goal_quantity / 30;
-      default:
-        return expectedProgress = "no progress expected"
-    }
+  getWeekNumber = (d) => {
+    // Copy date so don't modify original
+    d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    // Set to nearest Thursday: current date + 4 - current day number
+    // Make Sunday's day number 7
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+    // Get first day of year
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    // Calculate full weeks to nearest Thursday
+    var weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    // Return array of year and week number
+    return weekNo;
   }
 
-  calculateDifference() {
-    let progressDifference = this.calculateExpected() - this.state.totalProgress;
-    return progressDifference;
+  // PROGRESS CALCULATIONS:
 
-  }
+
+
+  // TODO: make sure that this only adds what is in date range
+  // for progressObj in progresses:
+  // if timetype == "Day" & getDateDifference(progressObj.datetime) <= 24hrs:
+  //     this.state.current_progress += progressObj.progress_quantity;
+  // else if 
+  // getCurrentProgress = () => {
+  // this.setState({
+  //   current_progress: this.state.current_progress + 5
+  // })
+  // this.state.current_progress += this.props.progress_quantity;
+  //   if (this.resetProgress(this.props.goal_time_unit) === true) {
+  //     this.state.current_progress = null;
+  //   }
+  // } 
+
+  // resetProgress = (goal_time_unit) => {
+  //   let reset_progress = false;
+  //   console.log("hello");
+  //   switch(this.props.goal_time_unit) {
+  //     case 1:
+  //       this.props.goal_time_unit === "day";
+  //         //TODO:  if Date.now().getDate() === progressObj.datetime.getDate() & Date.now().getMonth() === progressObj.datetime.getMonth() & YEAR
+  //         time_of_day = Date.now().getHours();
+  //         if (time_of_day > 0 && time_of_day < 12) {
+  //           // reset_progress = !reset_progress
+  //           if (reset_progress === false) {
+  //             reset_progress = true; } }
+  //           else {
+  //             reset_progress = false; }
+
+  //     case 2:
+  //       this.props.goal_time_unit === "week";
+  //         day_of_week = Date.now().getDay();
+  //         time_of_day = Date.now().getHours();
+  //         // TODO: check if Monday is 1 or 0
+  //         if (day_of_week === 1 && time_of_day > 0) {
+  //           if (reset_progress === false) {
+  //             reset_progress = true; } }
+  //         else if (day_of_week !== 1) {
+  //           reset_progress = false;}
+
+  //     case 3:
+  //       this.props.goal_time_unit === "month"
+  //         day_of_month = Date.now().getDate;
+  //         if (day_of_month > 0 && day_of_month < 2) {
+  //           if (reset_progress === false) {
+  //             reset_progress = true; } }
+  //         else {
+  //           reset_progress = false;
+  //         }
+  //   }
+  //   return reset_progress;
+  // }
+
+
+
+
+  //   // Anupama - please could you change this to setState variables expectedTimelyProgress and actualTimelyProgress
+  //   // I pass these to JourneyDiagram after
+
+  //   switch (this.props.goal_time_unit) {
+  //     case "Day":
+  //       return expectedProgress = expectedDays * this.props.goal_quantity;
+  //     case "Week":
+  //       return expectedProgress = expectedDays * this.props.goal_quantity / 7;
+  //     case "Month":
+  //       return expectedProgress = expectedDays * this.props.goal_quantity / 30;
+  //     default:
+  //       return expectedProgress = "no progress expected"
+  //   }
+  // }
+
+  // calculateDifference = () => {
+  //   let progressDifference = this.calculateExpected() - this.state.totalProgress;
+  //   return progressDifference;
+
+  // }
+
+  // PROGRESS INCREMENTING
+
+
 
   onIncrement = (progressObject) => {
     // update progress on mongodb
@@ -90,11 +163,6 @@ class JourneyCard extends Component {
       });
   }
 
-  toggleToggle = () => {
-    this.setState({ showProgress: !this.state.showProgress })
-  }
-
-
   addNewProgress = () => {
     const body = {
       journeyId: this.props.journeyId,
@@ -111,6 +179,9 @@ class JourneyCard extends Component {
       });
     });
   };
+
+
+
 
   deleteProgress = (progressId) => {
     // update progress on mongodb
@@ -137,54 +208,20 @@ class JourneyCard extends Component {
       });
   }
 
+  // UI TOGGLING & STYLING
+
+  toggleToggle = () => {
+    this.setState({ showProgress: !this.state.showProgress })
+  }
+
 
   capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  /*   resetProgress = (goal_time_unit) => {
-      reset_progress = false;
-      console.log("hello");
-      switch(this.props.goal_time_unit) {
-        case 1:
-          this.props.goal_time_unit === "day";
-            time_of_day = Date.now().getHours();
-            if (time_of_day > 0 && time_of_day < 12) {
-              if (reset_progress === false) {
-                reset_progress = true; } }
-            else {
-              reset_progress = false; }
-  
-        case 2:
-          this.props.goal_time_unit === "week";
-            day_of_week = Date.now().getDay();
-            time_of_day = Date.now().getHours();
-            if (day_of_week === 1 && time_of_day > 0) {
-              if (reset_progress === false) {
-                reset_progress = true; } }
-            else if (day_of_week !== 1) {
-              reset_progress = false;}
-  
-        case 3:
-          this.props.goal_time_unit === "month"
-            day_of_month = Date.now().getDate;
-            if (day_of_month > 0 && day_of_month < 2) {
-              if (reset_progress === false) {
-                reset_progress = true; } }
-            else {
-              reset_progress = false;
-            }
-      }
-      return reset_progress;
-    }
-  
-    getCurrentProgress = () => {
-      this.state.current_progress += this.props.progress_quantity;
-      if (resetProgress(this.props.goal_time_unit) === true) {
-        this.state.current_progress = null;
-      }
-    } */
-
+  lowercaseFirstLetter = (string) => {
+    return string.charAt(0).toLowerCase() + string.slice(1);
+  }
 
   render() {
     let progressList = null;
@@ -202,7 +239,7 @@ class JourneyCard extends Component {
         onIncrement={this.onIncrement}
         deleteProgress={this.deleteProgress}
         newInputedProgress={progressObj._id === this.state.progresses[0]._id}
-        progressDifference={this.calculateDifference()}
+        // progressDifference={this.calculateDifference()}
       />));
     } else {
       progressList = <div className="JourneyCard-noprogress">Hit <NewProgressButton
@@ -226,8 +263,45 @@ class JourneyCard extends Component {
     const start_date = new Date(this.props.startDate);
     const end_date = new Date(this.props.endDate);
 
-    return (
-      <div className="JourneyCard-container">
+    const current_date = new Date();
+    const date = String(current_date.getDate());
+    const week_number = String(this.getWeekNumber(current_date))
+    const month = String(current_date.getMonth());
+    const year = String(current_date.getFullYear());
+    let filtered_progress = null;
+    
+
+    if (this.props.goal_time_unit == "Day") {
+       filtered_progress = this.state.progresses.filter((progressObj) => {
+        const date_of_progress = String(new Date(progressObj.datetime).getDate())
+        const month_of_progress = String(new Date(progressObj.datetime).getMonth())
+        const year_of_progress = String(new Date(progressObj.datetime).getFullYear())
+        return (date === date_of_progress && month === month_of_progress && year === year_of_progress)
+      });
+    } else if (this.props.goal_time_unit == "Week") {
+      filtered_progress = this.state.progresses.filter((progressObj) => {
+
+        return (week_number === this.getWeekNumber(new Date(progressObj.datetime)))
+      })
+    } else if (this.props.goal_time_unit == "Month") {
+      filtered_progress = this.state.progresses.filter((progressObj) => {
+        const month_of_progress = String(new Date(progressObj.datetime).getMonth());
+        const year_of_progress = String(new Date(progressObj.datetime).getFullYear());
+        return (month === month_of_progress && year === year_of_progress)
+      })
+    }
+
+    let actualPeriodicProgress = 0;
+    for (let i = 0; i < filtered_progress.length; i++) {
+      actualPeriodicProgress += filtered_progress[i].progress_quantity;
+    }
+  
+    // let totalTime = (Date.now() - Date.parse(this.props.startDate)) / (60 * 60 * 24 * 1000);
+    // let expectedDays = Math.floor(totalTime);
+    // let expectedProgress = null;
+
+  return(
+      <div className = "JourneyCard-container" >
         <div className="JourneyCard-journey">
 
           <div className="JourneyCard-subcontainer">
@@ -244,15 +318,7 @@ class JourneyCard extends Component {
           </div>
           <div className="JourneyCard-subcontainer">
             <div className="JourneyCard-subtitle">
-              {/* Current Time Period: {this.getCurrentProgress()} {this.props.goal_unit} out of {this.props.goal_frequency * this.props.goal_quantity} this {this.props.goal_time_unit} */}
-                Total Progress: {this.state.totalProgress} {this.props.goal_unit} out of {this.props.goal_frequency * this.props.goal_quantity} this {this.props.goal_time_unit}
-            </div>
-            <div className="JourneyCard-subtitle">
-              {/* {this.props.goal_quantity*Math.floor((Date.now() - Date.parse(this.props.startDate))/(60*60*24*1000))} */}
-              Expected Progress: {this.calculateExpected()} {this.props.goal_unit}
-            </div>
-            <div className="JourneyCard-subtitle">
-              Progress Remaining: {this.calculateDifference()} {this.props.goal_unit}
+            Only {this.props.goal_frequency * this.props.goal_quantity - this.state.totalProgress} {this.props.goal_unit} left this {this.lowercaseFirstLetter(this.props.goal_time_unit)}!
             </div>
           </div>
 
@@ -261,8 +327,10 @@ class JourneyCard extends Component {
             startDate={start_date}
             endDate={end_date}
             theme={this.props.theme}
-            expectedProgress={this.state.expectedTimelyProgress}
-            actualProgress={this.state.actualTimelyProgress}
+            goal_unit={this.props.goal_time_unit}
+            goal_quantity={this.props.goal_quantity}
+            goal_frequency={this.props.goal_frequency}
+            actualProgress={actualPeriodicProgress}
           />
 
           <div className="JourneyCard-subcontainer">
