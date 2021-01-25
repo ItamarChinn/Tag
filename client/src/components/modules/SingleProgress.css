@@ -12,7 +12,7 @@
   
 
 .SingleProgress-decrement {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   font-family: "Baloo 2", cursive;
@@ -23,7 +23,7 @@
   margin: 0px var(--xs);
   color: var(--beige);
   background-color: var(--red);
-  /* display: inline-block; */
+  display: inline-block; 
   border-radius: 50%;
   width: 20px; height: 20px;
   mix-blend-mode: normal;
@@ -32,7 +32,7 @@
 
 
 .SingleProgress-increment {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   font-family: "Baloo 2", cursive;
@@ -43,7 +43,7 @@
   margin: 0px var(--xs);
   color: var(--beige);
   background-color: var(--green);
-  /* display: inline-block; */
+  display: inline-block; 
   border-radius: 50%;
   width: 20px; height: 20px;
   mix-blend-mode: normal;

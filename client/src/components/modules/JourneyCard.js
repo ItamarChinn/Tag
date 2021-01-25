@@ -15,6 +15,7 @@ class JourneyCard extends Component {
     this.state = {
       progresses: [],
       totalProgress: 0,
+      current_progress: 0,
       showProgress: true,
       expectedTimelyProgress: null,
       actualTimelyProgress: null,
@@ -47,6 +48,7 @@ calculateExpected () {
 
   // Anupama - please could you change this to setState variables expectedTimelyProgress and actualTimelyProgress
   // I pass these to JourneyDiagram after
+
   switch(this.props.goal_time_unit) {
       case "Day":
         return expectedProgress = expectedDays*this.props.goal_quantity;
@@ -140,12 +142,48 @@ calculateExpected () {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  /*   weeklyProgress = (totalProgress, this.props.startDate) => {
-      zeroDate = this.props.startDate;
-      if (Date.now - this.props.startDate > 7) {
-        zeroDate = Date.now
-      } 
-      }  */
+/*   resetProgress = (goal_time_unit) => {
+    reset_progress = false;
+    console.log("hello");
+    switch(this.props.goal_time_unit) {
+      case 1:
+        this.props.goal_time_unit === "day";
+          time_of_day = Date.now().getHours();
+          if (time_of_day > 0 && time_of_day < 12) {
+            if (reset_progress === false) {
+              reset_progress = true; } }
+          else {
+            reset_progress = false; }
+
+      case 2:
+        this.props.goal_time_unit === "week";
+          day_of_week = Date.now().getDay();
+          time_of_day = Date.now().getHours();
+          if (day_of_week === 1 && time_of_day > 0) {
+            if (reset_progress === false) {
+              reset_progress = true; } }
+          else if (day_of_week !== 1) {
+            reset_progress = false;}
+
+      case 3:
+        this.props.goal_time_unit === "month"
+          day_of_month = Date.now().getDate;
+          if (day_of_month > 0 && day_of_month < 2) {
+            if (reset_progress === false) {
+              reset_progress = true; } }
+          else {
+            reset_progress = false;
+          }
+    }
+    return reset_progress;
+  }
+
+  getCurrentProgress = () => {
+    this.state.current_progress += this.props.progress_quantity;
+    if (resetProgress(this.props.goal_time_unit) === true) {
+      this.state.current_progress = null;
+    }
+  } */
 
 
   render() {
@@ -188,27 +226,6 @@ calculateExpected () {
     const start_date = new Date(this.props.startDate);
     const end_date = new Date(this.props.endDate);
 
-
-    // getCurrentProgress = () => {
-    // goal_type = (Day/Week/Month)
-    // IF DAY: 
-    //     Monday - Sunday
-
-
-    // ELSE IF WEEK:
-    //     todayDayofWeek = Date.now().getDay()     5
-    //     todayDate = Date.now().getDate()        22
-
-    //     MondayDate = todayDate - todayDayofWeek  (add logic if this is negative)   22-5 = 17
-    //     SundayDate = MondayDate + 7 % 31 if Date.now().getMonth() # if 31 day month else 30 day month 17 + 7 = 24
-    //     progress_this_week = null;
-    //     for i in range(progressList):
-    //         if  MondayDate < todayDate < FridayDate:
-    //         progress_this_week += progressObj[i].progress
-
-    // ELSE IF MONTH:
-    // }
-
     return (
       <div className="JourneyCard-container">
         <div className="JourneyCard-journey">
@@ -224,8 +241,8 @@ calculateExpected () {
                 {this.props.goal_quantity} {this.props.goal_unit}, {this.props.goal_frequency} times per {this.props.goal_time_unit}
               </div>
               <div className="JourneyCard-subtitle">
-                {/* {this.getCurrentProgress()} */}
-                {this.state.totalProgress} {this.props.goal_unit} out of {this.props.goal_frequency * this.props.goal_quantity} this {this.props.goal_time_unit}
+                {/* Current Time Period: {this.getCurrentProgress()} {this.props.goal_unit} out of {this.props.goal_frequency * this.props.goal_quantity} this {this.props.goal_time_unit} */}
+                Total Progress: {this.state.totalProgress} {this.props.goal_unit} out of {this.props.goal_frequency * this.props.goal_quantity} this {this.props.goal_time_unit}
               </div>
             </div>
             <div className="JourneyCard-subtitle">
