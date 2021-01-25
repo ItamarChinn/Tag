@@ -15,10 +15,8 @@ class JourneyCard extends Component {
     this.state = {
       progresses: [],
       totalProgress: 0,
-      current_progress: 0,
+      // current_progress: 0,
       showProgress: true,
-      expectedTimelyProgress: null,
-      actualTimelyProgress: null,
     }
   }
 
@@ -144,7 +142,8 @@ class JourneyCard extends Component {
     // update progress on mongodb
     post("/api/editprogress", {
       progressId: progressObject.progressId,
-      updatedProgress: progressObject.progress_quantity
+      updatedProgress: progressObject.progress_quantity,
+      editingMode: false,
     })
       // update progress in state 
       .then((progressObj) => {
@@ -169,6 +168,7 @@ class JourneyCard extends Component {
       progress_quantity: 0,
       goal_unit: this.props.goal_unit,
       datetime: Date.now(),
+      editingMode: true,
     };
 
     post("/api/progress", body).then((progressObj) => {
@@ -226,9 +226,11 @@ class JourneyCard extends Component {
   render() {
     let progressList = null;
     let newProgressButton = null;
+    let noprogress = null;
     const hasProgress = this.state.progresses.length !== 0;
 
     if (hasProgress) {
+      noprogress = null;
       progressList = this.state.progresses.map((progressObj) =>
       (<SingleProgress key={`Card_${progressObj._id}`}
         journeyId={progressObj.journeyId}
@@ -238,11 +240,14 @@ class JourneyCard extends Component {
         datetime={progressObj.datetime}
         onIncrement={this.onIncrement}
         deleteProgress={this.deleteProgress}
-        newInputedProgress={progressObj._id === this.state.progresses[0]._id}
+        newInputedProgress={progressObj.editingMode}
+
+        // newInputedProgress={progressObj._id === this.state.progresses[0]._id}
         // progressDifference={this.calculateDifference()}
       />));
     } else {
-      progressList = <div className="JourneyCard-noprogress">Hit <NewProgressButton
+      progressList = null;
+      noprogress = <div className="JourneyCard-noprogress">Hit <NewProgressButton
         addNewProgress={this.addNewProgress}
         userId={this.props.userId}
         journeyId={this.props.journeyId}
@@ -317,9 +322,14 @@ class JourneyCard extends Component {
             </div>
           </div>
           <div className="JourneyCard-subcontainer">
+            
+            {(this.props.goal_frequency * this.props.goal_quantity - this.state.totalProgress >= 0) && 
             <div className="JourneyCard-subtitle">
-            Only {this.props.goal_frequency * this.props.goal_quantity - this.state.totalProgress} {this.props.goal_unit} left this {this.lowercaseFirstLetter(this.props.goal_time_unit)}!
-            </div>
+              Only {this.props.goal_frequency * this.props.goal_quantity - this.state.totalProgress} {this.props.goal_unit} left this {this.lowercaseFirstLetter(this.props.goal_time_unit)}!</div>}
+
+          {(this.props.goal_frequency * this.props.goal_quantity - this.state.totalProgress < 0) && <div className="JourneyCard-subtitle">
+          Nice job. You're {Math.abs(this.props.goal_frequency * this.props.goal_quantity - this.state.totalProgress)} {this.props.goal_unit} over your goal this {this.lowercaseFirstLetter(this.props.goal_time_unit)}!
+          </div>}
           </div>
 
           <JourneyDiagram
@@ -345,16 +355,18 @@ class JourneyCard extends Component {
           </div>
 
           {this.state.showProgress && <div className="JourneyCard-progresslist">
-            <div className="JourneyCard-subcontainer">
-              <div className="JourneyCard-subtitle"> {this.capitalizeFirstLetter(this.props.goal_unit)} </div>
-              <div className="JourneyCard-subtitle"> Time </div>
-              <div className="JourneyCard-subtitle"> Comments </div>
-              <div className="JourneyCard-subtitle"> Edit </div>
-            </div>
-            <hr className="here" />
+          <div className="JourneyCard-subcontainerprogress">
+            {/* <div className="JourneyCard-subcontainer"> */}
+              <div className="JourneyCard-subtitle_left"> {this.capitalizeFirstLetter(this.props.goal_unit)} </div>
+              <div className="JourneyCard-subtitle_center"> Time </div>
+              <div className="JourneyCard-subtitle_center"> Comments </div>
+              <div className="JourneyCard-subtitle_right"> Edit </div>
+            {/* </div> */}
+            {/* <hr className="here" /> */}
             {progressList}
+            </div>
           </div>}
-
+            {noprogress}
         </div>
         <br />
       </div>

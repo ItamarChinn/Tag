@@ -66,6 +66,7 @@ router.post("/editprogress", (req, res) => {
   Progress.findById(req.body.progressId).then((newProgress) => {
     if (newProgress) {
       newProgress.progress_quantity = req.body.updatedProgress;
+      newProgress.editingMode = req.body.editingMode;
       newProgress.save().then((progress) => res.send(progress));
     }
     else {console.log("Could not find progress")}
@@ -78,7 +79,8 @@ router.post("/progress", auth.ensureLoggedIn, (req, res) => {
     journeyId: req.body.journeyId,
     progress_quantity: req.body.progress_quantity,
     goal_unit: req.body.goal_unit,
-    datetime: req.body.datetime
+    datetime: req.body.datetime,
+    editingMode: req.body.editingMode,
   });
 
   newProgress.save().then((progress) => res.send(progress));

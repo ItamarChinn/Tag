@@ -5,9 +5,19 @@
     flex-direction: row;
   }
 
-.SingleProgress-subcontainer {
-  display: flex;
-  align-items: center;
+.SingleProgress-subcontainer_left {
+  display: grid;
+  justify-self: start;
+}
+
+.SingleProgress-subcontainer_center {
+  display: grid;
+  justify-self: center;
+}
+
+.SingleProgress-subcontainer_right {
+  display: grid;
+  justify-self: end;
 }
   
 

@@ -88,19 +88,11 @@ class JourneyDiagram extends Component {
             <hr className="progress" />
           </div>
         </div>
-
-        <div className="JourneyDiagram-stations" >
-        <div className="JourneyDiagram-progresstext"></div>
-          <div className="JourneyDiagram-progresstext"> 1/4</div>
-          <div className="JourneyDiagram-progresstext" style={{alignSelf: "flex-end"}}> 1/2</div>
-          <div className="JourneyDiagram-progresstext"> 3/4</div>
-          <div className="JourneyDiagram-progresstext"></div>
-        </div>
         <div className="JourneyDiagram-stations" >
           <div className="JourneyDiagram-center">{this.state.start}</div>
-          <div className="JourneyDiagram-top">{this.state.stationOne}</div>
-          <div className="JourneyDiagram-bottom">{this.state.stationTwo}</div>
-          <div className="JourneyDiagram-top">{this.state.stationThree}</div>
+          <div className="JourneyDiagram-top"><div><div className="JourneyDiagram-progresstext"> 1/4</div>{this.state.stationOne}</div></div>
+          <div className="JourneyDiagram-bottom"><div><div>{this.state.stationTwo} <div className="JourneyDiagram-progresstext"> Halfway!</div></div></div></div>
+          <div className="JourneyDiagram-top"><div className="JourneyDiagram-progresstext"> 3/4</div>{this.state.stationThree}</div>
           <div className="JourneyDiagram-center">{this.state.end}</div>
         </div>
         <div className="JourneyDiagram-progresscharacters" >

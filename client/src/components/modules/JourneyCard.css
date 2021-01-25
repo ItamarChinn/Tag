@@ -28,6 +28,31 @@
   font-size: 30px;
 }
 
+.JourneyCard-subtitle_left {
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 20px;
+  display: grid;
+  justify-self: start;
+}
+
+.JourneyCard-subtitle_center {
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 20px;
+  display: grid;
+  justify-self: center;
+}
+
+.JourneyCard-subtitle_right {
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 20px;
+  display: grid;
+  justify-self: end;
+}
+
+
 .JourneyCard-subtitle {
   font-family:"Baloo 2", cursive;
   font-weight: 700;
@@ -69,13 +94,18 @@
 .JourneyCard-subcontainer {
   display: flex;
   justify-content: space-between;
+  /* flex-grow: 1; */
 }
 
-/* .JourneyCard-subcontainer4 {
-  border-radius: 20px;
-  background: #0D2A45;
-  border-radius: 10px;
-} */
+.JourneyCard-subcontainerprogress {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-auto-rows: min-content;
+  /* justify-content: space-between;
+  align-items: space-between;
+  flex-direction: column; */
+  
+}
 
 .JourneyCard-subcontainer3 {
   position: relative;
@@ -101,15 +131,18 @@
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
+  font-size: 30px; 
+  display: flex;
   line-height: 1;
   text-transform: none;
   letter-spacing: normal;
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
-  border-radius: 200px;
+  border-radius: 60%;
+  text-align: center;
+  align-items: center;
+  justify-items: center;
 
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
