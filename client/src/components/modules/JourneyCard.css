@@ -20,7 +20,7 @@
 
 .JourneyCard-title {
   display: flex;
-  text-align: center;
+  text-align: flex-start;
   /* margin: var(--s);
   padding: var(--xs); */
   font-family:"Baloo 2", cursive;
