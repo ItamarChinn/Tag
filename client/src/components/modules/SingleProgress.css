@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* flex-direction: row; */
+    flex-direction: row;
   }
 
 .SingleProgress-subcontainer {
@@ -12,9 +12,10 @@
   
 
 .SingleProgress-decrement {
-  /* display: flex; */
+  display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   font-family: "Baloo 2", cursive;
   font-size: 15px;
   padding: var(--xs);
@@ -32,9 +33,10 @@
 
 
 .SingleProgress-increment {
-  /* display: flex; */
+  display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   font-family: "Baloo 2", cursive;
   font-size: 15px;
   padding: var(--xs);
