@@ -1,5 +1,5 @@
 .Dashboard-title {
-    display: inline-block;
+    display: inline-block; 
     text-align: center;
     color: var(--beige);
     font-size: 30px;
@@ -23,4 +23,10 @@
     margin: auto;
     padding: var(--s);
     padding-top: 120px;
+}
+
+.Dashboard-container2 {
+    max-width: 80%;
+    margin: auto;
+    padding: var(--s);
 }

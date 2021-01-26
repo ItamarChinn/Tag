@@ -25,12 +25,14 @@ class NavBar extends Component {
         </div>
         <div className="NavBar-linkContainer u-inlineBlock">
         <div className="NavBar-box2 u-inlineBlock">
-          <div className="NavBar-link u-inlineBlock" onClick={() => alert("Coming soon!")}>Settings</div>
           <GoogleLogout
               clientId={GOOGLE_CLIENT_ID}
               buttonText="Logout"
               onLogoutSuccess={this.props.handleLogout}
               onFailure={(err) => console.log(err)}
+              render={renderProps => (
+                <button className = ".NavBar-logout" onClick={renderProps.onClick} disabled={renderProps.disabled}>Logout</button>
+              )}
             />
         </div>
         </div>

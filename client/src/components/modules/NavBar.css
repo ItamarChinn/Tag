@@ -45,9 +45,25 @@
   justify-content: flex-end;
   align-items: center;
   margin: var(--xs) var(--m);
+  color:  var(--darkblue);
+  font-size: 20px;
+  font-family: "Baloo 2", cursive;
+  font-weight: 300;
+  margin: var(--s);
 
 }
 
+.NavBar-logout {
+  display: flex; 
+  justify-content: flex-end;
+  align-items: center;
+  margin: var(--xs) var(--m);
+  color:  var(--darkblue);
+  background-color: var(--beige);
+  font-size: 20px;
+  font-family: "Baloo 2", cursive;
+  font-weight: 300;
+}
 .NavBar-box {
   display: inline-block;
   background-color: var(--beige);

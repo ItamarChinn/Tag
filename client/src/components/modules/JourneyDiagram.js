@@ -59,8 +59,12 @@ class JourneyDiagram extends Component {
 
 
   render() {
-    let actualFractionComplete = 50;
-    let expectedFractionComplete = 25;
+    let actualFractionComplete = this.props.actualProgress/this.props.goal_quantity;
+    if (actualFractionComplete > 1) {
+      actualFractionComplete = 1;
+    }
+
+    let expectedFractionComplete = this.props.expectedProgress / this.props.goal_quantity;
 
 
     const bgStyle = {
@@ -68,15 +72,15 @@ class JourneyDiagram extends Component {
     }
 
     const lineProgressStyle = {
-      width: String(actualFractionComplete) + "%",
+      width: String(100*actualFractionComplete) + "%",
     }
 
     const characterProgressStyle = {
-      width: String(actualFractionComplete + 2) + "%",
+      width: String(100*actualFractionComplete + 2) + "%",
     }
 
     const chaserProgressStyle = {
-      width: String(expectedFractionComplete) + "%"
+      width: String(100*expectedFractionComplete) + "%"
     }
 
 

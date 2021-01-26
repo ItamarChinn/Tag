@@ -39,7 +39,7 @@ class Dashboard extends Component {
           completed={false}
           togglePopup={this.togglePopup}/>
         </div>
-        <div className="Dashboard-container">
+        <div className="Dashboard-container2">
           <div className="Dashboard-title"> &nbsp; &nbsp; Your Completed Journeys &nbsp; &nbsp; </div>
           <JourneyFeed 
           userId={this.state.userId}

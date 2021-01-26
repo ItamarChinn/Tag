@@ -54,8 +54,8 @@
 
 
 .JourneyCard-subtitle {
-  font-family:"Baloo 2", cursive;
-  font-weight: 700;
+  font-family: 'Allerta', sans-serif;
+  font-weight: 300;
   font-size: 20px;
 }
 
@@ -94,6 +94,7 @@
 .JourneyCard-subcontainer {
   display: flex;
   justify-content: space-between;
+  margin: var(--xs);
   /* flex-grow: 1; */
 }
 

@@ -299,6 +299,7 @@ class JourneyCard extends Component {
     let actualPeriodicProgress = 0;
     for (let i = 0; i < filtered_progress.length; i++) {
       actualPeriodicProgress += filtered_progress[i].progress_quantity;
+      console.log(actualPeriodicProgress);
     }
   
     // let totalTime = (Date.now() - Date.parse(this.props.startDate)) / (60 * 60 * 24 * 1000);
@@ -328,7 +329,7 @@ class JourneyCard extends Component {
               Only {this.props.goal_frequency * this.props.goal_quantity - this.state.totalProgress} {this.props.goal_unit} left this {this.lowercaseFirstLetter(this.props.goal_time_unit)}!</div>}
 
           {(this.props.goal_frequency * this.props.goal_quantity - this.state.totalProgress < 0) && <div className="JourneyCard-subtitle">
-          Nice job. You're {Math.abs(this.props.goal_frequency * this.props.goal_quantity - this.state.totalProgress)} {this.props.goal_unit} over your goal this {this.lowercaseFirstLetter(this.props.goal_time_unit)}!
+          Nice job! You're {Math.abs(this.props.goal_frequency * this.props.goal_quantity - this.state.totalProgress)} {this.props.goal_unit} over your goal this {this.lowercaseFirstLetter(this.props.goal_time_unit)}!
           </div>}
           </div>
 
@@ -342,7 +343,6 @@ class JourneyCard extends Component {
             goal_frequency={this.props.goal_frequency}
             actualProgress={actualPeriodicProgress}
           />
-
           <div className="JourneyCard-subcontainer">
             <div className="JourneyCard-subtitle"> Start {start_date.getDate()} {monthNames[start_date.getMonth()]} {start_date.getFullYear()} </div>
             <div className="JourneyCard-subtitle"> Finish {end_date.getDate()} {monthNames[end_date.getMonth()]} {end_date.getFullYear()} </div>
