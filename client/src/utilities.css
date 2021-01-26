@@ -47,6 +47,11 @@ body {
   font-weight: 200;
 }
 
+input {
+  font-family: 'Allerta', sans-serif !important;
+  text-align: center;
+}
+
 titles {
   margin: var(--s);
   padding: var(--xs);

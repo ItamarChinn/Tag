@@ -1,6 +1,7 @@
 ﻿import React, { Component } from "react";
 import { MdDelete, MdClose, MdDone, MdModeEdit } from 'react-icons/md';
 import ConfirmDeletePopup from "../modules/ConfirmDeletePopup.js";
+import DatePicker from "react-datepicker";
 import "./SingleProgress.css";
 
 
@@ -19,6 +20,8 @@ class SingleProgress extends Component {
       editingMode: false,
       progress_quantity: null,
       showDeletePopup: false,
+      comment: null,
+      datetime: null,
     }
   }
 
@@ -27,6 +30,8 @@ class SingleProgress extends Component {
     this.setState({
       progress_quantity: this.props.progress_quantity,
       editingMode: this.props.newInputedProgress,
+      datetime: this.props.datetime,
+      comment: this.props.comment,
     })
   }
 
@@ -43,11 +48,14 @@ class SingleProgress extends Component {
   }
 
   toggleEditingModeSave = () => {
-    if (this.state.editingMode) {
+    if (this.state.progress_quantity < 0) { alert("Please enter positive progress only") }
+    else if (this.state.editingMode) {
       this.setState({ editingMode: !this.state.editingMode });
       const updatedProgressObject = {
         progressId: this.props.progressId,
         progress_quantity: this.state.progress_quantity,
+        datetime: this.state.datetime,
+        comment: this.state.comment,
       }
       this.props.onIncrement(updatedProgressObject)
     } else {
@@ -59,65 +67,64 @@ class SingleProgress extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state);
   }
+
+
 
   toggleEditingModeCancel = () => {
     // if (this.state.progress_quantity === 0) {
     //   this.toggleEditingModeDelete()
     // } else {
     this.setState({ editingMode: !this.state.editingMode });
-  // }
+    // }
   }
 
   toggleEditingModeDelete = () => {
     this.setState({ showDeletePopup: !this.state.showDeletePopup })
   }
 
-  messagePicker = () => {
-    let message = "";
-    let positiveList = [
-      "Good Job!",
-      "Nice Going!",
-      "Great Work!",
-      "Keep it Up!"
-    ]
-
-    let negativeList = [
-      "Almost there!",
-      "Keep pushing!",
-      "Great Effort!",
-      "Every bit counts!"
-    ]
-
-    if (this.props.progressDifference <= 0) {
-      return message = positiveList[Math.floor(Math.random() * positiveList.length)];
-    } else {
-      return message = negativeList[Math.floor(Math.random() * negativeList.length)];
-    }
+  setDateTime = (date) => {
+    this.setState({
+      datetime: new Date(date)
+    })
   }
 
   render() {
-
+    let timeStamp = null;
+    let commentBox = null;
+    
     // Date parsing
-    const timeProgress = new Date(this.props.datetime);
+    const timeProgress = new Date(Date.parse(this.state.datetime))
+    console.log("Date:")
+    console.log(timeProgress.getDate())
 
     let progress_number;
     if (this.state.editingMode) {
-      progress_number = (<input type="number"
+      progress_number = (<input className="SingleProgress-numberinput"
+        type="number"
         name="progress_quantity"
+        min={0}
         placeholder={this.state.progress_quantity}
         onChange={e => this.change(e)} />)
+      timeStamp = (<DatePicker
+        selected={Date.parse(this.state.datetime)}
+        onChange={date => this.setDateTime(date)}
+        timeIntervals={15}
+        timeInputLabel="Time:"
+        dateFormat="MM/dd/yyyy h:mm aa"
+        showTimeSelect
+      />)
+      commentBox = <input type="text" name="comment" placeholder={this.state.comment} onChange={e => this.change(e)}/>
     } else {
-      progress_number = this.state.progress_quantity
+      progress_number = this.state.progress_quantity;
+      timeStamp = <>{timeProgress.getHours()} :{(timeProgress.getMinutes()) < 10 ? "0" + timeProgress.getMinutes() : timeProgress.getMinutes()} &nbsp; {timeProgress.getDate()}-{timeProgress.getMonth() + 1}-{timeProgress.getFullYear()}</>
+      commentBox = this.state.comment;
     }
 
     return (
       <>
-        {/* <div className="SingleProgress-divider1"> */}
-        {/* <div className="SingleProgress-container"> */}
         <div className="SingleProgress-subcontainer_left u-inlineBlock">
-          {(this.state.editingMode) &&
+          {(this.state.editingMode && this.state.progress_quantity > 0) &&
             <div className="SingleProgress-decrement u-inlineBlock" onClick={this.decrementDown}>
               -
           </div>}
@@ -129,10 +136,10 @@ class SingleProgress extends Component {
         </div>
 
         <div className="SingleProgress-subcontainer_center">
-          {timeProgress.getHours()}:{(timeProgress.getMinutes()) < 10 ? "0" + timeProgress.getMinutes() : timeProgress.getMinutes()} &nbsp; {timeProgress.getDate()}-{timeProgress.getMonth() + 1}-{timeProgress.getFullYear()}
+          {timeStamp}
         </div>
         <div className="SingleProgress-subcontainer_center">
-          {this.messagePicker()}
+          {commentBox}
         </div>
         <div className="SingleProgress-subcontainer_right">
           {!this.state.editingMode ?
@@ -148,12 +155,6 @@ class SingleProgress extends Component {
               deleteProgress={this.props.deleteProgress}
               closePopup={this.toggleEditingModeDelete} /> : null}
         </div>
-        {/* </div> */}
-        {/* <div className="SingleProgress-divider"> */}
-
-          {/* <hr className="here" /> */}
-        {/* </div> */}
-        {/* </div> */}
       </>
     );
   }

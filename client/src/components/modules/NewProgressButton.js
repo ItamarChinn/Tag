@@ -22,10 +22,11 @@ class NewProgressButton extends Component {
       <center className="NewProgressButton-centering">
       <Reward
         ref={(ref) => this.reward = ref}
-        type='memphis'
+        type='emoji'
         config={{
-          lifetime: 50,
-          
+          lifetime: 200,
+          spread: 200,
+          emoji:[ "🌎", "🚀","🛸","🌔","🪐","☄️","🎖"]
         }}
       > 
         <div className="NewProgressButton-button" onClick={this.clicked}>
