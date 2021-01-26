@@ -6,6 +6,7 @@ const ProgressSchema = new mongoose.Schema({
         goal_unit: String, 
         datetime: Date,
         editingMode: Boolean,
+        comment: String,
     });
 
 // compile model from schema

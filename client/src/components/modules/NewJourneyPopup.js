@@ -3,8 +3,7 @@ import "./NewJourneyPopup.css";
 import {get, post} from "../../utilities";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Reward from 'react-rewards';
-import Confetti from 'react-confetti';
+
 
 /**
  * New Journey button.
@@ -89,12 +88,18 @@ class NewJourneyPopup extends Component {
             <center>Start your journey on <DatePicker
                 selected={this.state.startDate}
                 onChange={date => this.setStartDate(date)}
+                popperModifiers={{
+                  computeStyle: { gpuAcceleration: false }
+              }}
                 showYearDropdown
                 />
                 <br />
             and end it on <DatePicker
                 selected={this.state.endDate}
                 onChange={date => this.setEndDate(date)}
+                popperModifiers={{
+                  computeStyle: { gpuAcceleration: false }
+              }}
                 showYearDropdown
                 />
                 <br />

@@ -58,15 +58,17 @@ router.get("/progress", (req, res) => {
   })
 });
 
-router.post("/deleteprogress", (req, res) => {
+router.post("/deleteprogress", auth.ensureLoggedIn, (req, res) => {
   Progress.findByIdAndDelete(req.body.progressId).then((progress) => res.send(progress));
 });
 
-router.post("/editprogress", (req, res) => {
+router.post("/editprogress", auth.ensureLoggedIn, (req, res) => {
   Progress.findById(req.body.progressId).then((newProgress) => {
     if (newProgress) {
       newProgress.progress_quantity = req.body.updatedProgress;
       newProgress.editingMode = req.body.editingMode;
+      newProgress.datetime = req.body.datetime;
+      newProgress.comment = req.body.comment;
       newProgress.save().then((progress) => res.send(progress));
     }
     else {console.log("Could not find progress")}
@@ -81,6 +83,7 @@ router.post("/progress", auth.ensureLoggedIn, (req, res) => {
     goal_unit: req.body.goal_unit,
     datetime: req.body.datetime,
     editingMode: req.body.editingMode,
+    comment: req.body.comment,
   });
 
   newProgress.save().then((progress) => res.send(progress));

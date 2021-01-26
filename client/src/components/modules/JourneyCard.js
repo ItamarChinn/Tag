@@ -34,7 +34,6 @@ class JourneyCard extends Component {
         });
         this.setState({ showProgress: this.props.isMostRecent })
       });
-    // this.setState({journeys: this.state.journeys.reverse()});
   }
 
   getWeekNumber = (d) => {
@@ -59,6 +58,8 @@ class JourneyCard extends Component {
       progressId: progressObject.progressId,
       updatedProgress: progressObject.progress_quantity,
       editingMode: false,
+      datetitme: progressObject.datetime,
+      comment: progressObject.comment,
     })
       // update progress in state 
       .then((progressObj) => {
@@ -84,6 +85,7 @@ class JourneyCard extends Component {
       goal_unit: this.props.goal_unit,
       datetime: Date.now(),
       editingMode: true,
+      comment: this.messagePicker(),
     };
 
     post("/api/progress", body).then((progressObj) => {
@@ -107,7 +109,6 @@ class JourneyCard extends Component {
     })
       // update progress in state 
       .then((progress) => {
-        console.log(progress);
         // iterate over the list of progress objects and if I find one whos ID is 
         // the same as the one I just edited on the DB then update it 
         let newTotalProgress = this.state.totalProgress;
@@ -140,6 +141,31 @@ class JourneyCard extends Component {
     return string.charAt(0).toLowerCase() + string.slice(1);
   }
 
+  // Comment handling
+  messagePicker = () => {
+    let message = "";
+    let positiveList = [
+      "Good Job!",
+      "Nice Going!",
+      "Great Work!",
+      "Keep it Up!"
+    ]
+
+    let negativeList = [
+      "Almost there!",
+      "Keep pushing!",
+      "Great Effort!",
+      "Every bit counts!"
+    ]
+
+    if (this.props.progressDifference <= 0) {
+      return message = positiveList[Math.floor(Math.random() * positiveList.length)];
+    } else {
+      return message = negativeList[Math.floor(Math.random() * negativeList.length)];
+    }
+  }
+
+
   render() {
     let progressList = null;
     let newProgressButton = null;
@@ -158,7 +184,7 @@ class JourneyCard extends Component {
         onIncrement={this.onIncrement}
         deleteProgress={this.deleteProgress}
         newInputedProgress={progressObj.editingMode}
-
+        comment={progressObj.comment}
       // newInputedProgress={progressObj._id === this.state.progresses[0]._id}
       // progressDifference={this.calculateDifference()}
       />));
@@ -216,7 +242,6 @@ class JourneyCard extends Component {
     let actualPeriodicProgress = 0;
     for (let i = 0; i < filtered_progress.length; i++) {
       actualPeriodicProgress += filtered_progress[i].progress_quantity;
-      console.log(actualPeriodicProgress);
     }
 
 
