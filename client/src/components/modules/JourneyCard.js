@@ -83,11 +83,12 @@ class JourneyCard extends Component {
       journeyId: this.props.journeyId,
       progress_quantity: 0,
       goal_unit: this.props.goal_unit,
-      datetime: Date.now(),
+      datetime: new Date(),
       editingMode: true,
       comment: this.messagePicker(),
     };
-
+    console.log("Now:");
+    console.log(body.datetime)
     post("/api/progress", body).then((progressObj) => {
       this.setState({
         progresses: [progressObj].concat(this.state.progresses),
@@ -255,7 +256,7 @@ class JourneyCard extends Component {
             </div>
             <div className="JourneyCard-subcontainer2">
               <div className="JourneyCard-title">
-                {this.props.goal_quantity} {this.props.goal_unit}, {this.props.goal_frequency} times per {this.props.goal_time_unit}
+                {this.props.goal_quantity} {this.props.goal_unit}, {this.props.goal_frequency} times per {this.lowercaseFirstLetter(this.props.goal_time_unit)}
               </div>
             </div>
           </div>

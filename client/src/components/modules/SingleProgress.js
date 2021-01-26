@@ -5,8 +5,6 @@ import DatePicker from "react-datepicker";
 import "./SingleProgress.css";
 
 
-
-
 /**
  * This is one line of progress in a journey
  * It inherits its properties from JourneyCard
@@ -48,7 +46,7 @@ class SingleProgress extends Component {
   }
 
   toggleEditingModeSave = () => {
-    if (this.state.progress_quantity < 0) { alert("Please enter positive progress only") }
+    if (this.state.progress_quantity < 0) { alert("Must move forwards! Please enter positive progress") }
     else if (this.state.editingMode) {
       this.setState({ editingMode: !this.state.editingMode });
       const updatedProgressObject = {
@@ -107,7 +105,7 @@ class SingleProgress extends Component {
         placeholder={this.state.progress_quantity}
         onChange={e => this.change(e)} />)
       timeStamp = (<DatePicker
-        selected={Date.parse(this.state.datetime)}
+        selected={new Date(this.state.datetime)}
         onChange={date => this.setDateTime(date)}
         timeIntervals={15}
         timeInputLabel="Time:"

@@ -77,6 +77,7 @@ router.post("/editprogress", auth.ensureLoggedIn, (req, res) => {
 });
 
 router.post("/progress", auth.ensureLoggedIn, (req, res) => {
+  console.log(req.body.datetime);
   const newProgress = new Progress({
     journeyId: req.body.journeyId,
     progress_quantity: req.body.progress_quantity,
