@@ -58,7 +58,7 @@ class JourneyCard extends Component {
       progressId: progressObject.progressId,
       updatedProgress: progressObject.progress_quantity,
       editingMode: false,
-      datetitme: progressObject.datetime,
+      datetime: progressObject.datetime,
       comment: progressObject.comment,
     })
       // update progress in state 
@@ -87,8 +87,6 @@ class JourneyCard extends Component {
       editingMode: true,
       comment: this.messagePicker(),
     };
-    console.log("Now:");
-    console.log(body.datetime)
     post("/api/progress", body).then((progressObj) => {
       this.setState({
         progresses: [progressObj].concat(this.state.progresses),

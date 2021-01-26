@@ -65,6 +65,7 @@ router.post("/deleteprogress", auth.ensureLoggedIn, (req, res) => {
 router.post("/editprogress", auth.ensureLoggedIn, (req, res) => {
   Progress.findById(req.body.progressId).then((newProgress) => {
     if (newProgress) {
+      console.log(req.body.datetime)
       newProgress.progress_quantity = req.body.updatedProgress;
       newProgress.editingMode = req.body.editingMode;
       newProgress.datetime = req.body.datetime;
