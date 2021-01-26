@@ -30,7 +30,7 @@ class JourneyDiagram extends Component {
         stationTwo: "🪐",
         stationThree: "☄️",
         end: "🎖",
-        backgroundTheme: "linear-gradient(45deg, rgba(0,7,66,1) 0%, rgba(0,0,0,1) 21%, rgba(12,7,62,1) 50%, rgba(5,3,26,1) 70%, rgba(0,6,59,1) 100%)",
+        backgroundTheme: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(32,104,172,1) 100%, rgba(0,212,255,1) 100%)",
       })
     } else if (this.props.theme == "forest") {
       this.setState({
@@ -41,7 +41,7 @@ class JourneyDiagram extends Component {
         stationTwo: "🍁",
         stationThree: "🏔️",
         end: "🎖",
-        backgroundTheme: "linear-gradient(45deg, rgba(0,66,8,1) 0%, rgba(17,107,17,1) 18%, rgba(181,51,0,1) 40%, rgba(134,0,0,1) 62%, rgba(255,192,212,1) 70%, rgba(255,255,255,1) 82%, rgba(255,255,255,1) 100%)",
+        backgroundTheme: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(30,74,28,1) 100%, rgba(0,212,255,1) 100%)",
       })
     } else if (this.props.theme == "ocean") {
       this.setState({
