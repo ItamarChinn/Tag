@@ -3,6 +3,9 @@ import { MdDelete, MdClose, MdDone, MdModeEdit } from 'react-icons/md';
 import ConfirmDeletePopup from "../modules/ConfirmDeletePopup.js";
 import "./SingleProgress.css";
 
+
+
+
 /**
  * This is one line of progress in a journey
  * It inherits its properties from JourneyCard
@@ -60,7 +63,11 @@ class SingleProgress extends Component {
   }
 
   toggleEditingModeCancel = () => {
+    // if (this.state.progress_quantity === 0) {
+    //   this.toggleEditingModeDelete()
+    // } else {
     this.setState({ editingMode: !this.state.editingMode });
+  // }
   }
 
   toggleEditingModeDelete = () => {
@@ -122,7 +129,7 @@ class SingleProgress extends Component {
         </div>
 
         <div className="SingleProgress-subcontainer_center">
-          {timeProgress.getHours()}:{(timeProgress.getMinutes()) < 10 ? "0" + timeProgress.getMinutes() : timeProgress.getMinutes()} &nbsp; {timeProgress.getDate()}-{timeProgress.getMonth()}-{timeProgress.getFullYear()}
+          {timeProgress.getHours()}:{(timeProgress.getMinutes()) < 10 ? "0" + timeProgress.getMinutes() : timeProgress.getMinutes()} &nbsp; {timeProgress.getDate()}-{timeProgress.getMonth() + 1}-{timeProgress.getFullYear()}
         </div>
         <div className="SingleProgress-subcontainer_center">
           {this.messagePicker()}

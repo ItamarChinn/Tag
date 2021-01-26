@@ -3,6 +3,7 @@ import GoogleLogin, { GoogleLogout } from "react-google-login";
 import { get } from "../../utilities";
 import NavBar from "../modules/NavBar.js"
 import JourneyFeed from "../modules/JourneyFeed.js";
+import Confetti from 'react-confetti';
 
 
 import "../../utilities.css";
@@ -15,40 +16,55 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       userId: undefined,
-      
+      partyMode: false,
     };
   }
 
-  
+
   componentDidMount() {
     document.title = "Dashboard";
     get(`/api/user`, { userid: this.props.userId }).then((user) => this.setState({ userId: user }));
   }
 
+  toggleParty = () => {
+    this.setState({ partyMode: !this.state.partyMode })
+  }
+
 
   render() {
     return (
-        <div className="Dashboard-background">
+      <div className="Dashboard-background">
+        {this.state.partyMode && 
+        <Confetti
+        recycle={false}
+        numberOfPieces={500}
+        onConfettiComplete={this.toggleParty}
+        />}
         <NavBar
           handleLogout={this.props.handleLogout}
-          userId={this.state.userId}/>
+          userId={this.state.userId} />
+          
         <div className="Dashboard-container">
-          <div className="Dashboard-title"> &nbsp; &nbsp; Your Journeys &nbsp; &nbsp; </div>  
-          <JourneyFeed 
-          userId={this.state.userId}
-          completed={false}
-          togglePopup={this.togglePopup}/>
+        
+          
+          <JourneyFeed
+            userId={this.state.userId}
+            completed={false}
+            togglePopup={this.togglePopup}
+            partyMode={this.state.partyMode}
+            toggleParty={this.toggleParty} />
+           
         </div>
         <div className="Dashboard-container2">
-          <div className="Dashboard-title"> &nbsp; &nbsp; Your Completed Journeys &nbsp; &nbsp; </div>
-          <JourneyFeed 
-          userId={this.state.userId}
-          completed={true}
-          togglePopup={this.togglePopup}/>
-          </div>
           
-
+          <JourneyFeed
+            userId={this.state.userId}
+            completed={true}
+            togglePopup={this.togglePopup} />
         </div>
+
+
+      </div>
     );
   }
 };

@@ -34,6 +34,9 @@
   font-size: 20px;
   display: grid;
   justify-self: start;
+  text-align: start;
+  border-bottom: 2px solid #ffdfb4;
+  width: 100%;
 }
 
 .JourneyCard-subtitle_center {
@@ -42,6 +45,9 @@
   font-size: 20px;
   display: grid;
   justify-self: center;
+  text-align: center;
+  border-bottom: 2px solid #ffdfb4;
+  width: 100%;
 }
 
 .JourneyCard-subtitle_right {
@@ -50,6 +56,9 @@
   font-size: 20px;
   display: grid;
   justify-self: end;
+  text-align: end;
+  border-bottom: 2px solid #ffdfb4;
+  width: 100%;
 }
 
 
@@ -89,6 +98,7 @@
   align-items: center;
   font-family: "Baloo 2", cursive;
   font-size: 20px;
+  padding: 10px;
 }
 
 .JourneyCard-subcontainer {
@@ -102,11 +112,10 @@
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   grid-auto-rows: min-content;
-  /* justify-content: space-between;
-  align-items: space-between;
-  flex-direction: column; */
+  grid-row-gap: 4px;
   
 }
+
 
 .JourneyCard-subcontainer3 {
   position: relative;

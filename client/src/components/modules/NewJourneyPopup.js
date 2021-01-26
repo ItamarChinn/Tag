@@ -3,7 +3,8 @@ import "./NewJourneyPopup.css";
 import {get, post} from "../../utilities";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import Reward from 'react-rewards';
+import Confetti from 'react-confetti';
 
 /**
  * New Journey button.
@@ -55,6 +56,7 @@ class NewJourneyPopup extends Component {
             alert("We need to know exactly what your goal is, please fill out all fields. Thanks!")
         } else {
             this.addJourney();
+            this.props.toggleParty();
             this.props.closePopup();
         }
         // e.preventDefault();  this doesnt seem to be working so I just did if else statement
@@ -78,6 +80,7 @@ class NewJourneyPopup extends Component {
 
 
     render() {   
+      
         return (
         <div className="NewJourneyPopup-popup">
             <div className='NewJourneyPopup-popupinner'> 
@@ -139,7 +142,12 @@ class NewJourneyPopup extends Component {
               </select>
               <div className = "NewJourneyPopup-buttonContainer">
                 <div className="NewJourneyPopup-button2" onClick={this.props.closePopup}>&nbsp; Cancel &nbsp;</div>
+                {/* <Reward
+                  ref={(ref) =>{this.reward = ref;}}
+                  type='confetti'
+                  > */}
                 <div className="NewJourneyPopup-button" onClick={e => this.onSubmit(e)}>&nbsp; Submit &nbsp;</div>
+                {/* </Reward> */}
               </div>
             </form>
             </center>
