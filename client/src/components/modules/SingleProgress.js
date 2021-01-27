@@ -113,6 +113,7 @@ class SingleProgress extends Component {
         timeInputLabel="Time:"
         dateFormat="MM/dd/yyyy h:mm aa"
         showTimeSelect
+        popperPlacement="top-end"
       />)
       commentBox = <input type="text" name="comment" placeholder={this.state.comment} onChange={e => this.change(e)}/>
     } else {
