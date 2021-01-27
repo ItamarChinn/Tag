@@ -478,10 +478,10 @@ class JourneyCard extends Component {
             </div>
             <div className="JourneyCard-subcontainer">
 
-              {(this.state.goal_frequency * this.state.goal_quantity - this.state.totalProgress >= 0) &&
+              {(this.state.goal_frequency * this.state.goal_quantity - actualPeriodicProgress > 0) &&
                 <div className="JourneyCard-item">
                   <div className="JourneyCard-subtitle">
-                    Only {this.state.goal_frequency * this.state.goal_quantity - this.state.totalProgress} {this.state.goal_unit} left this {this.lowercaseFirstLetter(String(this.state.goal_time_unit))}!
+                    Only {this.state.goal_frequency * this.state.goal_quantity - actualPeriodicProgress} {this.state.goal_unit} left this {this.lowercaseFirstLetter(String(this.state.goal_time_unit))}!
                     </div>
                   <div className="JourneyCard-editbuttoncontainer">
                     {!this.state.editingMode ?
@@ -498,10 +498,10 @@ class JourneyCard extends Component {
                   </div>
                 </div>}
 
-              {(this.state.goal_frequency * this.state.goal_quantity - this.state.totalProgress < 0) &&
+              {(this.state.goal_frequency * this.state.goal_quantity - actualPeriodicProgress <= 0) &&
                 <div className="JourneyCard-item">
                   <div className="JourneyCard-subtitle">
-                    Nice job! You're {Math.abs(this.state.goal_frequency * this.state.goal_quantity - this.state.totalProgress)} {this.state.goal_unit} over your goal this {this.lowercaseFirstLetter(String(this.state.goal_time_unit))}!
+                    Nice job! You're {Math.abs(this.state.goal_frequency * this.state.goal_quantity - actualPeriodicProgress)} {this.state.goal_unit} over your goal this {this.lowercaseFirstLetter(String(this.state.goal_time_unit))}!
                   </div>
                   <div className="JourneyCard-editbuttoncontainer">
                     {!this.state.editingMode ?
@@ -520,7 +520,7 @@ class JourneyCard extends Component {
             </div>
 
             <JourneyDiagram
-              totalProgress={this.state.totalProgress}
+              totalProgress={actualPeriodicProgress}
               startDate={start_date}
               endDate={end_date}
               theme={this.state.theme}
