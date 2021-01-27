@@ -18,6 +18,7 @@
     align-self: flex-end;
     justify-self: flex-end; 
     width: auto;
+    padding: var(--xs) var(--m);
 }
 
 .NewJourneyButton-button:hover {
