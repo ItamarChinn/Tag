@@ -50,8 +50,8 @@ class App extends Component {
 
   render() {
     return (
-      <body>
-        {/* <div className="App-background"> */}
+      <html>
+        <div className="App-background">
           <Router>
             {(this.state.userId) ? (
               <Dashboard
@@ -66,8 +66,8 @@ class App extends Component {
               )}
             <NotFound default />
           </Router>
-        {/* </div> */}
-      </body>
+        </div>
+      </html>
     );
   }
 }

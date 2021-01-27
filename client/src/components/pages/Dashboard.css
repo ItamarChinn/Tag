@@ -13,9 +13,8 @@
 
 .Dashboard-background{
     background-color: var(--beige);
-    /* position:absolute; */
-    height: max(100vmax, 100%);
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     margin:0;
     padding: 0;
 }
@@ -31,8 +30,4 @@
     margin: auto;
     padding: var(--s);
 
-}
-
-html, body {
-    height: 100vh;
 }
