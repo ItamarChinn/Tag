@@ -312,7 +312,10 @@ class JourneyCard extends Component {
         theme={this.props.theme}
       /> to start logging your progress</div>
     }
-    if (!this.props.completed) {
+    if (this.state.complete && !hasProgress) {
+      newProgressButton = null;
+      noprogress = <> Make this journey active again to add progres! </>
+    } else if (!this.state.complete) {
       newProgressButton = <NewProgressButton
         addNewProgress={this.addNewProgress}
         userId={this.props.userId}
@@ -321,6 +324,7 @@ class JourneyCard extends Component {
         addNewProgress={this.addNewProgress}
         theme={this.props.theme} />
     }
+
 
     // Date parsing
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
