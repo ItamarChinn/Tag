@@ -64,7 +64,20 @@ class JourneyDiagram extends Component {
       actualFractionComplete = 1;
     }
 
-    let expectedFractionComplete = this.props.goal_quantity;
+    let expectedFractionComplete = null;
+    const current_date = new Date();
+    const date = String(current_date.getDate());
+    const day = String(current_date.getDay());
+
+    if (this.props.goal_time_unit === "Day") {
+       expectedFractionComplete = this.props.goal_quantity;
+     } else if (this.props.goal_time_unit === "Week") {
+       expectedFractionComplete = day / 7;
+     } 
+    if (this.props.goal_time_unit === "Month") {
+      expectedFractionComplete = date / 31;
+      }
+
 
 
     const bgStyle = {

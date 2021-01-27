@@ -420,7 +420,8 @@ class JourneyCard extends Component {
               startDate={start_date}
               endDate={end_date}
               theme={this.props.theme}
-              goal_unit={this.props.goal_time_unit}
+              goal_time_unit={this.props.goal_time_unit}
+              goal_unit={this.props.goal_unit}
               goal_quantity={this.props.goal_quantity}
               goal_frequency={this.props.goal_frequency}
               actualProgress={actualPeriodicProgress}
