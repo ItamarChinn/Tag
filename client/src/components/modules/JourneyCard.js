@@ -286,19 +286,28 @@ class JourneyCard extends Component {
         const month_of_progress = String(new Date(progressObj.datetime).getMonth())
         const year_of_progress = String(new Date(progressObj.datetime).getFullYear())
         return (date === date_of_progress && month === month_of_progress && year === year_of_progress)
+        // console.log(filtered_progress);
       });
     } else if (this.props.goal_time_unit == "Week") {
       filtered_progress = this.state.progresses.filter((progressObj) => {
-
-        return (week_number === this.getWeekNumber(new Date(progressObj.datetime)))
+        console.log(week_number)
+        console.log(this.getWeekNumber(new Date(progressObj.datetime)))
+        const year_of_progress = String(new Date(progressObj.datetime).getFullYear())
+        const week_of_progress = String(this.getWeekNumber(new Date(progressObj.datetime)))
+        return (week_number === week_of_progress && year === year_of_progress)
+        // console.log(filtered_progress);
       })
     } else if (this.props.goal_time_unit == "Month") {
       filtered_progress = this.state.progresses.filter((progressObj) => {
         const month_of_progress = String(new Date(progressObj.datetime).getMonth());
         const year_of_progress = String(new Date(progressObj.datetime).getFullYear());
+
         return (month === month_of_progress && year === year_of_progress)
+        // console.log(filtered_progress);
       })
     }
+
+    console.log(filtered_progress)
 
     let actualPeriodicProgress = 0;
     for (let i = 0; i < filtered_progress.length; i++) {

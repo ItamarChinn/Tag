@@ -1,5 +1,6 @@
 ﻿import React, { Component } from "react";
 import "./JourneyDiagram.css";
+import "../../public/night_sky.jpg";
 
 /**
  * Journey Diagram showing your journey
@@ -16,6 +17,7 @@ class JourneyDiagram extends Component {
       stationThree: null,
       end: null,
       backgroundTheme: null,
+      completionPicture: null,
     }
   }
 
@@ -31,6 +33,7 @@ class JourneyDiagram extends Component {
         stationThree: "☄️",
         end: "🎖",
         backgroundTheme: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(32,104,172,1) 100%, rgba(0,212,255,1) 100%)",
+        completionPicture: "url('night_sky.jpg')",
       })
     } else if (this.props.theme == "forest") {
       this.setState({
@@ -72,16 +75,17 @@ class JourneyDiagram extends Component {
     if (this.props.goal_time_unit === "Day") {
        expectedFractionComplete = this.props.goal_quantity;
      } else if (this.props.goal_time_unit === "Week") {
-       expectedFractionComplete = day / 7;
-     } 
-    if (this.props.goal_time_unit === "Month") {
+        expectedFractionComplete = day / 7;
+        console.log(this.props.actualProgress)
+        console.log(this.props.goal_quantity)
+        console.log(this.props.goal_frequency)
+        console.log(actualFractionComplete);
+     } else if (this.props.goal_time_unit === "Month") {
       expectedFractionComplete = date / 31;
-      }
-
-
+    }
 
     const bgStyle = {
-      background: this.state.backgroundTheme
+      background: this.state.completionPicture,
     }
 
     const lineProgressStyle = {
