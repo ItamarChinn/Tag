@@ -226,12 +226,39 @@ class JourneyCard extends Component {
     }
   }
 
+  expectedTotalProgress() {
+    let totalTime = (Date.parse(this.props.endDate) - Date.parse(this.props.startDate))/(60*60*1000*24);
+    let totalDays = Math.floor(totalTime)+1;
+    let totalExpectedProgress = totalDays*this.props.goal_quantity*this.props.goal_frequency;
+
+    switch(this.props.goal_time_unit) {
+      case "Day":
+        return totalExpectedProgress;
+
+      case "Week":
+        return totalExpectedProgress / 7;
+      
+      case "Month":
+        return totalExpectedProgress/30;
+    }
+  }
+
+  isJourneyComplete () {
+    if (Date.now() > Date.parse(this.props.endDate)) {
+      console.log("Mark journey complete?", this.props.journeyId)
+    } else if (this.state.totalProgress >= this.expectedTotalProgress()){
+      console.log("Mark journey complete by units?", this.props.journeyId)
+    }
+
+  }
 
   render() {
     let progressList = null;
     let newProgressButton = null;
     let noprogress = null;
     const hasProgress = this.state.progresses.length !== 0;
+
+    this.isJourneyComplete();
 
     if (hasProgress) {
       noprogress = null;
