@@ -100,7 +100,9 @@ class JourneyDiagram extends Component {
       width: String(100 * expectedFractionComplete) + "%"
     }
   
-    
+    let tag_message = String("Great work staying on top of your goals!");
+    if (expectedFractionComplete - actualFractionComplete > 0) {
+      tag_message = String("Oh no! Don't get tagged");} 
 
 
     return (
@@ -112,10 +114,27 @@ class JourneyDiagram extends Component {
         </div>
         <div className="JourneyDiagram-stations" >
           <div className="JourneyDiagram-center">{this.state.start}</div>
-          <div className="JourneyDiagram-top"><div><div className="JourneyDiagram-progresstext"> You're on your way :) </div>{this.state.stationOne}</div></div>
-          <div className="JourneyDiagram-bottom"><div><div>{this.state.stationTwo} <div className="JourneyDiagram-progresstext"> Halfway </div></div></div></div>
-          <div className="JourneyDiagram-top"><div className="JourneyDiagram-progresstext"> Almost there! </div>{this.state.stationThree}</div>
-          <div className="JourneyDiagram-center">{this.state.end}</div>
+          <div className="JourneyDiagram-top">
+            <div>
+              <div className="JourneyDiagram-progresstext"> You're on your way :) </div>
+              {this.state.stationOne}
+            </div>
+          </div>
+          <div className="JourneyDiagram-bottom">
+            <div>
+              <div>{this.state.stationTwo} 
+                <div className="JourneyDiagram-progresstext"> Halfway </div>
+              </div>
+            </div>
+          </div>
+          <div className="JourneyDiagram-top">
+            <div className="JourneyDiagram-progresstext"> Almost there! </div>
+            {this.state.stationThree}
+          </div>
+          <div className="JourneyDiagram-center"> 
+            <div className="JourneyDiagram-progresstext"> {tag_message} </div> 
+            {this.state.end}
+          </div>
         </div>
         <div className="JourneyDiagram-progresscharacters" >
           <div className="JourneyDiagram-character" style={characterProgressStyle}>{this.state.character}</div>
