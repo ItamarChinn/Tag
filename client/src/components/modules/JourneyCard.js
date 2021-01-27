@@ -13,6 +13,8 @@ import ConfirmCompletePopup from "../modules/ConfirmCompletePopup.js";
 import CompletedJourneyButton from "../modules/CompletedJourneyButton.js";
 import DatePicker from "react-datepicker";
 
+import {FacebookShareButton, TwitterShareButton, WhatsappShareButton} from "react-share";
+
 
 class JourneyCard extends Component {
   constructor(props) {
@@ -540,6 +542,7 @@ class JourneyCard extends Component {
                 </>
               }
             </div>
+
           </div>
           <div className="JourneyCard-progresstoggler">
             <div className="JourneyCard-subcontainer">

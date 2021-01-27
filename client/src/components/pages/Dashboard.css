@@ -14,10 +14,10 @@
 .Dashboard-background{
     background-color: var(--beige);
     /* position:absolute; */
-    height: 100%;
+    height: max(100vmax, 100%);
     width: 100vw;
     margin:0;
-    padding:0;
+    padding: 0;
 }
 .Dashboard-container {
     max-width: 80%;
@@ -30,4 +30,9 @@
     max-width: 80%;
     margin: auto;
     padding: var(--s);
+
+}
+
+html, body {
+    height: 100vh;
 }

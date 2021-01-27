@@ -50,6 +50,7 @@ class App extends Component {
 
   render() {
     return (
+      <html>
       <div className="App-background">
         <Router>  
         {(this.state.userId) ? (
@@ -66,6 +67,7 @@ class App extends Component {
           <NotFound default />
         </Router>
       </div>
+      </html>
     );
   }
 }
