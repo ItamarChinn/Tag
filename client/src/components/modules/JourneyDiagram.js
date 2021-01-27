@@ -40,7 +40,7 @@ class JourneyDiagram extends Component {
       this.setState({
         start: "🏡",
         character: "🤸",
-        chaser: "🐺",
+        chaser: "🐯",
         stationOne: "🐘",
         stationTwo: "🌲",
         stationThree: "🐒",
