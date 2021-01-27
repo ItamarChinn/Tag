@@ -74,3 +74,8 @@
     padding: 7px;
     margin: 10px;
 }
+
+.Signup-enter:hover {
+    background-color: #f6ecdfc9;
+    cursor: pointer;
+}
