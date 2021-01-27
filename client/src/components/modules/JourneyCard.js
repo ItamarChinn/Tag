@@ -459,7 +459,9 @@ class JourneyCard extends Component {
           <ConfirmCompletePopup
             journeyId={this.props.journeyId}
             completeJourney={this.props.completeJourney}
-            closePopup={this.toggleComplete} /> : null}
+            closePopup={this.toggleComplete} 
+            completed={this.state.complete}
+            /> : null}
         <div className="JourneyCard-container" >
           <div className="JourneyCard-journey">
 

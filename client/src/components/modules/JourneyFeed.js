@@ -19,6 +19,7 @@ class JourneyFeed extends Component {
     this.state = {
       journeys: [],
       showPopup: false,
+      remountKey: (new Date()).getTime(),
     }
   }
 
@@ -33,6 +34,12 @@ class JourneyFeed extends Component {
           this.setState({ journeys: this.state.journeys.concat([journeyObj]) });
         });
       });
+  }
+
+  resetCounter = () => {
+    this.setState({
+      remountKey: (new Date()).getTime(),
+    });
   }
 
   togglePopup = () => {
@@ -63,7 +70,8 @@ class JourneyFeed extends Component {
       endDate: journeyObj.endDate,
     })
       // update progress in state 
-      .then((journeyObj) => {
+      .then(
+        (journeyObj) => {
         // iterate over the list of journey objects and if I find one whos ID is 
         // the same as the one I just edited on the DB then update it 
         let indToRemove = null;
@@ -75,7 +83,9 @@ class JourneyFeed extends Component {
         }
         // ive updated all the journeys that need changing, now just update state and rerender
         this.setState({ journeys: journeylist });
-      });
+        this.resetCounter()
+      }
+      );
   };
 
   deleteJourney = (journeyId) => {
@@ -137,7 +147,11 @@ class JourneyFeed extends Component {
             }
             // ive updated all the journeys that need changing, now just update state and rerender
             this.setState({ journeys: journeylist });
-            this.updateFeed()})}
+          
+            this.props.toggleParty()
+            this.updateFeed()
+          }
+            )}
         
       //   (journeyObj) => {
       //   // iterate over the list of journey objects and if I find one whos ID is 
