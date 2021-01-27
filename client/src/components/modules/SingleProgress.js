@@ -35,13 +35,13 @@ class SingleProgress extends Component {
 
   incrementUp = () => {
     this.setState({
-      progress_quantity: this.state.progress_quantity + 1,
+      progress_quantity: parseInt(this.state.progress_quantity) + 1,
     })
   }
 
   decrementDown = () => {
     this.setState({
-      progress_quantity: this.state.progress_quantity - 1,
+      progress_quantity: parseInt(this.state.progress_quantity) - 1,
     })
   }
 
@@ -62,10 +62,13 @@ class SingleProgress extends Component {
   }
 
   change = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
+      if (e.target.value === null) {
+        this.setState({[e.target.name]: 0})
+      } else {
+        this.setState({[e.target.name]: e.target.value})
+      }
+    };
+  
 
 
 
@@ -110,6 +113,7 @@ class SingleProgress extends Component {
         timeInputLabel="Time:"
         dateFormat="MM/dd/yyyy h:mm aa"
         showTimeSelect
+        popperPlacement="top-end"
       />)
       commentBox = <input type="text" name="comment" placeholder={this.state.comment} onChange={e => this.change(e)}/>
     } else {
