@@ -45,12 +45,10 @@ class Dashboard extends Component {
           userId={this.state.userId} />
           
         <div className="Dashboard-container">
-        
-          
           <JourneyFeed
             userId={this.state.userId}
             completed={false}
-            togglePopup={this.togglePopup}
+            // togglePopup={this.togglePopup}
             partyMode={this.state.partyMode}
             toggleParty={this.toggleParty} />
            
@@ -60,7 +58,9 @@ class Dashboard extends Component {
           <JourneyFeed
             userId={this.state.userId}
             completed={true}
-            togglePopup={this.togglePopup} />
+            // togglePopup={this.togglePopup}
+            toggleParty={this.toggleParty} 
+            />
         </div>
 
 
