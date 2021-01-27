@@ -72,9 +72,10 @@ class JourneyDiagram extends Component {
     const current_date = new Date();
     const date = String(current_date.getDate());
     const day = String(current_date.getDay());
+    const hour = String(current_date.getHours());
 
     if (this.props.goal_time_unit === "Day") {
-       expectedFractionComplete = this.props.goal_quantity;
+       expectedFractionComplete = hour / 24;
      } else if (this.props.goal_time_unit === "Week") {
         expectedFractionComplete = day / 7;
         console.log(this.props.actualProgress)
