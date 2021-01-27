@@ -15,7 +15,7 @@ class ProgressChart extends Component {
                     data: { stroke: "var(--darkblue)" },
                     parent: { border: "1px solid #ccc"}
                     }}
-                data={[ progresses]}
+                data={[this.props.tota]}
             />
         </VictoryChart>
       );

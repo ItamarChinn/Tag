@@ -131,7 +131,7 @@ hr.progress {
 
 .JourneyDiagram-tagmessage {
     /* position: relative; */
-    bottom: 0px;
+    bottom: 0;
     top: 0;
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
