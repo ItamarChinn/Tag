@@ -9,6 +9,10 @@ class CompletedJourneyButton extends Component {
     super(props);
   }
 
+  clicked = () => {
+    //updates the journey so it's completed
+  }
+
   render() {
 
     return (
