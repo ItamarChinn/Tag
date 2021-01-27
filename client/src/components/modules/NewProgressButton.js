@@ -17,6 +17,16 @@ class NewProgressButton extends Component {
   }
 
   render() {
+    let emoji_array = null;
+    if (this.props.theme === "space") {
+      emoji_array = [ "🌎", "🚀","🛸","🌔","🪐","☄️","🌌", "☀️"];
+    } else if (this.props.theme === "forest") {
+      emoji_array = [ "🏡", "🤸","🐯","🐘","🌲","🐒","⛺"];
+    } else if (this.props.theme === "ocean") {
+      emoji_array = [ "🏖️", "⛵","🦈","🐙","🐬","🐚","🏝️"];
+    }
+
+
     return (
       // <div className="NewProgressButton-centering">
       <center className="NewProgressButton-centering">
@@ -26,7 +36,7 @@ class NewProgressButton extends Component {
         config={{
           lifetime: 200,
           spread: 200,
-          emoji:[ "🌎", "🚀","🛸","🌔","🪐","☄️","🎖"]
+          emoji: emoji_array,
         }}
       > 
         <div className="NewProgressButton-button" onClick={this.clicked}>

@@ -9,7 +9,8 @@ import JourneyDiagram from "../modules/JourneyDiagram.js";
 import Reward from 'react-rewards';
 import { MdDelete, MdClose, MdDone, MdModeEdit } from 'react-icons/md';
 import ConfirmDeleteJourney from "../modules/ConfirmDeleteJourney.js";
-import CompletedJourneyButton from "../modules/CompletedJourneyButton.js"
+import CompletedJourneyButton from "../modules/CompletedJourneyButton.js";
+import DatePicker from "react-datepicker";
 
 
 class JourneyCard extends Component {
@@ -40,7 +41,11 @@ class JourneyCard extends Component {
       journeyId: this.props.journeyId
     })
       .then((progressObjs) => {
-        let reversedProgressObjs = progressObjs.reverse();
+        // let reversedProgressObjs = progressObjs.reverse();
+        let reversedProgressObjs = progressObjs.sort((a, b) => {
+          const dateA = new Date(a.datetime), dateB = new Date(b.datetime);
+          return dateA - dateB;
+        }).reverse();
         reversedProgressObjs.map((progressObj) => {
           this.setState({
             progresses: this.state.progresses.concat([progressObj]),
@@ -101,6 +106,10 @@ class JourneyCard extends Component {
             newTotalProgress += progressObj.progress_quantity;
           } else { newTotalProgress += proglist[i].progress_quantity }
         }
+        proglist = proglist.sort((a, b) => {
+          const dateA = new Date(a.datetime), dateB = new Date(b.datetime);
+          return dateA - dateB;
+        }).reverse();
         // ive updated all the progresses that need changing, now just update state and rerender
         this.setState({ progresses: proglist, totalProgress: newTotalProgress });
       });
@@ -202,6 +211,18 @@ class JourneyCard extends Component {
     this.setState({ editingMode: !this.state.editingMode });
   }
 
+  setStartDate = (date) => {
+    this.setState({
+      startDate: new Date(date)
+    })
+  }
+
+  setEndDate = (date) => {
+    this.setState({
+      endDate: new Date(date)
+    })
+  }
+
 
   // Comment handling
   messagePicker = () => {
@@ -227,33 +248,32 @@ class JourneyCard extends Component {
     }
   }
 
-  expectedTotalProgress() {
-    let totalTime = (Date.parse(this.props.endDate) - Date.parse(this.props.startDate))/(60*60*1000*24);
-    let totalDays = Math.floor(totalTime)+1;
-    let totalExpectedProgress = totalDays*this.props.goal_quantity*this.props.goal_frequency;
+  expectedTotalProgress = () => {
+    let totalTime = (Date.parse(this.props.endDate) - Date.parse(this.props.startDate)) / (60 * 60 * 1000 * 24);
+    let totalDays = Math.floor(totalTime) + 1;
+    let totalExpectedProgress = totalDays * this.props.goal_quantity * this.props.goal_frequency;
 
-    switch(this.props.goal_time_unit) {
+    switch (this.props.goal_time_unit) {
       case "Day":
         return totalExpectedProgress;
 
       case "Week":
         return totalExpectedProgress / 7;
-      
+
       case "Month":
-        return totalExpectedProgress/30;
+        return totalExpectedProgress / 30;
     }
   }
 
-  isJourneyComplete () {
-    if (Date.now() > Date.parse(this.props.endDate)) {
-      console.log("Mark journey complete?", this.props.journeyId)
-      return <CompletedJourneyButton />
-    } else if (this.state.totalProgress >= this.expectedTotalProgress()){
-      console.log("Mark journey complete by units?", this.props.journeyId)
-      return <CompletedJourneyButton />
-    }
-
-  }
+  // isJourneyComplete = () => {
+  //   if (Date.now() > Date.parse(this.props.endDate)) {
+  //     console.log("Mark journey complete?", this.props.journeyId)
+  //     return <CompletedJourneyButton />
+  //   } else if (this.state.totalProgress >= this.expectedTotalProgress()) {
+  //     console.log("Mark journey complete by units?", this.props.journeyId)
+  //     return <CompletedJourneyButton />
+  //   }
+  // }
 
   render() {
     let progressList = null;
@@ -284,7 +304,9 @@ class JourneyCard extends Component {
         userId={this.props.userId}
         journeyId={this.props.journeyId}
         goal_unit={this.props.goal_unit}
-        addNewProgress={this.addNewProgress} /> to start logging your progress</div>
+        addNewProgress={this.addNewProgress}
+        theme={this.props.theme}
+      /> to start logging your progress</div>
     }
     if (!this.props.completed) {
       newProgressButton = <NewProgressButton
@@ -292,7 +314,8 @@ class JourneyCard extends Component {
         userId={this.props.userId}
         journeyId={this.props.journeyId}
         goal_unit={this.props.goal_unit}
-        addNewProgress={this.addNewProgress} />
+        addNewProgress={this.addNewProgress}
+        theme={this.props.theme} />
     }
 
     // Date parsing
@@ -346,9 +369,13 @@ class JourneyCard extends Component {
     let goalUnit = null;
     let goalFrequency = null;
     let goalTimeUnit = null;
+    let startDateEdit = null;
+    let endDateEdit = null;
+    let editTheme = null;
 
     if (this.state.editingMode) {
-      goalName = (<input className="JourneyCard-titleinput"
+      console.log(String(this.state.goal_name.length) + "em")
+      goalName = (<input className="JourneyCard-titleinput" style={{ width: (String(this.state.goal_name.length) + "em") }}
         type="text"
         name="goal_name"
         placeholder={this.capitalizeFirstLetter(String(this.state.goal_name))}
@@ -379,6 +406,31 @@ class JourneyCard extends Component {
         <option value="Week">week</option>
         <option value="Month">month</option>
       </select>);
+
+      startDateEdit = (<>Start <DatePicker
+        selected={new Date(String(this.state.startDate))}
+        onChange={date => this.setStartDate(date)}
+        popperModifiers={{
+          computeStyle: { gpuAcceleration: false }
+        }}
+        showYearDropdown
+      /></>)
+
+      endDateEdit = (<>End on <DatePicker
+        selected={new Date(String(this.state.endDate))}
+        onChange={date => this.setEndDate(date)}
+        popperModifiers={{
+          computeStyle: { gpuAcceleration: false }
+        }}
+        showYearDropdown
+      /></>)
+
+      editTheme = (<>Journey through<select className="JourneyCard-themeinput" name="theme" onChange={e => this.change(e)} value={this.lowercaseFirstLetter(String(this.state.theme))}>
+        <option value="space">space</option>
+        <option value="forest">a forest</option>
+        <option value="ocean">the ocean</option>
+      </select></>);
+
     } else {
       goalName = this.capitalizeFirstLetter(String(this.state.goal_name));
       goalQuantity = this.state.goal_quantity;
@@ -422,6 +474,7 @@ class JourneyCard extends Component {
                         <div className="JourneyCard-editbutton" onClick={this.toggleEditing}><MdModeEdit /></div>
                       </>
                       : <>
+                        {editTheme}
                         <div className="JourneyCard-editbutton" onClick={this.toggleEditingMode}><MdClose /></div>
                         <div className="JourneyCard-editbutton" onClick={this.toggleEditing}><MdDone /></div>
                       </>}
@@ -454,17 +507,30 @@ class JourneyCard extends Component {
               totalProgress={this.state.totalProgress}
               startDate={start_date}
               endDate={end_date}
-              theme={this.props.theme}
+              theme={this.state.theme}
               goal_time_unit={this.props.goal_time_unit}
               goal_unit={this.props.goal_unit}
               goal_quantity={this.props.goal_quantity}
               goal_frequency={this.props.goal_frequency}
               actualProgress={actualPeriodicProgress}
+              completed={this.state.complete}
+              completeJourney={this.props.completeJourney}
             />
             <div className="JourneyCard-subcontainer">
-              <div className="JourneyCard-subtitle"> Start {start_date.getDate()} {monthNames[start_date.getMonth()]} {start_date.getFullYear()} </div>
-              <div> {this.isJourneyComplete()} </div>
-              <div className="JourneyCard-subtitle"> Finish {end_date.getDate()} {monthNames[end_date.getMonth()]} {end_date.getFullYear()} </div>
+              {this.state.editingMode ?
+                <div className="JourneyCard-subtitle">{startDateEdit}</div>
+                :
+                <>
+                  <div className="JourneyCard-subtitle"> Start {start_date.getDate()} {monthNames[start_date.getMonth()]} {start_date.getFullYear()} </div>
+                  {/* <div> {this.isJourneyComplete()} </div> */}
+                </>}
+              {this.state.editingMode ?
+                <div className="JourneyCard-subtitle">{endDateEdit}</div>
+                :
+                <>
+                  <div className="JourneyCard-subtitle"> Finish {end_date.getDate()} {monthNames[end_date.getMonth()]} {end_date.getFullYear()} </div>
+                </>
+              }
             </div>
           </div>
           <div className="JourneyCard-progresstoggler">

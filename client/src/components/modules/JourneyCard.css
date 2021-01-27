@@ -254,15 +254,15 @@
   border-radius: 20px;
   font-family:"Baloo 2", cursive;
   font-weight: 700;
-  font-size: 30px;
-  width: 5em;
+  font-size: 20px;
+  /* width: 5em; */
 }
 
 .JourneyCard-goalquantityinput {
   border-radius: 20px;
   font-family:"Baloo 2", cursive;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 20px;
   width: 3em;
 }
 
@@ -270,7 +270,7 @@
   border-radius: 20px;
   font-family:"Baloo 2", cursive;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 20px;
   width: 5em;
 }
 
@@ -278,7 +278,7 @@
   border-radius: 20px;
   font-family:"Baloo 2", cursive;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 20px;
   width: 3em;
 }
 
@@ -289,3 +289,5 @@
   font-size: 30px;
   width: 4em;
 }
+
+

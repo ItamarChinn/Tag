@@ -7,7 +7,8 @@
 
 .JourneyDiagram-box {
     border-radius: 10px;
-    height: 20vh;
+    display: flex;
+    height: 25vh;
     position: relative;
     font-size: var(--fontSize);
     margin: 0;
@@ -25,6 +26,8 @@
     justify-content: center;
     width: 100%;
     z-index: 10;
+    padding: 0;
+    margin: 0;
 }
 
 .JourneyDiagram-top {
@@ -36,6 +39,8 @@
     width: 100%;
     z-index: 10;
     font-size: 40px;
+    padding: 0;
+    margin: 0;
 }
 
 .JourneyDiagram-bottom {
@@ -46,6 +51,8 @@
     width: 100%;
     z-index: 10;
     font-size: 40px;
+    padding: 0;
+    margin: 0;
 }
 
 
@@ -124,15 +131,25 @@ hr.progress {
     /* position: relative; */
     bottom: 0px;
     top: 0;
+    padding: 0;
+    margin: 0;
     font-family: 'Baloo 2', sans-serif;
     font-size: 20px;
     color: var(--beige);
 }
 
 .JourneyDiagram-tagmessage {
-
     height: max-content;
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     color: var(--beige);
+}
+
+.JourneyDiagram-completejourney {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 }

@@ -100,6 +100,11 @@ class JourneyFeed extends Component {
       });
   };
 
+
+  completeJourney = (journeyId) => {
+    
+  }
+
   render() {
     let journeysList = null;
     let newJourney = null;
@@ -122,6 +127,7 @@ class JourneyFeed extends Component {
         isMostRecent={(journeyObj._id === this.state.journeys[0]._id)}
         deleteJourney={this.deleteJourney}
         editJourney={this.editJourney}
+        completeJourney={this.completeJourney}
       />));
     } else if (this.props.completed) {
       journeysList = <div className="JourneyFeed-needinput">No completed journeys! Start logging progress to complete them!</div>
