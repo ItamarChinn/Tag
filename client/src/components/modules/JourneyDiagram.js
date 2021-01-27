@@ -45,7 +45,7 @@ class JourneyDiagram extends Component {
         stationTwo: "🌲",
         stationThree: "🐒",
         end: "⛺",
-        backgroundTheme: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(30,74,28,1) 100%, rgba(0,212,255,1) 100%)",
+        backgroundTheme: "linear-gradient(90deg, rgba(112,177,53,1) 0%, rgba(49,82,3,1) 100%, rgba(0,212,255,1) 100%)",
       })
     } else if (this.props.theme == "ocean") {
       this.setState({
@@ -56,7 +56,7 @@ class JourneyDiagram extends Component {
         stationTwo: "🐬",
         stationThree: "🐚",
         end: "🏝️",
-        backgroundTheme: "linear-gradient(45deg, rgba(0,23,98,1) 0%, rgba(1,44,153,1) 35%, rgba(0,70,226,1) 63%, rgba(0,159,255,1) 100%)"
+        backgroundTheme: "linear-gradient(90deg, rgba(0,80,223,1) 0%, rgba(42,135,123,1) 100%, rgba(0,212,255,1) 100%)"
       })
     };
   };
@@ -103,7 +103,7 @@ class JourneyDiagram extends Component {
   
     let tag_message = String("Great work staying on top of your goals!");
     if (expectedFractionComplete - actualFractionComplete > 0) {
-      tag_message = String("Oh no! Don't get tagged");} 
+      tag_message = String("Oh no! Keep up and don't get tagged.");} 
     else if (actualFractionComplete == 1) {
       tag_message = String("Congrats! You're chasing your dreams :)")
     }
