@@ -33,6 +33,9 @@ class SignUp extends Component {
                     buttonText="Login"
                     onSuccess={this.props.handleLogin}
                     onFailure={(err) => console.log(err)}
+                    render={renderProps => (
+                      <div className = "Signup-enter" onClick={renderProps.onClick} disabled={renderProps.disabled}>Enter</div>
+                    )}
                     />
               </div>
             </div>
