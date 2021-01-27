@@ -29,5 +29,5 @@
 .Dashboard-container2 {
     max-width: 80%;
     margin: auto;
-    padding: var(--s);
+    padding: var(--s); 
 }
