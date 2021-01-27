@@ -32,6 +32,7 @@ class JourneyDiagram extends Component {
       end = "☀️";
       backgroundTheme = "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(32,104,172,1) 100%, rgba(0,212,255,1) 100%)";
       completionPicture = "JOURNEY COMPLETED! GREAT JOB CHASING YOUR DREAMS!";
+
     } else if (this.props.theme == "forest") {
       start = "🏡";
       character = "🤸";
@@ -42,6 +43,7 @@ class JourneyDiagram extends Component {
       end = "⛺";
       backgroundTheme = "linear-gradient(90deg, rgba(112,177,53,1) 0%, rgba(49,82,3,1) 100%, rgba(0,212,255,1) 100%)";
       completionPicture = "JOURNEY COMPLETED! GREAT JOB CHASING YOUR DREAMS!";
+
     } else if (this.props.theme == "ocean") {
       start = "🏖️";
       character = "⛵";
@@ -110,9 +112,9 @@ class JourneyDiagram extends Component {
 
 
     return (
-      <div className="JourneyDiagram-box" style={bgStyle}>
+      <div className="JourneyDiagram-boxComplete" style={bgStyle}>
         {(this.props.completed) ?
-          <div className="JourneyDiagram-progresstext" style={{ display: "flex", alignSelf: "center", justifySelf: "center", textAlign: "center" }}> {completionPicture} </div>
+          <div className="JourneyDiagram-completiontext"> {completionPicture} </div>
           :
           <>
             <div className="JourneyDiagram-line">
