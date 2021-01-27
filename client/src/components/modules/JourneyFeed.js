@@ -205,7 +205,7 @@ class JourneyFeed extends Component {
     if (this.state.showPopup) { newJourneyPopup = <NewJourneyPopup closePopup={this.togglePopup.bind(this)} userId={this.state.userId} addNewJourney={this.addNewJourney} toggleParty={this.props.toggleParty} /> }
     return (
 
-      <>
+      <center>
         <div className="JourneyFeed-mainfeed">
           {newJourneyPopup}
           <div className="JourneyFeed-titlebar">
@@ -217,7 +217,7 @@ class JourneyFeed extends Component {
             {journeysList}
           </div>
         </div>
-      </>
+      </center>
     );
   }
 };
