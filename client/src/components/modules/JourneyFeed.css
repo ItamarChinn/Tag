@@ -1,5 +1,6 @@
 ﻿.JourneyFeed-mainfeed {
     display: block;
+    width: max(1100px, 65%);
 }
 
 .JourneyFeed-titlebar  {

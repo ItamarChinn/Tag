@@ -50,24 +50,24 @@ class App extends Component {
 
   render() {
     return (
-      <html>
-      <div className="App-background">
-        <Router>  
-        {(this.state.userId) ? (
-          <Dashboard
-            path="/"
-            handleLogout={this.handleLogout}
-            userId={this.state.userId}
-          />) : (
-        <SignUp 
-            path="/"
-            handleLogin={this.handleLogin}
-            userId={this.state.userId}/>
-          )}
-          <NotFound default />
-        </Router>
-      </div>
-      </html>
+      <body>
+        {/* <div className="App-background"> */}
+          <Router>
+            {(this.state.userId) ? (
+              <Dashboard
+                path="/"
+                handleLogout={this.handleLogout}
+                userId={this.state.userId}
+              />) : (
+                <SignUp
+                  path="/"
+                  handleLogin={this.handleLogin}
+                  userId={this.state.userId} />
+              )}
+            <NotFound default />
+          </Router>
+        {/* </div> */}
+      </body>
     );
   }
 }

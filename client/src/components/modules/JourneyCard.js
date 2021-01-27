@@ -13,7 +13,7 @@ import ConfirmCompletePopup from "../modules/ConfirmCompletePopup.js";
 import CompletedJourneyButton from "../modules/CompletedJourneyButton.js";
 import DatePicker from "react-datepicker";
 
-import {FacebookShareButton, TwitterShareButton, WhatsappShareButton} from "react-share";
+import {FacebookShareButton, TwitterShareButton, WhatsappShareButton, FacebookIcon, TwitterIcon, WhatsappIcon,} from "react-share";
 
 
 class JourneyCard extends Component {
@@ -534,6 +534,42 @@ class JourneyCard extends Component {
                   <div className="JourneyCard-subtitle"> Start {start_date.getDate()} {monthNames[start_date.getMonth()]} {start_date.getFullYear()} </div>
                   {/* <div> {this.isJourneyComplete()} </div> */}
                 </>}
+                {/* <div> */}
+                <div className="JourneyCard-subtitle">
+                  {/* Share &nbsp; */}
+          <FacebookShareButton
+          className="JourneyCard-subtitle"
+            quote="Tag! Now it's your turn to chase your dreams just like I am. Check out this great new way to track your habits!"
+            url = {"http://tag-shareyourdream.herokuapp.com"}
+            >
+            <FacebookIcon
+              size={30}
+              round={true}
+            />
+            </FacebookShareButton>
+
+          <TwitterShareButton
+          className="JourneyCard-subtitle"
+            title="Tag! Now it's your turn to chase your dreams just like I am. Check out this great new way to track your habits!"
+            url = {"http://tag-shareyourdream.herokuapp.com"}
+          >
+            <TwitterIcon
+             size={30}
+              round={true}
+            />
+          </TwitterShareButton>
+
+          <WhatsappShareButton
+          className="JourneyCard-subtitle"
+            title="Tag! Now it's your turn to chase your dreams just like I am. Check out this great new way to track your habits!"
+            separator=": "
+            url = {"http://tag-shareyourdream.herokuapp.com"}
+          >
+            <WhatsappIcon 
+            size={30}
+              round={true}/>
+          </WhatsappShareButton>
+            </div>
               {this.state.editingMode ?
                 <div className="JourneyCard-subtitle">{endDateEdit}</div>
                 :
@@ -541,8 +577,9 @@ class JourneyCard extends Component {
                   <div className="JourneyCard-subtitle"> Finish {end_date.getDate()} {monthNames[end_date.getMonth()]} {end_date.getFullYear()} </div>
                 </>
               }
+              
             </div>
-
+            
           </div>
           <div className="JourneyCard-progresstoggler">
             <div className="JourneyCard-subcontainer">
