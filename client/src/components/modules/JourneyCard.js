@@ -9,6 +9,7 @@ import JourneyDiagram from "../modules/JourneyDiagram.js";
 import Reward from 'react-rewards';
 import { MdDelete, MdClose, MdDone, MdModeEdit } from 'react-icons/md';
 import ConfirmDeleteJourney from "../modules/ConfirmDeleteJourney.js";
+import CompletedJourneyButton from "../modules/CompletedJourneyButton.js"
 
 
 class JourneyCard extends Component {
@@ -246,8 +247,10 @@ class JourneyCard extends Component {
   isJourneyComplete () {
     if (Date.now() > Date.parse(this.props.endDate)) {
       console.log("Mark journey complete?", this.props.journeyId)
+      return <CompletedJourneyButton />
     } else if (this.state.totalProgress >= this.expectedTotalProgress()){
       console.log("Mark journey complete by units?", this.props.journeyId)
+      return <CompletedJourneyButton />
     }
 
   }
@@ -257,8 +260,6 @@ class JourneyCard extends Component {
     let newProgressButton = null;
     let noprogress = null;
     const hasProgress = this.state.progresses.length !== 0;
-
-    this.isJourneyComplete();
 
     if (hasProgress) {
       noprogress = null;
@@ -462,6 +463,7 @@ class JourneyCard extends Component {
             />
             <div className="JourneyCard-subcontainer">
               <div className="JourneyCard-subtitle"> Start {start_date.getDate()} {monthNames[start_date.getMonth()]} {start_date.getFullYear()} </div>
+              <div> {this.isJourneyComplete()} </div>
               <div className="JourneyCard-subtitle"> Finish {end_date.getDate()} {monthNames[end_date.getMonth()]} {end_date.getFullYear()} </div>
             </div>
           </div>
