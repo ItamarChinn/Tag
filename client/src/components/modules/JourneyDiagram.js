@@ -104,8 +104,8 @@ class JourneyDiagram extends Component {
 
     let tag_message = String("Great work staying on top of your goals!");
     if (this.props.isJourneyComplete()) {
-      tag_message = String("Mark this journey as completed or edit your goals to keep traveling.")
-        } else if (expectedFractionComplete - actualFractionComplete > 0) {
+      tag_message = String("Mark this journey as complete or edit your goal duration.")
+    } else if (expectedFractionComplete - actualFractionComplete > 0) {
       tag_message = String("Oh no! Keep up and don't get tagged.");
     }
     else if (actualFractionComplete == 1) {
