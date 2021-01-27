@@ -137,8 +137,8 @@ class JourneyDiagram extends Component {
               </div>
               <div className="JourneyDiagram-center">
                 {end}
-                {/* <div className="JourneyDiagram-tagmessage"> {tag_message} </div> */}
               </div>
+              <div className="JourneyDiagram-tagmessage"> {tag_message} </div>
             </div>
             <div className="JourneyDiagram-progresscharacters" >
               <div className="JourneyDiagram-character" style={characterProgressStyle}>{character}</div>
