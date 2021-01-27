@@ -97,6 +97,8 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     color: var(--beige);
+    border: var(--beige);
+    border-style: dotted;
 }
 
 
@@ -135,7 +137,7 @@
     
 }
 
-hr.progress {
+hr.progressAvatar {
     display: flex;
     justify-self: flex-start;
     align-self: center;
@@ -143,7 +145,19 @@ hr.progress {
     border: none;
     width: 100%; 
     /* background: rgb(36,17,0); */
-    background: linear-gradient(90deg, rgba(36,17,0,0) 0%, rgba(121,14,9,0.7595413165266106) 36%, rgba(236,109,1,1) 90%, rgba(255,124,0,0) 100%);
+    background: linear-gradient(90deg,rgba(0,0,0,1) 0%, rgba(81,188,78,1) 80%, rgb(255, 255, 255) 100%);
+}
+
+hr.progressChaser {
+    display: flex;
+    justify-self: flex-start;
+    align-self: center;
+    height: 5px;
+    border: none;
+    width: 100%; 
+    /* background: rgb(36,17,0); */
+    /* background: linear-gradient(90deg, rgba(36,17,0,0) 0%, rgba(121,14,9,0.7595413165266106) 36%, rgba(236,109,1,1) 90%, rgba(255,124,0,0) 100%); */
+    background: linear-gradient(90deg,rgba(0,0,0,1) 0%, rgba(231,35,44,1) 80%, rgb(255, 255, 255) 100%);
 }
 
 .JourneyDiagram-progresstext {

@@ -88,6 +88,10 @@ class JourneyDiagram extends Component {
       width: String(100 * actualFractionComplete) + "%",
     }
 
+    const lineChaserStyle = {
+      width: String(100 * expectedFractionComplete) + "%",
+    }
+
     const characterProgressStyle = {
       width: String(100 * actualFractionComplete + 2) + "%",
     }
@@ -113,7 +117,12 @@ class JourneyDiagram extends Component {
           <>
             <div className="JourneyDiagram-line">
               <div className="JourneyDiagram-boxbox" style={lineProgressStyle}>
-                <hr className="progress" />
+                <hr className="progressAvatar" />
+              </div>
+            </div>
+            <div className="JourneyDiagram-line">
+              <div className="JourneyDiagram-boxbox" style={lineChaserStyle}>
+                <hr className="progressChaser" />
               </div>
             </div>
             <div className="JourneyDiagram-stations" >
