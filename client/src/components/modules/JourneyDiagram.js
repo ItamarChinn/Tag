@@ -85,7 +85,7 @@ class JourneyDiagram extends Component {
     }
 
     const bgStyle = {
-      background: this.state.completionPicture,
+      background: this.state.backgroundTheme,
     }
 
     const lineProgressStyle = {
@@ -112,9 +112,9 @@ class JourneyDiagram extends Component {
         </div>
         <div className="JourneyDiagram-stations" >
           <div className="JourneyDiagram-center">{this.state.start}</div>
-          <div className="JourneyDiagram-top"><div><div className="JourneyDiagram-progresstext"> 1/4</div>{this.state.stationOne}</div></div>
-          <div className="JourneyDiagram-bottom"><div><div>{this.state.stationTwo} <div className="JourneyDiagram-progresstext"> Halfway!</div></div></div></div>
-          <div className="JourneyDiagram-top"><div className="JourneyDiagram-progresstext"> 3/4</div>{this.state.stationThree}</div>
+          <div className="JourneyDiagram-top"><div><div className="JourneyDiagram-progresstext"> You're on your way :) </div>{this.state.stationOne}</div></div>
+          <div className="JourneyDiagram-bottom"><div><div>{this.state.stationTwo} <div className="JourneyDiagram-progresstext"> Halfway </div></div></div></div>
+          <div className="JourneyDiagram-top"><div className="JourneyDiagram-progresstext"> Almost there! </div>{this.state.stationThree}</div>
           <div className="JourneyDiagram-center">{this.state.end}</div>
         </div>
         <div className="JourneyDiagram-progresscharacters" >
