@@ -72,6 +72,7 @@ class JourneyCard extends Component {
       });
   }
 
+  // code for getWeekNumber from https://stackoverflow.com/Questions/1497586/how-can-i-calculate-find-the-week-number-of-a-given-date
   getWeekNumber = (d) => {
     // Copy date so don't modify original
     d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
@@ -266,16 +267,17 @@ class JourneyCard extends Component {
     }
   }
 
-
-  // isJourneyComplete = () => {
-  //   if (Date.now() > Date.parse(this.props.endDate)) {
-  //     console.log("Mark journey complete?", this.props.journeyId)
-  //     return <CompletedJourneyButton />
-  //   } else if (this.state.totalProgress >= this.expectedTotalProgress()) {
-  //     console.log("Mark journey complete by units?", this.props.journeyId)
-  //     return <CompletedJourneyButton />
-  //   }
-  // }
+  isJourneyComplete = () => {
+    if (Date.now() > Date.parse(this.props.endDate)) {
+      console.log("Mark journey complete?", this.props.journeyId)
+      return true;
+    } else if (this.state.totalProgress >= this.expectedTotalProgress()) {
+      console.log("Mark journey complete by units?", this.props.journeyId)
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   render() {
     let progressList = null;
@@ -525,6 +527,7 @@ class JourneyCard extends Component {
               actualProgress={actualPeriodicProgress}
               completed={this.state.complete}
               togglePopup={this.toggleComplete}
+              isJourneyComplete={this.isJourneyComplete}
             />
             <div className="JourneyCard-subcontainer">
               {this.state.editingMode ?
