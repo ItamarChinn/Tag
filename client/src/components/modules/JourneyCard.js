@@ -511,6 +511,7 @@ class JourneyCard extends Component {
                       </>
                       :
                       <>
+                      {editTheme}
                         <div className="JourneyCard-editbutton" onClick={this.toggleEditingMode}><MdClose /></div>
                         <div className="JourneyCard-editbutton" onClick={this.toggleEditing}><MdDone /></div>
                       </>}
