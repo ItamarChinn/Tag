@@ -132,8 +132,8 @@ class JourneyDiagram extends Component {
             {this.state.stationThree}
           </div>
           <div className="JourneyDiagram-center"> 
-            <div className="JourneyDiagram-progresstext"> {tag_message} </div> 
             {this.state.end}
+            <div className="JourneyDiagram-tagmessage"> {tag_message} </div> 
           </div>
         </div>
         <div className="JourneyDiagram-progresscharacters" >
