@@ -99,7 +99,8 @@ class JourneyDiagram extends Component {
     const chaserProgressStyle = {
       width: String(100 * expectedFractionComplete) + "%"
     }
-
+  
+    
 
 
     return (

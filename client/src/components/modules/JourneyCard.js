@@ -279,7 +279,7 @@ class JourneyCard extends Component {
     const year = String(current_date.getFullYear());
     let filtered_progress = null;
 
-
+    // ADDING PERIODIC PROGRESS
     if (this.props.goal_time_unit == "Day") {
       filtered_progress = this.state.progresses.filter((progressObj) => {
         const date_of_progress = String(new Date(progressObj.datetime).getDate())
@@ -306,8 +306,6 @@ class JourneyCard extends Component {
         // console.log(filtered_progress);
       })
     }
-
-    console.log(filtered_progress)
 
     let actualPeriodicProgress = 0;
     for (let i = 0; i < filtered_progress.length; i++) {
