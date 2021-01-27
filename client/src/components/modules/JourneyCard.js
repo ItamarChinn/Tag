@@ -547,7 +547,7 @@ class JourneyCard extends Component {
           <FacebookShareButton
           className="JourneyCard-subtitle"
             quote="Tag! Now it's your turn to chase your dreams just like I am. Check out this great new way to track your habits!"
-            url = {"http://tag-shareyourdream.herokuapp.com"}
+            url = {"http://tag-chaseyourdream.herokuapp.com"}
             >
             <FacebookIcon
               size={30}
@@ -558,7 +558,7 @@ class JourneyCard extends Component {
           <TwitterShareButton
           className="JourneyCard-subtitle"
             title="Tag! Now it's your turn to chase your dreams just like I am. Check out this great new way to track your habits!"
-            url = {"http://tag-shareyourdream.herokuapp.com"}
+            url = {"http://tag-chaseyourdream.herokuapp.com"}
           >
             <TwitterIcon
              size={30}
@@ -570,7 +570,7 @@ class JourneyCard extends Component {
           className="JourneyCard-subtitle"
             title="Tag! Now it's your turn to chase your dreams just like I am. Check out this great new way to track your habits!"
             separator=": "
-            url = {"http://tag-shareyourdream.herokuapp.com"}
+            url = {"http://tag-chaseyourdream.herokuapp.com"}
           >
             <WhatsappIcon 
             size={30}
