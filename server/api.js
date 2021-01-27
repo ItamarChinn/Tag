@@ -62,10 +62,13 @@ router.post("/deleteprogress", auth.ensureLoggedIn, (req, res) => {
   Progress.findByIdAndDelete(req.body.progressId).then((progress) => res.send(progress));
 });
 
+router.post("/deletejourney", auth.ensureLoggedIn, (req, res) => {
+  Journey.findByIdAndDelete(req.body.journeyId).then((journey) => res.send(journey));
+});
+
 router.post("/editprogress", auth.ensureLoggedIn, (req, res) => {
   Progress.findById(req.body.progressId).then((newProgress) => {
     if (newProgress) {
-      console.log(req.body.datetime)
       newProgress.progress_quantity = req.body.updatedProgress;
       newProgress.editingMode = req.body.editingMode;
       newProgress.datetime = req.body.datetime;
@@ -74,11 +77,25 @@ router.post("/editprogress", auth.ensureLoggedIn, (req, res) => {
     }
     else {console.log("Could not find progress")}
   });
-  
+});
+
+router.post("/editjourney", auth.ensureLoggedIn, (req, res) => {
+  Journey.findById(req.body.journeyId).then((newJourney) => {
+    if (newJourney) {
+      newJourney.goal_name = req.body.goal_name;
+      newJourney.goal_frequency = req.body.goal_frequency;
+      newJourney.goal_time_unit = req.body.goal_time_unit;
+      newJourney.goal_quantity = req.body.goal_quantity;
+      newJourney.theme = req.body.theme;
+      newJourney.startDate = req.body.startDate;
+      newJourney.endDate = req.body.endDate;
+      newJourney.save().then((journey) => res.send(journey));
+    }
+    else {console.log("Could not find journey")}
+  });
 });
 
 router.post("/progress", auth.ensureLoggedIn, (req, res) => {
-  console.log(req.body.datetime);
   const newProgress = new Progress({
     journeyId: req.body.journeyId,
     progress_quantity: req.body.progress_quantity,

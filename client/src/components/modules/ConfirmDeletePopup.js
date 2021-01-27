@@ -9,7 +9,7 @@ import {get, post} from "../../utilities";
  * @userId : String
  * @addNewJourney : function
  */
-class NewJourneyPopup extends Component {
+class ConfirmDeletePopup extends Component {
   constructor(props) {
       super(props);
   }
@@ -36,4 +36,4 @@ class NewJourneyPopup extends Component {
   }
 };
 
-export default NewJourneyPopup;
+export default ConfirmDeletePopup;

@@ -90,13 +90,12 @@ class SingleProgress extends Component {
   render() {
     let timeStamp = null;
     let commentBox = null;
+    let progress_number=null;
     
     // Date parsing
     const timeProgress = new Date(Date.parse(this.state.datetime))
-    console.log("Date:")
-    console.log(timeProgress.getDate())
 
-    let progress_number;
+    
     if (this.state.editingMode) {
       progress_number = (<input className="SingleProgress-numberinput"
         type="number"
@@ -121,6 +120,11 @@ class SingleProgress extends Component {
 
     return (
       <>
+      {this.state.showDeletePopup ?
+            <ConfirmDeletePopup
+              progressId={this.props.progressId}
+              deleteProgress={this.props.deleteProgress}
+              closePopup={this.toggleEditingModeDelete} /> : null}
         <div className="SingleProgress-subcontainer_left u-inlineBlock">
           {(this.state.editingMode && this.state.progress_quantity > 0) &&
             <div className="SingleProgress-decrement u-inlineBlock" onClick={this.decrementDown}>
@@ -147,11 +151,7 @@ class SingleProgress extends Component {
             : <div className="u-inlineBlock">
               <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeCancel}><MdClose /></div>
               <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeSave}><MdDone /></div></div>}
-          {this.state.showDeletePopup ?
-            <ConfirmDeletePopup
-              progressId={this.props.progressId}
-              deleteProgress={this.props.deleteProgress}
-              closePopup={this.toggleEditingModeDelete} /> : null}
+          
         </div>
       </>
     );

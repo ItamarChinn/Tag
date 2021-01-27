@@ -12,6 +12,9 @@
 
 .JourneyCard-item {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%
 }
 
 .JourneyCard-progresslist{
@@ -68,6 +71,8 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .JourneyCard-subtitle2 {
@@ -76,6 +81,7 @@
   font-size: 30px;
   color: #FFFBF5;
 }
+
 
 .JourneyCard-button {
   /* color: rgba(0, 0, 0, 0.54); */
@@ -194,4 +200,92 @@
   margin-top: var(--s);
   padding: var(--m);
   z-index: 0;
+}
+
+
+.JourneyCard-editbuttoncontainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+.JourneyCard-editbutton {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 25px; 
+  display: flex;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  border-radius: 60%;
+  text-align: center;
+  /* background-color: rgb(155, 155, 155); */
+  /* align-items: center; */
+  /* justify-items: center; */
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.JourneyCard-editbutton:hover {
+            transform: scale(0.98); 
+            background-color:rgba(104, 104, 104, 0.25);
+            transition-duration: 0.5s;
+            cursor: pointer;
+            /* Scaling button to 0.98 to its original size */ 
+            /* box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);  */
+            /* Lowering the shadow */ 
+}
+
+.JourneyCard-titleinput {
+  border-radius: 20px;
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 30px;
+  width: 5em;
+}
+
+.JourneyCard-goalquantityinput {
+  border-radius: 20px;
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 30px;
+  width: 3em;
+}
+
+.JourneyCard-goalunitinput {
+  border-radius: 20px;
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 30px;
+  width: 5em;
+}
+
+.JourneyCard-goalfrequencyinput {
+  border-radius: 20px;
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 30px;
+  width: 3em;
+}
+
+.JourneyCard-goaltimeunitinput {
+  border-radius: 20px;
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 30px;
+  width: 4em;
 }

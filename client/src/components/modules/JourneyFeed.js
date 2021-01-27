@@ -7,8 +7,12 @@ import NewJourneyPopup from "../modules/NewJourneyPopup.js"
 
 
 /**
- * What is this>
+ * JourneyFeed is the feed of all the journeys we have created, 
+ * it can be either an incompleted journey feed which has the option to add progress or a completed one which doesnt
+ * 
  */
+
+
 class JourneyFeed extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +20,19 @@ class JourneyFeed extends Component {
       journeys: [],
       showPopup: false,
     }
+  }
+
+  componentDidMount() {
+    get("/api/journey", {
+      owner: this.props.userId,
+      complete: this.props.completed
+    })
+      .then((journeyObjs) => {
+        let reversedJourneyObjs = journeyObjs.reverse();
+        reversedJourneyObjs.map((journeyObj) => {
+          this.setState({ journeys: this.state.journeys.concat([journeyObj]) });
+        });
+      });
   }
 
   togglePopup = () => {
@@ -33,26 +50,63 @@ class JourneyFeed extends Component {
     });
   };
 
-  componentDidMount() {
-    get("/api/journey", {
-      owner: this.props.userId,
-      complete: this.props.completed
+  editJourney = (journeyObj) => {
+    // update progress on mongodb
+    post("/api/editjourney", {
+      journeyId: journeyObj.journeyId,
+      goal_name: journeyObj.goal_name,
+      goal_frequency: journeyObj.goal_frequency,
+      goal_time_unit: journeyObj.goal_time_unit,
+      goal_quantity: journeyObj.goal_quantity,
+      theme: journeyObj.theme,
+      startDate: journeyObj.startDate,
+      endDate: journeyObj.endDate,
     })
-      .then((journeyObjs) => { //confirm w itamar about backend, but this is from the catbook  
-        let reversedJourneyObjs = journeyObjs.reverse();
-        reversedJourneyObjs.map((journeyObj) => {
-          this.setState({ journeys: this.state.journeys.concat([journeyObj]) });
-        });
+      // update progress in state 
+      .then((journeyObj) => {
+        // iterate over the list of journey objects and if I find one whos ID is 
+        // the same as the one I just edited on the DB then update it 
+        let indToRemove = null;
+        let journeylist = [...this.state.journeys];
+        for (let i = 0; i < this.state.journeys.length; i++) {
+          if (this.state.journeys[i]._id === journeyObj._id) {
+            journeylist[i] = journeyObj;
+          }
+        }
+        // ive updated all the journeys that need changing, now just update state and rerender
+        this.setState({ journeys: journeylist });
       });
-  }
+  };
+
+  deleteJourney = (journeyId) => {
+    // update progress on mongodb
+    post("/api/deletejourney", {
+      journeyId: journeyId,
+    })
+      // update progress in state 
+      .then((journeyObj) => {
+        // iterate over the list of journey objects and if I find one whos ID is 
+        // the same as the one I just edited on the DB then update it 
+        let indToRemove = null;
+        for (let i = 0; i < this.state.journeys.length; i++) {
+          if (this.state.journeys[i]._id === journeyObj._id) {
+            indToRemove = i;
+          }
+        }
+        let journeylist = [...this.state.journeys];
+        journeylist.splice(indToRemove, 1);
+        // ive updated all the journeys that need changing, now just update state and rerender
+        this.setState({ journeys: journeylist });
+      });
+  };
 
   render() {
-    let journeysList = null; //going to hold all of our JourneyCard components
+    let journeysList = null;
     let newJourney = null;
     let newJourneyPopup = null;
     const hasJourneys = this.state.journeys.length !== 0;
-    if (hasJourneys) {    // like :)
-      journeysList = this.state.journeys.map((journeyObj) => //WILL HAVE TO CHANGE THIS IF THE PARAMETERS OF JOURNEY CARD CHANGE
+    if (hasJourneys) {
+      journeysList = this.state.journeys.map((journeyObj) =>
       (<JourneyCard key={`Card_${journeyObj._id}`}
         owner={journeyObj.owner}
         journeyId={journeyObj._id}
@@ -65,7 +119,10 @@ class JourneyFeed extends Component {
         complete={journeyObj.complete}
         startDate={journeyObj.startDate}
         endDate={journeyObj.endDate}
-        isMostRecent={(journeyObj._id === this.state.journeys[0]._id)} />));
+        isMostRecent={(journeyObj._id === this.state.journeys[0]._id)}
+        deleteJourney={this.deleteJourney}
+        editJourney={this.editJourney}
+      />));
     } else if (this.props.completed) {
       journeysList = <div className="JourneyFeed-needinput">No completed journeys! Start logging progress to complete them!</div>
     } else {
@@ -81,9 +138,9 @@ class JourneyFeed extends Component {
         <div className="JourneyFeed-mainfeed">
           {newJourneyPopup}
           <div className="JourneyFeed-titlebar">
-          {!this.props.completed ? <div className="JourneyFeed-maintitle"> &nbsp; &nbsp; Your Journeys &nbsp; &nbsp; </div>
-            : <div className="Dashboard-title"> &nbsp; &nbsp; Your Completed Journeys &nbsp; &nbsp; </div>}
-          {newJourney}
+            {!this.props.completed ? <div className="JourneyFeed-maintitle"> &nbsp; &nbsp; Your Journeys &nbsp; &nbsp; </div>
+              : <div className="Dashboard-title"> &nbsp; &nbsp; Your Completed Journeys &nbsp; &nbsp; </div>}
+            {newJourney}
           </div>
           <div className="JourneyFeed-journeycontainer">
             {journeysList}
