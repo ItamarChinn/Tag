@@ -116,7 +116,7 @@ hr.progress {
     height: 5px;
     border: none;
     width: 100%; 
-    background: rgb(36,17,0);
+    /* background: rgb(36,17,0); */
     background: linear-gradient(90deg, rgba(36,17,0,0) 0%, rgba(121,14,9,0.7595413165266106) 36%, rgba(236,109,1,1) 90%, rgba(255,124,0,0) 100%);
 }
 

@@ -21,7 +21,6 @@ class JourneyDiagram extends Component {
     }
   }
 
-
   componentDidMount() {
     if (this.props.theme == "space") {
       this.setState({
@@ -31,7 +30,6 @@ class JourneyDiagram extends Component {
         stationOne: "☄️",
         stationTwo: "🌌",
         stationThree: "🪐",
-
         end: "☀️",
         backgroundTheme: "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(32,104,172,1) 100%, rgba(0,212,255,1) 100%)",
         completionPicture: "url('night_sky.jpg')",
