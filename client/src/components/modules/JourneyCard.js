@@ -233,26 +233,19 @@ class JourneyCard extends Component {
   // Comment handling
   messagePicker = () => {
     let message = "";
-    let positiveList = [
+    let messageList = [
       "Good Job!",
       "Nice Going!",
       "Great Work!",
-      "Keep it Up!"
-    ]
-
-    let negativeList = [
+      "Keep it Up!",
       "Almost there!",
       "Keep pushing!",
       "Great Effort!",
       "Every bit counts!"
     ]
 
-    if (this.props.progressDifference <= 0) {
-      return message = positiveList[Math.floor(Math.random() * positiveList.length)];
-    } else {
-      return message = negativeList[Math.floor(Math.random() * negativeList.length)];
+    return message = messageList[Math.floor(Math.random() * messageList.length)];
     }
-  }
 
   expectedTotalProgress = () => {
     let totalTime = (Date.parse(this.props.endDate) - Date.parse(this.props.startDate)) / (60 * 60 * 1000 * 24);
