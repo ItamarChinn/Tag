@@ -8,7 +8,7 @@
 .JourneyDiagram-box {
     border-radius: 10px;
     display: flex;
-    height: 25vh;
+    height: 250px;
     position: relative;
     font-size: var(--fontSize);
     margin: 0;
