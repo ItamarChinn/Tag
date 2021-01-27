@@ -64,7 +64,7 @@ class JourneyDiagram extends Component {
       actualFractionComplete = 1;
     }
 
-    let expectedFractionComplete = this.props.expectedProgress / this.props.goal_quantity;
+    let expectedFractionComplete = this.props.goal_quantity;
 
 
     const bgStyle = {
