@@ -100,10 +100,61 @@ class JourneyFeed extends Component {
       });
   };
 
-
-  completeJourney = (journeyId) => {
-    
+  updateFeed = () => {
+    get("/api/journey", {
+      owner: this.props.userId,
+      complete: this.props.completed
+    })
+      .then((journeyObjs) => {
+        let reversedJourneyObjs = journeyObjs.reverse();
+        reversedJourneyObjs.map((journeyObj) => {
+          this.setState({ journeys: this.state.journeys.concat([journeyObj]) });
+        });
+      });
   }
+
+
+  completeJourney = (journeyId, isCompletedCurrently) => {
+    //  this needs to update the database and then go through the journey list and change the status
+    console.log("JourneyCompleted")
+    post("/api/completejourney", {
+      journeyId: journeyId,
+      complete: !isCompletedCurrently,
+    })
+      // update journey in state 
+      .then(
+        (journeyObj) => {
+            // iterate over the list of journey objects and if I find one whos ID is 
+            // the same as the one I just edited on the DB then update it 
+            let indToRemove = null;
+            let journeylist = [...this.state.journeys];
+            for (let i = 0; i < this.state.journeys.length; i++) {
+              if (this.state.journeys[i]._id === journeyObj._id) {
+                journeylist[i].complete = journeyObj.complete;
+                indToRemove = i;
+              }
+              journeylist.splice(indToRemove, 1);
+            }
+            // ive updated all the journeys that need changing, now just update state and rerender
+            this.setState({ journeys: journeylist });
+            this.updateFeed()})}
+        
+      //   (journeyObj) => {
+      //   // iterate over the list of journey objects and if I find one whos ID is 
+      //   // the same as the one I just edited on the DB then update it 
+      //   let indToRemove = null;
+      //   let journeylist = [...this.state.journeys];
+      //   for (let i = 0; i < this.state.journeys.length; i++) {
+      //     if (this.state.journeys[i]._id === journeyObj._id) {
+      //       indToRemove = i;
+      //     }
+      //     journeylist.splice(indToRemove, 1);
+      //   }
+      //   // ive updated all the journeys that need changing, now just update state and rerender
+      //   this.setState({ journeys: journeylist });
+      //   //  update Completed Feed
+      // });
+
 
   render() {
     let journeysList = null;
@@ -112,7 +163,7 @@ class JourneyFeed extends Component {
     const hasJourneys = this.state.journeys.length !== 0;
     if (hasJourneys) {
       journeysList = this.state.journeys.map((journeyObj) =>
-      (<JourneyCard key={`Card_${journeyObj._id}`}
+      (<JourneyCard key={`Card_${journeyObj._id}${journeyObj.complete}`}
         owner={journeyObj.owner}
         journeyId={journeyObj._id}
         goal_name={journeyObj.goal_name}

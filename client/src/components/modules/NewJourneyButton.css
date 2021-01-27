@@ -4,7 +4,7 @@
 .NewJourneyButton-button {
     font-family: "Baloo 2", cursive;
     font-size: 25px;
-    line-height: 200%;
+    /* line-height: 200%; */
     letter-spacing: 0.75px;
     text-transform: uppercase;
     margin: 0px var(--xs);
@@ -18,7 +18,7 @@
     align-self: flex-end;
     justify-self: flex-end; 
     width: auto;
-    padding: var(--xs) var(--m);
+    /* padding: var(--xs) var(--m); */
 }
 
 .NewJourneyButton-button:hover {

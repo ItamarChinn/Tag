@@ -12,15 +12,15 @@ class JourneyDiagram extends Component {
   }
 
   render() {
-    let start= null;
-    let character= null;
-    let chaser= null;
-    let stationOne= null;
-    let stationTwo= null;
-    let stationThree= null;
-    let end= null;
-    let backgroundTheme= null;
-    let completionPicture= null;
+    let start = null;
+    let character = null;
+    let chaser = null;
+    let stationOne = null;
+    let stationTwo = null;
+    let stationThree = null;
+    let end = null;
+    let backgroundTheme = null;
+    let completionPicture = null;
 
     if (this.props.theme == "space") {
       start = "🌎";
@@ -144,8 +144,11 @@ class JourneyDiagram extends Component {
               <div className="JourneyDiagram-character" style={characterProgressStyle}>{character}</div>
               <div className="JourneyDiagram-chaser" style={chaserProgressStyle}>{chaser}</div>
             </div></>}
-            <div className="JourneyDiagram-completejourney">
-            <CompletedJourneyButton /></div>
+        <div className="JourneyDiagram-completejourney">
+          <CompletedJourneyButton
+            togglePopup={this.props.togglePopup}
+            completed={this.props.completed}
+          /></div>
       </div>
     );
   }

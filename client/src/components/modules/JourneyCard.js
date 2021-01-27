@@ -9,6 +9,7 @@ import JourneyDiagram from "../modules/JourneyDiagram.js";
 import Reward from 'react-rewards';
 import { MdDelete, MdClose, MdDone, MdModeEdit } from 'react-icons/md';
 import ConfirmDeleteJourney from "../modules/ConfirmDeleteJourney.js";
+import ConfirmCompletePopup from "../modules/ConfirmCompletePopup.js";
 import CompletedJourneyButton from "../modules/CompletedJourneyButton.js";
 import DatePicker from "react-datepicker";
 
@@ -31,6 +32,7 @@ class JourneyCard extends Component {
       totalProgress: 0,
       showProgress: true,
       showDeletePopup: false,
+      showCompletePopup: false,
       editingMode: false,
     }
   }
@@ -207,6 +209,10 @@ class JourneyCard extends Component {
     this.setState({ showDeletePopup: !this.state.showDeletePopup })
   }
 
+  toggleComplete = () => {
+    this.setState({ showCompletePopup: !this.state.showCompletePopup })
+  }
+
   toggleEditingMode = () => {
     this.setState({ editingMode: !this.state.editingMode });
   }
@@ -264,6 +270,7 @@ class JourneyCard extends Component {
         return totalExpectedProgress / 30;
     }
   }
+
 
   // isJourneyComplete = () => {
   //   if (Date.now() > Date.parse(this.props.endDate)) {
@@ -447,6 +454,12 @@ class JourneyCard extends Component {
             journeyId={this.props.journeyId}
             deleteJourney={this.props.deleteJourney}
             closePopup={this.toggleDelete} /> : null}
+
+        {this.state.showCompletePopup ?
+          <ConfirmCompletePopup
+            journeyId={this.props.journeyId}
+            completeJourney={this.props.completeJourney}
+            closePopup={this.toggleComplete} /> : null}
         <div className="JourneyCard-container" >
           <div className="JourneyCard-journey">
 
@@ -514,7 +527,7 @@ class JourneyCard extends Component {
               goal_frequency={this.props.goal_frequency}
               actualProgress={actualPeriodicProgress}
               completed={this.state.complete}
-              completeJourney={this.props.completeJourney}
+              togglePopup={this.toggleComplete}
             />
             <div className="JourneyCard-subcontainer">
               {this.state.editingMode ?

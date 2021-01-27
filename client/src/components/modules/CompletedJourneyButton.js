@@ -10,17 +10,16 @@ class CompletedJourneyButton extends Component {
     super(props);
   }
 
-  clicked = () => {
-    //updates the journey so it's completed
-    this.props.completeJourney(this.props.journeyId);
-  }
+  // clicked = () => {
+  //   //updates the journey so it's completed
+  //   this.props.togglePopup();
+  // }
 
   render() {
     let textComplete = null;
-    this.props.complete ? textComplete = <>Mark as incomplete</> : textComplete = <>Complete journey</>;
+    this.props.completed ? textComplete = <>Mark as incomplete</> : textComplete = <>Complete journey</>;
     return (
-      
-      <div className="CompletedJourneyButton-button" onClick={this.clicked}>
+      <div className="CompletedJourneyButton-button" onClick={this.props.togglePopup}>
           {textComplete}
       </div>
     );

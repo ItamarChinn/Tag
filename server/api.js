@@ -95,6 +95,16 @@ router.post("/editjourney", auth.ensureLoggedIn, (req, res) => {
   });
 });
 
+router.post("/completejourney", auth.ensureLoggedIn, (req, res) => {
+  Journey.findById(req.body.journeyId).then((newJourney) => {
+    if (newJourney) {
+      newJourney.complete = req.body.complete
+      newJourney.save().then((journey) => res.send(journey));
+    }
+    else {console.log("Could not find journey")}
+  });
+});
+
 router.post("/progress", auth.ensureLoggedIn, (req, res) => {
   const newProgress = new Progress({
     journeyId: req.body.journeyId,
