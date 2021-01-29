@@ -1,3 +1,5 @@
+![Tag - Chase your dreams](https://github.com/ItamarChinn/Tag)
+
 # Tag - chase your dreams
 
 Check the [current version of the website out here](http://tag-chaseyourdream.herokuapp.com/)
@@ -16,6 +18,7 @@ Check the [current version of the website out here](http://tag-chaseyourdream.he
 
 ## Notes
 
+- You will need to add a .env file with SESSION_SECRET and MONGO_SRV variables
 - Tag was created as a part of Weblab in MIT's Independent Activities Period (IAP) by Itamar Chinn, Sarah Edwards and Anupama Phatak in January 2021
 - Feel free to reuse our code, but please cite us if you do :) 
 - Many thanks to MIT Weblab for providing starter code, in particular in the Utilities.js & Utilities.css files
