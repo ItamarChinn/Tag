@@ -317,6 +317,7 @@ class JourneyCard extends Component {
         deleteProgress={this.deleteProgress}
         newInputedProgress={progressObj.editingMode}
         comment={progressObj.comment}
+        complete={this.state.complete}
       />));
     } else {
       progressList = null;

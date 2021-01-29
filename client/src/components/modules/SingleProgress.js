@@ -18,6 +18,7 @@ import "./SingleProgress.css";
  * @deleteProgress : function,
  * @newInputedProgress : Boolean,
  * @comment : String,
+ * @complete : Boolean,
  */
 
 class SingleProgress extends Component {
@@ -161,13 +162,16 @@ class SingleProgress extends Component {
           {commentBox}
         </div>
         <div className="SingleProgress-subcontainer_right">
-          {!this.state.editingMode ?
-            <div className="u-inlineBlock">
-              <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeDelete}><MdDelete /></div>
-              <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeSave}><MdModeEdit /></div></div>
-            : <div className="u-inlineBlock">
-              <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeCancel}><MdClose /></div>
-              <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeSave}><MdDone /></div></div>}
+          {!this.props.complete ?
+            !this.state.editingMode ?
+              <div className="u-inlineBlock">
+                <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeDelete}><MdDelete /></div>
+                <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeSave}><MdModeEdit /></div></div>
+              : <div className="u-inlineBlock">
+                <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeCancel}><MdClose /></div>
+                <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeSave}><MdDone /></div></div> 
+                :
+                null}
 
         </div>
       </>
