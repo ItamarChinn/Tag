@@ -1,4 +1,6 @@
-![Tag - Chase your dreams](https://github.com/ItamarChinn/Tag/blob/main/welcomeimage.png)
+<p align="center">
+  <img src="https://github.com/ItamarChinn/Tag/blob/main/welcomeimage.png">
+</p>
 
 # Tag - chase your dreams
 
