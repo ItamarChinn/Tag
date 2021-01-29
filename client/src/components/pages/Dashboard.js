@@ -11,6 +11,15 @@ import "./Dashboard.css";
 
 const GOOGLE_CLIENT_ID = "431422395324-ngd8u3e3h6a1lfg6a1ljo3pukgpu0daj.apps.googleusercontent.com";
 
+
+/**
+ * This is the Dashboard page, it is the main page of the website
+ * Takes as props from App.js:
+ * @handleLogout : function
+ * @userId : String
+ */
+
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +35,7 @@ class Dashboard extends Component {
     get(`/api/user`, { userid: this.props.userId }).then((user) => this.setState({ userId: user }));
   }
 
+  // Function that sets of confetti by making partyMode: true, and then the Confetti component turns it off again
   toggleParty = () => {
     this.setState({ partyMode: !this.state.partyMode })
   }
@@ -48,7 +58,6 @@ class Dashboard extends Component {
           <JourneyFeed
             userId={this.state.userId}
             completed={false}
-            // togglePopup={this.togglePopup}
             partyMode={this.state.partyMode}
             toggleParty={this.toggleParty} />
            
@@ -58,7 +67,7 @@ class Dashboard extends Component {
           <JourneyFeed
             userId={this.state.userId}
             completed={true}
-            // togglePopup={this.togglePopup}
+            partyMode={this.state.partyMode}
             toggleParty={this.toggleParty} 
             />
         </div>

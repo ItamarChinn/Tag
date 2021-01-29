@@ -43,29 +43,31 @@ router.post("/initsocket", (req, res) => {
   res.send({});
 });
 
-// |------------------------------|
-// | write your API methods below!|
-// |------------------------------|
+
 router.get("/user", (req, res) => {
   User.findById(req.query.userid).then((user) => {
     res.send(user);
   });
 });
 
+// gets all progress objects by journeyID
 router.get("/progress", (req, res) => {
   Progress.find({journeyId: req.query.journeyId}).then((progress) => {
     res.send(progress);
   })
 });
 
+// deletes all progress objects by progressID
 router.post("/deleteprogress", auth.ensureLoggedIn, (req, res) => {
   Progress.findByIdAndDelete(req.body.progressId).then((progress) => res.send(progress));
 });
 
+// deletes all journey objects by journeyID
 router.post("/deletejourney", auth.ensureLoggedIn, (req, res) => {
   Journey.findByIdAndDelete(req.body.journeyId).then((journey) => res.send(journey));
 });
 
+// edits progress objects with new progressObject, found with progressID
 router.post("/editprogress", auth.ensureLoggedIn, (req, res) => {
   Progress.findById(req.body.progressId).then((newProgress) => {
     if (newProgress) {
@@ -79,6 +81,8 @@ router.post("/editprogress", auth.ensureLoggedIn, (req, res) => {
   });
 });
 
+
+// edits journey objects with new journeyObject, found with journeyID
 router.post("/editjourney", auth.ensureLoggedIn, (req, res) => {
   Journey.findById(req.body.journeyId).then((newJourney) => {
     if (newJourney) {
@@ -95,6 +99,7 @@ router.post("/editjourney", auth.ensureLoggedIn, (req, res) => {
   });
 });
 
+// marks journeys as complete by journeyID
 router.post("/completejourney", auth.ensureLoggedIn, (req, res) => {
   Journey.findById(req.body.journeyId).then((newJourney) => {
     if (newJourney) {
@@ -105,6 +110,7 @@ router.post("/completejourney", auth.ensureLoggedIn, (req, res) => {
   });
 });
 
+// posts new progress object that is connected by JourneyID to a journey
 router.post("/progress", auth.ensureLoggedIn, (req, res) => {
   const newProgress = new Progress({
     journeyId: req.body.journeyId,
@@ -119,12 +125,14 @@ router.post("/progress", auth.ensureLoggedIn, (req, res) => {
 });
 
 
+// gets all journeys connected to a specific userID
 router.get("/journey", (req, res) => {
   Journey.find({owner: req.user._id, complete: req.query.complete}).then((journey) => {
     res.send(journey);
   })
 });
 
+// posts new journey object that is connected by userID to a user (owner)
 router.post("/journey", auth.ensureLoggedIn, (req, res) => {
   const newJourney = new Journey({
     owner: req.user._id,

@@ -6,9 +6,18 @@ import "./SingleProgress.css";
 
 
 /**
- * This is one line of progress in a journey
- * It inherits its properties from JourneyCard
- * 
+ * SingleProgress is one line of progress in a JourneyCard
+ * It inherits its props from JourneyCard.js:
+ * @key : String,
+ * @journeyId : String,
+ * @progressId : String,
+ * @progress_quantity : String,
+ * @goal_unit : String,
+ * @datetime : Date,
+ * @onIncrement : function,
+ * @deleteProgress : function,
+ * @newInputedProgress : Boolean,
+ * @comment : String,
  */
 
 class SingleProgress extends Component {
@@ -33,18 +42,22 @@ class SingleProgress extends Component {
     })
   }
 
+  // Increments the progress of the SingleProgress
   incrementUp = () => {
     this.setState({
       progress_quantity: parseInt(this.state.progress_quantity) + 1,
     })
   }
 
+  // Decrements the progress of the SingleProgress
   decrementDown = () => {
     this.setState({
       progress_quantity: parseInt(this.state.progress_quantity) - 1,
     })
   }
 
+  // triggered when the user changes data in the SingleProgress to save it to the DB
+  // and update the JourneyCard progresses
   toggleEditingModeSave = () => {
     if (this.state.progress_quantity < 0) { alert("Must move forwards! Please enter positive progress") }
     else if (this.state.editingMode) {
@@ -61,29 +74,29 @@ class SingleProgress extends Component {
     }
   }
 
+  // updates the state with any new user inputed data
   change = (e) => {
-      if (e.target.value === null) {
-        this.setState({[e.target.name]: 0})
-      } else {
-        this.setState({[e.target.name]: e.target.value})
-      }
-    };
-  
+    if (e.target.value === null) {
+      this.setState({ [e.target.name]: 0 })
+    } else {
+      this.setState({ [e.target.name]: e.target.value })
+    }
+  };
 
 
 
+  // triggered when the user cancels their new input
   toggleEditingModeCancel = () => {
-    // if (this.state.progress_quantity === 0) {
-    //   this.toggleEditingModeDelete()
-    // } else {
     this.setState({ editingMode: !this.state.editingMode });
-    // }
   }
 
+  // triggered when the user deletes a progress
+  // triggers the Delete confirmation popup
   toggleEditingModeDelete = () => {
     this.setState({ showDeletePopup: !this.state.showDeletePopup })
   }
 
+  // used for the react-datepicker to set a date for the progress
   setDateTime = (date) => {
     this.setState({
       datetime: new Date(date)
@@ -93,12 +106,12 @@ class SingleProgress extends Component {
   render() {
     let timeStamp = null;
     let commentBox = null;
-    let progress_number=null;
-    
+    let progress_number = null;
+
     // Date parsing
     const timeProgress = new Date(Date.parse(this.state.datetime))
 
-    
+
     if (this.state.editingMode) {
       progress_number = (<input className="SingleProgress-numberinput"
         type="number"
@@ -115,7 +128,7 @@ class SingleProgress extends Component {
         showTimeSelect
         popperPlacement="top-end"
       />)
-      commentBox = <input type="text" name="comment" placeholder={this.state.comment} onChange={e => this.change(e)}/>
+      commentBox = <input type="text" name="comment" placeholder={this.state.comment} onChange={e => this.change(e)} />
     } else {
       progress_number = this.state.progress_quantity;
       timeStamp = <>{timeProgress.getHours()} :{(timeProgress.getMinutes()) < 10 ? "0" + timeProgress.getMinutes() : timeProgress.getMinutes()} &nbsp; {timeProgress.getDate()}-{timeProgress.getMonth() + 1}-{timeProgress.getFullYear()}</>
@@ -124,11 +137,11 @@ class SingleProgress extends Component {
 
     return (
       <>
-      {this.state.showDeletePopup ?
-            <ConfirmDeletePopup
-              progressId={this.props.progressId}
-              deleteProgress={this.props.deleteProgress}
-              closePopup={this.toggleEditingModeDelete} /> : null}
+        {this.state.showDeletePopup ?
+          <ConfirmDeletePopup
+            progressId={this.props.progressId}
+            deleteProgress={this.props.deleteProgress}
+            closePopup={this.toggleEditingModeDelete} /> : null}
         <div className="SingleProgress-subcontainer_left u-inlineBlock">
           {(this.state.editingMode && this.state.progress_quantity > 0) &&
             <div className="SingleProgress-decrement u-inlineBlock" onClick={this.decrementDown}>
@@ -155,7 +168,7 @@ class SingleProgress extends Component {
             : <div className="u-inlineBlock">
               <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeCancel}><MdClose /></div>
               <div className="SingleProgress-togglebutton" onClick={this.toggleEditingModeSave}><MdDone /></div></div>}
-          
+
         </div>
       </>
     );

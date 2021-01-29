@@ -4,8 +4,24 @@ import "../../public/night_sky.jpg";
 import CompletedJourneyButton from "../modules/CompletedJourneyButton.js";
 
 /**
- * Journey Diagram showing your journey
+ * JourneyDiagram showing your journey, or a message if your journey is completed.
+ * The JourneyDiagram component is heavily styled in JourneyDiagram.css and that is how everything is show to the user
+ * JourneyDiagram inherits its props from JourneyCard:
+ * @totalProgress : Number,
+ * @startDate : Date,
+ * @endDate : Date,
+ * @theme : String,
+ * @goal_time_unit : String,
+ * @goal_unit : String,
+ * @goal_quantity : Number,
+ * @goal_frequency : Number,
+ * @actualProgress : Number,
+ * @completed : Boolean,
+ * @togglePopup : function,
+ * @isJourneyComplete : Boolean
  */
+
+
 class JourneyDiagram extends Component {
   constructor(props) {
     super(props);
@@ -72,10 +88,6 @@ class JourneyDiagram extends Component {
       expectedFractionComplete = hour / 24;
     } else if (this.props.goal_time_unit === "Week") {
       expectedFractionComplete = day / 7;
-      console.log(this.props.actualProgress)
-      console.log(this.props.goal_quantity)
-      console.log(this.props.goal_frequency)
-      console.log(actualFractionComplete);
     } else if (this.props.goal_time_unit === "Month") {
       expectedFractionComplete = date / 31;
     }

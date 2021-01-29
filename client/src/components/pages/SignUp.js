@@ -7,6 +7,14 @@ import "./Signup.css";
 
 const GOOGLE_CLIENT_ID = "431422395324-ngd8u3e3h6a1lfg6a1ljo3pukgpu0daj.apps.googleusercontent.com";
 
+/**
+ * This is the SignUp page that any logged-out user will see 
+ * Takes as props from App.js:
+ * @handleLogin : function
+ * @userId : String
+ */
+
+
 class SignUp extends Component {
   constructor(props) {
     super(props);

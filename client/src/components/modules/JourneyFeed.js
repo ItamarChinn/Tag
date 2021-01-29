@@ -8,8 +8,13 @@ import NewJourneyPopup from "../modules/NewJourneyPopup.js"
 
 /**
  * JourneyFeed is the feed of all the journeys we have created, 
- * it can be either an incompleted journey feed which has the option to add progress or a completed one which doesnt
- * 
+ * it can be either an incompleted journey feed which has the option to add progress 
+ * or a completed one which doesn't have the option to add progress and displays a different JourneyDiagram
+ * It inherits its props from Dashboard:
+ * @userId : String,
+ * @completed : Boolean,
+ * @partyMode : Boolean,
+ * @toggleParty : function,
  */
 
 
@@ -72,19 +77,19 @@ class JourneyFeed extends Component {
       // update progress in state 
       .then(
         (journeyObj) => {
-        // iterate over the list of journey objects and if I find one whos ID is 
-        // the same as the one I just edited on the DB then update it 
-        let indToRemove = null;
-        let journeylist = [...this.state.journeys];
-        for (let i = 0; i < this.state.journeys.length; i++) {
-          if (this.state.journeys[i]._id === journeyObj._id) {
-            journeylist[i] = journeyObj;
+          // iterate over the list of journey objects and if I find one whos ID is 
+          // the same as the one I just edited on the DB then update it 
+          let indToRemove = null;
+          let journeylist = [...this.state.journeys];
+          for (let i = 0; i < this.state.journeys.length; i++) {
+            if (this.state.journeys[i]._id === journeyObj._id) {
+              journeylist[i] = journeyObj;
+            }
           }
+          // ive updated all the journeys that need changing, now just update state and rerender
+          this.setState({ journeys: journeylist });
+          this.resetCounter()
         }
-        // ive updated all the journeys that need changing, now just update state and rerender
-        this.setState({ journeys: journeylist });
-        this.resetCounter()
-      }
       );
   };
 
@@ -134,41 +139,25 @@ class JourneyFeed extends Component {
       // update journey in state 
       .then(
         (journeyObj) => {
-            // iterate over the list of journey objects and if I find one whos ID is 
-            // the same as the one I just edited on the DB then update it 
-            let indToRemove = null;
-            let journeylist = [...this.state.journeys];
-            for (let i = 0; i < this.state.journeys.length; i++) {
-              if (this.state.journeys[i]._id === journeyObj._id) {
-                journeylist[i].complete = journeyObj.complete;
-                indToRemove = i;
-              }
-              journeylist.splice(indToRemove, 1);
+          // iterate over the list of journey objects and if I find one whos ID is 
+          // the same as the one I just edited on the DB then update it 
+          let indToRemove = null;
+          let journeylist = [...this.state.journeys];
+          for (let i = 0; i < this.state.journeys.length; i++) {
+            if (this.state.journeys[i]._id === journeyObj._id) {
+              journeylist[i].complete = journeyObj.complete;
+              indToRemove = i;
             }
-            // ive updated all the journeys that need changing, now just update state and rerender
-            this.setState({ journeys: journeylist });
-          
-            this.props.toggleParty()
-            this.updateFeed()
+            journeylist.splice(indToRemove, 1);
           }
-            )}
-        
-      //   (journeyObj) => {
-      //   // iterate over the list of journey objects and if I find one whos ID is 
-      //   // the same as the one I just edited on the DB then update it 
-      //   let indToRemove = null;
-      //   let journeylist = [...this.state.journeys];
-      //   for (let i = 0; i < this.state.journeys.length; i++) {
-      //     if (this.state.journeys[i]._id === journeyObj._id) {
-      //       indToRemove = i;
-      //     }
-      //     journeylist.splice(indToRemove, 1);
-      //   }
-      //   // ive updated all the journeys that need changing, now just update state and rerender
-      //   this.setState({ journeys: journeylist });
-      //   //  update Completed Feed
-      // });
+          // ive updated all the journeys that need changing, now just update state and rerender
+          this.setState({ journeys: journeylist });
 
+          this.props.toggleParty()
+          this.updateFeed()
+        }
+      )
+  }
 
   render() {
     let journeysList = null;

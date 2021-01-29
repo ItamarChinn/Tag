@@ -6,14 +6,33 @@ import NewProgressButton from "../modules/NewProgressButton.js"
 import SingleProgress from "../modules/SingleProgress.js"
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 import JourneyDiagram from "../modules/JourneyDiagram.js";
-import Reward from 'react-rewards';
 import { MdDelete, MdClose, MdDone, MdModeEdit } from 'react-icons/md';
 import ConfirmDeleteJourney from "../modules/ConfirmDeleteJourney.js";
 import ConfirmCompletePopup from "../modules/ConfirmCompletePopup.js";
-import CompletedJourneyButton from "../modules/CompletedJourneyButton.js";
 import DatePicker from "react-datepicker";
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, FacebookIcon, TwitterIcon, WhatsappIcon, } from "react-share";
 
-import {FacebookShareButton, TwitterShareButton, WhatsappShareButton, FacebookIcon, TwitterIcon, WhatsappIcon,} from "react-share";
+/**
+ * JourneyCard is the parents component for all things related to a specific journey
+ * It is in charge of rendering all the information that the user sees for their journey and pass data to the children components
+ * It inherits its props from JourneyFeed:
+ * @key : String,
+ * @owner : String,
+ * @journeyId : String,
+ * @goal_name : String,
+ * @goal_frequency : Number,
+ * @goal_time_unit : String,
+ * @goal_unit : String,
+ * @goal_quantity : Number,
+ * @theme : String,
+ * @complete : Boolean,
+ * @startDate : Date,
+ * @endDate : Date,
+ * @isMostRecent : Boolean,
+ * @deleteJourney : function,
+ * @editJourney : function,
+ * @completeJourney : function,
+ */
 
 
 class JourneyCard extends Component {
@@ -45,11 +64,12 @@ class JourneyCard extends Component {
       journeyId: this.props.journeyId
     })
       .then((progressObjs) => {
-        // let reversedProgressObjs = progressObjs.reverse();
+        // after getting all of the progresses associated with this journey, we sort them by reverse input date
         let reversedProgressObjs = progressObjs.sort((a, b) => {
           const dateA = new Date(a.datetime), dateB = new Date(b.datetime);
           return dateA - dateB;
         }).reverse();
+        // then we add them to the state and track the totalProgress
         reversedProgressObjs.map((progressObj) => {
           this.setState({
             progresses: this.state.progresses.concat([progressObj]),
@@ -120,6 +140,7 @@ class JourneyCard extends Component {
       });
   }
 
+  // adds new progress to the journeycard and DB through the NewProgressButton component
   addNewProgress = () => {
     const body = {
       journeyId: this.props.journeyId,
@@ -135,8 +156,6 @@ class JourneyCard extends Component {
         totalProgress: this.state.totalProgress + progressObj.progress_quantity,
         datetime: progressObj.datetime
       })
-      // this.reward.rewardMe();
-      // this.reward.punishMe();
     });
   };
 
@@ -248,7 +267,7 @@ class JourneyCard extends Component {
     ]
 
     return message = messageList[Math.floor(Math.random() * messageList.length)];
-    }
+  }
 
   expectedTotalProgress = () => {
     let totalTime = (Date.parse(this.props.endDate) - Date.parse(this.props.startDate)) / (60 * 60 * 1000 * 24);
@@ -298,8 +317,6 @@ class JourneyCard extends Component {
         deleteProgress={this.deleteProgress}
         newInputedProgress={progressObj.editingMode}
         comment={progressObj.comment}
-      // newInputedProgress={progressObj._id === this.state.progresses[0]._id}
-      // progressDifference={this.calculateDifference()}
       />));
     } else {
       progressList = null;
@@ -345,7 +362,6 @@ class JourneyCard extends Component {
         const month_of_progress = String(new Date(progressObj.datetime).getMonth())
         const year_of_progress = String(new Date(progressObj.datetime).getFullYear())
         return (date === date_of_progress && month === month_of_progress && year === year_of_progress)
-        // console.log(filtered_progress);
       });
     } else if (this.props.goal_time_unit == "Week") {
       filtered_progress = this.state.progresses.filter((progressObj) => {
@@ -354,7 +370,6 @@ class JourneyCard extends Component {
         const year_of_progress = String(new Date(progressObj.datetime).getFullYear())
         const week_of_progress = String(this.getWeekNumber(new Date(progressObj.datetime)))
         return (week_number === week_of_progress && year === year_of_progress)
-        // console.log(filtered_progress);
       })
     } else if (this.props.goal_time_unit == "Month") {
       filtered_progress = this.state.progresses.filter((progressObj) => {
@@ -362,7 +377,6 @@ class JourneyCard extends Component {
         const year_of_progress = String(new Date(progressObj.datetime).getFullYear());
 
         return (month === month_of_progress && year === year_of_progress)
-        // console.log(filtered_progress);
       })
     }
 
@@ -460,9 +474,9 @@ class JourneyCard extends Component {
           <ConfirmCompletePopup
             journeyId={this.props.journeyId}
             completeJourney={this.props.completeJourney}
-            closePopup={this.toggleComplete} 
+            closePopup={this.toggleComplete}
             completed={this.state.complete}
-            /> : null}
+          /> : null}
         <div className="JourneyCard-container" >
           <div className="JourneyCard-journey">
 
@@ -511,7 +525,7 @@ class JourneyCard extends Component {
                       </>
                       :
                       <>
-                      {editTheme}
+                        {editTheme}
                         <div className="JourneyCard-editbutton" onClick={this.toggleEditingMode}><MdClose /></div>
                         <div className="JourneyCard-editbutton" onClick={this.toggleEditing}><MdDone /></div>
                       </>}
@@ -540,44 +554,41 @@ class JourneyCard extends Component {
                 :
                 <>
                   <div className="JourneyCard-subtitle"> Start {start_date.getDate()} {monthNames[start_date.getMonth()]} {start_date.getFullYear()} </div>
-                  {/* <div> {this.isJourneyComplete()} </div> */}
                 </>}
-                {/* <div> */}
-                <div className="JourneyCard-subtitle">
-                  {/* Share &nbsp; */}
-          <FacebookShareButton
-          className="JourneyCard-subtitle"
-            quote="Tag! Now it's your turn to chase your dreams just like I am. Check out this great new way to track your habits!"
-            url = {"http://tag-chaseyourdream.herokuapp.com"}
-            >
-            <FacebookIcon
-              size={30}
-              round={true}
-            />
-            </FacebookShareButton>
+              <div className="JourneyCard-subtitle">
+                <FacebookShareButton
+                  className="JourneyCard-subtitle"
+                  quote="Tag! Now it's your turn to chase your dreams just like I am. Check out this great new way to track your habits!"
+                  url={"http://tag-chaseyourdream.herokuapp.com"}
+                >
+                  <FacebookIcon
+                    size={30}
+                    round={true}
+                  />
+                </FacebookShareButton>
 
-          <TwitterShareButton
-          className="JourneyCard-subtitle"
-            title="Tag! Now it's your turn to chase your dreams just like I am. Check out this great new way to track your habits!"
-            url = {"http://tag-chaseyourdream.herokuapp.com"}
-          >
-            <TwitterIcon
-             size={30}
-              round={true}
-            />
-          </TwitterShareButton>
+                <TwitterShareButton
+                  className="JourneyCard-subtitle"
+                  title="Tag! Now it's your turn to chase your dreams just like I am. Check out this great new way to track your habits!"
+                  url={"http://tag-chaseyourdream.herokuapp.com"}
+                >
+                  <TwitterIcon
+                    size={30}
+                    round={true}
+                  />
+                </TwitterShareButton>
 
-          <WhatsappShareButton
-          className="JourneyCard-subtitle"
-            title="Tag! Now it's your turn to chase your dreams just like I am. Check out this great new way to track your habits!"
-            separator=": "
-            url = {"http://tag-chaseyourdream.herokuapp.com"}
-          >
-            <WhatsappIcon 
-            size={30}
-              round={true}/>
-          </WhatsappShareButton>
-            </div>
+                <WhatsappShareButton
+                  className="JourneyCard-subtitle"
+                  title="Tag! Now it's your turn to chase your dreams just like I am. Check out this great new way to track your habits!"
+                  separator=": "
+                  url={"http://tag-chaseyourdream.herokuapp.com"}
+                >
+                  <WhatsappIcon
+                    size={30}
+                    round={true} />
+                </WhatsappShareButton>
+              </div>
               {this.state.editingMode ?
                 <div className="JourneyCard-subtitle">{endDateEdit}</div>
                 :
@@ -585,9 +596,9 @@ class JourneyCard extends Component {
                   <div className="JourneyCard-subtitle"> Finish {end_date.getDate()} {monthNames[end_date.getMonth()]} {end_date.getFullYear()} </div>
                 </>
               }
-              
+
             </div>
-            
+
           </div>
           <div className="JourneyCard-progresstoggler">
             <div className="JourneyCard-subcontainer">
@@ -601,7 +612,6 @@ class JourneyCard extends Component {
                 <div className="JourneyCard-subtitle_center"> Time </div>
                 <div className="JourneyCard-subtitle_center"> Comments </div>
                 <div className="JourneyCard-subtitle_right"> Edit </div>
-                {/* <hr className="here" /> */}
                 {progressList}
               </div>
             </div>}

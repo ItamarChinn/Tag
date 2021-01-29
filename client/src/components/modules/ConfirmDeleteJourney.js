@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import "./ConfirmDeleteJourney.css";
-import {get, post} from "../../utilities";
+import { get, post } from "../../utilities";
 
 
 /**
- * New Journey button.
- * Takes as props from Dashboard:
- * @userId : String
- * @addNewJourney : function
+ * ConfirmDeleteJourney is a component that sits on the entire page and asks you if you are sure you want 
+ * to delete a JOURNEY (NOT progress!)
+ * Takes as props from SingleProgress
+ * @journeyId : String
+ * @deleteProgress : function (in JourneyFeed.js)
+ * @closePopup : function,
  */
+
 class ConfirmDeleteJourney extends Component {
   constructor(props) {
-      super(props);
+    super(props);
   }
 
   deleteThisJourney = () => {
@@ -19,20 +22,20 @@ class ConfirmDeleteJourney extends Component {
     this.props.closePopup();
   }
 
-    render() {   
-        return (
-        <div className="ConfirmDeleteJourney-popup">
-            <div className='ConfirmDeleteJourney-popupinner'> 
-            <div className='ConfirmDeleteJourney-content'>
+  render() {
+    return (
+      <div className="ConfirmDeleteJourney-popup">
+        <div className='ConfirmDeleteJourney-popupinner'>
+          <div className='ConfirmDeleteJourney-content'>
             Are you sure you wish to delete this journey?
-              <div className = "ConfirmDeleteJourney-buttonContainer">
-                <div className="ConfirmDeleteJourney-button2" onClick={this.props.closePopup}>&nbsp; Cancel &nbsp;</div>
-                <div className="ConfirmDeleteJourney-button" onClick={this.deleteThisJourney}>&nbsp; Delete &nbsp;</div>
-              </div>
-            </div>
+              <div className="ConfirmDeleteJourney-buttonContainer">
+              <div className="ConfirmDeleteJourney-button2" onClick={this.props.closePopup}>&nbsp; Cancel &nbsp;</div>
+              <div className="ConfirmDeleteJourney-button" onClick={this.deleteThisJourney}>&nbsp; Delete &nbsp;</div>
             </div>
           </div>
-        );
+        </div>
+      </div>
+    );
   }
 };
 
