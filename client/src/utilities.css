@@ -1,0 +1,116 @@
+/**
+* Welcome to your ✨𝔲𝔱𝔦𝔩𝔦𝔱𝔶 𝔰𝔱𝔶𝔩𝔢𝔰✨!
+* This file includes utility classes that are super simple
+* and can be used to add general styles; variable definitions
+* for colors; and styles to html, body, and other high level
+* DOMs.
+* 
+* All utility classes start with a `u-` and all do
+* one basic CSS thing (for example, making the font-weight
+* 600 for bolding) or are super generic.
+* 
+* This is 𝙉𝙊𝙏 the place to define classes for components or
+* do rigorous styling. You shoud not need to change this file
+* much after initial creation.
+*/
+
+/* TODO: REPLACE WITH YOUR OWN FONT! */
+@import url('https://fonts.googleapis.com/css2?family=Allerta&family=Baloo+2:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+:root {
+  --rose: #f39196;
+  --beige: #f6ecdf;
+  --darkblue: #2068AC;
+  --red: #e7232c;
+  --hover-red: #ff204560;
+  --hover-green: #02b13654;
+  --green: #51bc4e;
+
+  /* themes */
+  --space: #0d2a45 ;
+  --space_padding: #a9cdef ;
+  --safari: #1e4a1c ;
+  --safari_padding: #b7e3b5 ;
+
+
+  --xs: 4px;
+  --s: 8px;
+  --m: 16px;
+  --l: 24px;
+}
+
+
+html, body {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+}
+
+input {
+  font-family: 'Montserrat', sans-serif !important;
+  text-align: center;
+}
+
+titles {
+  margin: var(--s);
+  padding: var(--xs);
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+}
+
+form {
+  flex-grow: 1;
+}
+
+.u-flex {
+  display: flex;
+}
+
+.u-flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.u-flex-justifyCenter {
+  justify-content: center;
+}
+
+.u-flex-alignCenter {
+  align-items: center;
+}
+
+.u-inlineBlock {
+  display: inline-block;
+}
+
+.u-bold {
+  font-weight: 600;
+}
+
+.u-textCenter {
+  text-align: center;
+}
+
+.u-relative {
+  position: relative;
+}
+
+.u-pointer {
+  cursor: pointer;
+}
+
+.u-link {
+  color: var(--primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.u-link:hover {
+  color: var(--primary--dim);
+}

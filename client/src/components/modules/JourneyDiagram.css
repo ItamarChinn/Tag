@@ -1,0 +1,210 @@
+
+:root {
+
+    --fontSize: 45px;
+}
+
+
+.JourneyDiagram-box {
+    border-radius: 10px;
+    display: flex;
+    height: 250px;
+    position: relative;
+    font-size: var(--fontSize);
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+    box-shadow: inset 0 0 10px var(--beige);
+    /* #000000; */
+}
+
+.JourneyDiagram-boxComplete {
+    border-radius: 10px;
+    display: flex;
+    height: 250px;
+    position: relative;
+    font-size: var(--fontSize);
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+    box-shadow: inset 0 0 10px var(--beige);
+    /* #000000; */
+}
+
+
+.JourneyDiagram-center {
+    display: flex;
+    position: relative;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+}
+
+.JourneyDiagram-top {
+    display: flex;
+    position: relative;
+    align-self: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    z-index: 10;
+    font-size: 40px;
+    padding: 0;
+    margin: 0;
+}
+
+.JourneyDiagram-bottom {
+    display: flex;
+    position: relative;
+    align-self: flex-end;
+    justify-content: center;
+    width: 100%;
+    z-index: 10;
+    font-size: 40px;
+    padding: 0;
+    margin: 0;
+}
+
+
+.JourneyDiagram-stations {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    z-index: 10;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.JourneyDiagram-progresscharacters {
+    position: absolute;
+    right: calc(100%/12 + var(--fontSize)/2) ;
+    left: calc(100%/12 + var(--fontSize)/2) ;
+    display: flex;
+    z-index: 15;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-size: 60px;
+}
+
+.JourneyDiagram-tagmessage {
+    display: flex;
+    position: absolute;
+    top: 5%;
+    right: 0%;
+    align-self: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 10;
+    font-size: 40px;
+    padding: var(--xs);
+    margin: 0px var(--s);
+    height: max-content;
+    width: 15%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: var(--beige);
+    border: var(--beige);
+    border-style: dotted;
+}
+
+
+  .JourneyDiagram-line {
+    display: flex;
+    position: absolute;
+    right: calc(100%/12 + var(--fontSize)/2) ;
+    left: calc(100%/12 + var(--fontSize)/2) ;
+    height: 100%;
+    z-index: 1;
+    padding: 0; 
+    margin: 0;
+  }
+
+  .JourneyDiagram-character {
+    display: flex;
+    position: absolute;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .JourneyDiagram-chaser {
+    display: flex;
+    position: absolute;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-end;
+
+  }
+
+  .JourneyDiagram-boxbox {
+    display: flex;
+    justify-self: flex-start;
+    align-self: center;
+    
+}
+
+hr.progressAvatar {
+    display: flex;
+    justify-self: flex-start;
+    align-self: center;
+    height: 5px;
+    border: none;
+    width: 100%; 
+    /* background: rgb(36,17,0); */
+    background: linear-gradient(90deg,rgba(0,0,0,1) 0%, rgba(81,188,78,1) 60%, rgb(255, 255, 255) 80%, rgba(255,255,255,0) 100%);
+}
+
+hr.progressChaser {
+    display: flex;
+    justify-self: flex-start;
+    align-self: center;
+    height: 5px;
+    border: none;
+    width: 100%; 
+    /* background: rgb(36,17,0); */
+    /* background: linear-gradient(90deg, rgba(36,17,0,0) 0%, rgba(121,14,9,0.7595413165266106) 36%, rgba(236,109,1,1) 90%, rgba(255,124,0,0) 100%); */
+    background: linear-gradient(90deg,rgba(0,0,0,1) 0%, rgba(231,35,44,1) 60%, rgb(255, 255, 255) 80%, rgba(255,255,255,0) 100%);
+}
+
+.JourneyDiagram-progresstext {
+    /* position: relative; */
+    bottom: 0px;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 20px;
+    color: var(--beige);
+}
+
+.JourneyDiagram-completiontext {
+    display: flex;
+    position: relative;
+    /* justify-self: "center"; */
+    text-align: center;
+    align-self: flex-start;
+    width: 100%;
+    top: 35%;
+    left: 25%;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 25px;
+    color: var(--beige);
+}
+
+
+
+.JourneyDiagram-completejourney {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}

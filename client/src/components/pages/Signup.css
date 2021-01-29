@@ -1,0 +1,81 @@
+.Signup-title1  { 
+    text-align: center;
+    color: var(--rose);
+    font-size: 50px;
+    font-family:"Baloo 2", cursive;
+}
+
+.Signup-centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Signup-container {
+    text-align: center;
+    display: inline-block;
+    background-color: var(--beige);
+    border-radius: 20px;
+    mix-blend-mode: normal;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+.Signup-title2  { 
+    text-align: center;
+    color: var(--beige);
+    font-size: 50px;
+    font-family:"Baloo 2", cursive;
+}
+
+.Signup-title3  { 
+    text-align: center;
+    color: var(--beige);
+    font-size: 30px;
+    font-family:"Baloo 2", cursive;
+}
+
+.Signup-chase {
+    color: var(--darkblue);
+    font-size: 28px;
+    font-family:"Baloo 2", cursive;
+}
+
+.Signup-subtitle {
+    color: var(--beige);
+    font-size: 50px;
+    font-family:"Baloo 2", cursive;
+}
+
+.Signup-background {
+    background-color: var(--rose);
+    height: 100vh;
+    margin:0;
+    padding:0;
+}
+
+.Signup-holdall {
+    position: absolute;
+    background-color: var(--rose);
+    left: 50vw;
+    top: 30vh;
+    transform:translate(-50%, -50%);
+}
+
+.Signup-enter {
+    color: var(--darkblue);
+    font-size: 28px;
+    font-family:"Baloo 2", cursive;
+    text-align: center;
+    display: inline-block;
+    background-color: var(--beige);
+    border-radius: 20px;
+    mix-blend-mode: normal;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: var(--s) var(--m);
+    margin: 10px;
+}
+
+.Signup-enter:hover {
+    background-color: #f6ecdfc9;
+    cursor: pointer;
+}

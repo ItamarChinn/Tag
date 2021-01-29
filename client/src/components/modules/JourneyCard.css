@@ -1,0 +1,294 @@
+﻿.JourneyCard-container {
+  display: flex;
+  position: relative;
+  /* text-align: center; */
+  justify-content: center;
+  flex-direction: column;
+  padding: var(--s) var(--m);
+  background-color: #FFFBF5; 
+  border-radius: 20px;
+  margin: var(--m) var(--xs);
+}
+
+.JourneyCard-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%
+}
+
+.JourneyCard-progresslist{
+  position: relative;
+  z-index: 1;
+  padding-top: var(--s);
+}
+
+.JourneyCard-title {
+  display: flex;
+  text-align: flex-start;
+  /* margin: var(--s);
+  padding: var(--xs); */
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.JourneyCard-subtitle_left {
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 20px;
+  display: grid;
+  justify-self: start;
+  text-align: start;
+  border-bottom: 2px solid #ffdfb4;
+  width: 100%;
+}
+
+.JourneyCard-subtitle_center {
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 20px;
+  display: grid;
+  justify-self: center;
+  text-align: center;
+  border-bottom: 2px solid #ffdfb4;
+  width: 100%;
+}
+
+.JourneyCard-subtitle_right {
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 20px;
+  display: grid;
+  justify-self: end;
+  text-align: end;
+  border-bottom: 2px solid #ffdfb4;
+  width: 100%;
+}
+
+
+.JourneyCard-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  margin: var(--xs) 0;
+}
+
+.JourneyCard-subtitle2 {
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 30px;
+  color: #FFFBF5;
+}
+
+
+.JourneyCard-button {
+  /* color: rgba(0, 0, 0, 0.54); */
+  font-family: "Baloo 2", cursive;
+  font-size: 16px;
+  line-height: 200%;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  margin: 0px var(--xs);
+  color: var(--beige);
+  background-color: var(--rose);
+  display: inline-block;
+  border-radius: 20px;
+  mix-blend-mode: normal;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: var(--s);
+}
+
+.JourneyCard-noprogress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Baloo 2", cursive;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.JourneyCard-subcontainer {
+  display: flex;
+  justify-content: space-between;
+  margin: var(--xs);
+  /* flex-grow: 1; */
+}
+
+.JourneyCard-subcontainerprogress {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-auto-rows: min-content;
+  grid-row-gap: 4px;
+  
+}
+
+
+.JourneyCard-subcontainer3 {
+  position: relative;
+  width: auto;
+  height: auto;
+}
+
+.JourneyCard-subcontainer2 {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+}
+
+.JourneyCard-togglebutton {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 30px; 
+  display: flex;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  border-radius: 60%;
+  text-align: center;
+  align-items: center;
+  justify-items: center;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.JourneyCard-togglebutton:hover {
+            transform: scale(0.98); 
+            background-color:rgba(104, 104, 104, 0.25);
+            transition-duration: 0.5s;
+            cursor: pointer;
+            /* Scaling button to 0.98 to its original size */ 
+            /* box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);  */
+            /* Lowering the shadow */ 
+}
+
+.JourneyCard-journey {
+  background-color: #fff2df; 
+  border-radius: 15px;
+  margin-top: var(--s);
+  padding: var(--m);
+  display: flex;
+  flex-direction: column;
+}
+
+.JourneyCard-progresstoggler {
+  background-color: #fff2df;
+  position: relative;
+  border-radius: 15px;
+  margin-top: var(--s);
+  padding: var(--m);
+  z-index: 0;
+}
+
+
+.JourneyCard-editbuttoncontainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+.JourneyCard-editbutton {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 25px; 
+  display: flex;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  border-radius: 60%;
+  text-align: center;
+  /* background-color: rgb(155, 155, 155); */
+  /* align-items: center; */
+  /* justify-items: center; */
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.JourneyCard-editbutton:hover {
+            transform: scale(0.98); 
+            background-color:rgba(104, 104, 104, 0.25);
+            transition-duration: 0.5s;
+            cursor: pointer;
+            /* Scaling button to 0.98 to its original size */ 
+            /* box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);  */
+            /* Lowering the shadow */ 
+}
+
+.JourneyCard-titleinput {
+  border-radius: 20px;
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 20px;
+  /* width: 5em; */
+}
+
+.JourneyCard-goalquantityinput {
+  border-radius: 20px;
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 20px;
+  width: 3em;
+}
+
+.JourneyCard-goalunitinput {
+  border-radius: 20px;
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 20px;
+  width: 5em;
+}
+
+.JourneyCard-goalfrequencyinput {
+  border-radius: 20px;
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 20px;
+  width: 3em;
+}
+
+.JourneyCard-goaltimeunitinput {
+  border-radius: 20px;
+  font-family:"Baloo 2", cursive;
+  font-weight: 700;
+  font-size: 30px;
+  width: 4em;
+}
+
+
