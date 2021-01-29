@@ -1,4 +1,4 @@
-![Tag - Chase your dreams](https://github.com/ItamarChinn/Tag)
+![Tag - Chase your dreams](https://github.com/ItamarChinn/Tag/welcomeimage.png)
 
 # Tag - chase your dreams
 
