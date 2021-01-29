@@ -1,3 +1,5 @@
+![Tag - Chase your dreams](https://github.com/ItamarChinn/Tag)
+
 # Tag - chase your dreams
 
 Check the [current version of the website out here](http://tag-chaseyourdream.herokuapp.com/)
